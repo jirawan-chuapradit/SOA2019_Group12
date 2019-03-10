@@ -32,5 +32,16 @@ public Article getArticle(String id){
         articles.add(article);
     }
 
+    //update
+//    public void updateArticle(String id, Article article) {
+//        for(int i = 0; i < articles.size(); i++){
+//            Article a = articles.get(i);
+//            if(a.getArticleId().equals(id)){
+//                articles.set(i,article);
+//            }
+//        }
+//    }
+
+    
 
 }
