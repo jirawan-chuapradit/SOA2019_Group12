@@ -41,7 +41,7 @@ public class ArticleControllerTest {
 
     @Test
     public void getAllArticles() {
-        Article articleResponse = testRestTemplate.getForObject(
+        Article articleResponse = restTemplate.getForObject(
                 "/articles/test", Article.class);
         // ex     assertEquals("Hello test", response.getMessage());
         assertEquals("articleId test", articleResponse.getArticleId());
