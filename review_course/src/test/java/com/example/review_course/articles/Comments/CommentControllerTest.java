@@ -19,6 +19,13 @@ public class CommentControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-  
+    @Test
+    public void showComment() {
+        Comments response = restTemplate.getForObject(
+                "/show/Good Subject", Comments.class);
+
+        // Validate
+        assertEquals("Comment = Good Subject", response.getDescription());
+    }
 
 }
