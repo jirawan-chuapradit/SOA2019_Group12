@@ -15,7 +15,8 @@ public class HelloResponse {
         this.message = message;
     }
 
-    
+    public HelloResponse() {
+    }
 
 
 }
