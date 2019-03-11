@@ -21,8 +21,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import static org.junit.Assert.*;
 
-
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
@@ -34,22 +32,25 @@ public class ArticleControllerTest {
 
     //author - zoom
     //test addArticle when create pass body
-    @Test
-    public void addArticle() throws Exception {
-    }
+
+//    @Test
+//    public void addArticle() throws Exception {
+//        Article articleResponse = restTemplate.getForObject(
+//                "/articles/test", Article.class);
+//        // ex     assertEquals("Hello test", response.getMessage());
+//        assertEquals("articleId test", articleResponse.getArticleId());
+//        assertEquals("category test", articleResponse.getCategory());
+//        assertEquals("subject test", articleResponse.getSubject());
+//        assertEquals("stars test", articleResponse.getStars());
+//        assertEquals("description test", articleResponse.getDescription());
+//        assertEquals("grade test", articleResponse.getGrade());
+//    }
 
 
+    //author - jj
     @Test
     public void getAllArticles() {
-        Article articleResponse = testRestTemplate.getForObject(
-                "/articles/test", Article.class);
-        // ex     assertEquals("Hello test", response.getMessage());
-        assertEquals("articleId test", articleResponse.getArticleId());
-        assertEquals("category test", articleResponse.getCategory());
-        assertEquals("subject test", articleResponse.getSubject());
-        assertEquals("stars test", articleResponse.getStars());
-        assertEquals("description test", articleResponse.getDescription());
-        assertEquals("grade test", articleResponse.getGrade());
+
 
 
     }
