@@ -39,5 +39,21 @@ public class ArticleControllerTest {
     }
 
 
+    @Test
+    public void getAllArticles() {
+        Article articleResponse = testRestTemplate.getForObject(
+                "/articles/test", Article.class);
+        // ex     assertEquals("Hello test", response.getMessage());
+        assertEquals("articleId test", articleResponse.getArticleId());
+        assertEquals("category test", articleResponse.getCategory());
+        assertEquals("subject test", articleResponse.getSubject());
+        assertEquals("stars test", articleResponse.getStars());
+        assertEquals("description test", articleResponse.getDescription());
+        assertEquals("grade test", articleResponse.getGrade());
+
+
+    }
+
+
 
 }
