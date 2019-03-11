@@ -11,7 +11,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.boot.test.autoconfigure.web.servlet.*;
+import org.springframework.boot.test.mock.mockito.*;
+
+import static org.assertj.core.api.Assertions.*;
+import static org.mockito.BDDMockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 import static org.junit.Assert.*;
+
 
 
 @RunWith(SpringRunner.class)
@@ -21,9 +30,12 @@ public class ArticleControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
+//    private MockMvc mvc;
+
 
     @Test
     public void addArticle() throws Exception {
+
 
     }
 
