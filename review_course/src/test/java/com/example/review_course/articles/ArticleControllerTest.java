@@ -28,8 +28,6 @@ import static org.junit.Assert.*;
 
 public class ArticleControllerTest {
 
-
-
     @Autowired
     private TestRestTemplate restTemplate;
 
@@ -38,8 +36,8 @@ public class ArticleControllerTest {
     //test addArticle when create pass body
     @Test
     public void addArticle() throws Exception {
-
-
     }
+
+
 
 }
