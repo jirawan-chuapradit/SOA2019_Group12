@@ -30,7 +30,6 @@ public class ArticleControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-//    private MockMvc mvc;
 
 
     @Test
