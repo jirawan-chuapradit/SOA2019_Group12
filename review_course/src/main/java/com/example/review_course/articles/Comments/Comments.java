@@ -12,6 +12,12 @@ public class Comments {
     public Comments() {
     }
 
+
+    public Comments(String description) {
+
+        this.description = description;
+    }
+
     public Comments(String commentId, String name, String star, String description) {
         this.commentId = commentId;
         this.name = name;
