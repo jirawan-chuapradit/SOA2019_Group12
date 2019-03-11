@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
-
+@RequestMapping(value = "/articles")
 @RestController
 public class ArticleController {
 
@@ -13,14 +13,14 @@ public class ArticleController {
     private ArticleService articleService;
 
     //    get an Article
-    @RequestMapping("/articles/{id}")
+    @RequestMapping("/{id}")
     public Article getArticle(@PathVariable  String id){
         return articleService.getArticle(id) ;
     }
 
 
     //create
-    @PostMapping(value = "/articles")
+    @PostMapping(value = "")
     public void addArticle(@RequestBody Article article){
         articleService.addArticle(article);
     }
@@ -32,7 +32,7 @@ public class ArticleController {
 //    }
 
     //delete
-    @DeleteMapping(value = "/articles/{id}")
+    @DeleteMapping(value = "/{id}")
     public void deleteArticle(@PathVariable String id){
         articleService.deleteArticle(id);
     }

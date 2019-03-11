@@ -46,5 +46,4 @@ public Article getArticle(String id){
     public void deleteArticle(String id) {
         articles.removeIf(article -> article.getArticleId().equals(id));
     }
-
 }
