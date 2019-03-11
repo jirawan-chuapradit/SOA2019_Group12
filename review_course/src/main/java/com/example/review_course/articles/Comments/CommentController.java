@@ -13,9 +13,15 @@ import java.util.List;
 @RestController
 public class CommentController {
 
-    @GetMapping("/show/{description}")
-    public  Comments showComment(@PathVariable  String description , String star) {
+    @GetMapping("/show/{description}/{star}")
+    public  Comments showComment(@PathVariable  String description , @PathVariable String star) {
 
-        return new Comments("Comment = " + description);
+        return new Comments("Comment = " + description , "Point = " + star );
     }
+
+//    @GetMapping("/show/{star}")
+//    public  Comments showPoint(@PathVariable  int star) {
+//
+//        return new Comments(star);
+//    }
 }

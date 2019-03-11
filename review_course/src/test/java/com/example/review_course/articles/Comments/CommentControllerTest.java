@@ -22,10 +22,10 @@ public class CommentControllerTest {
     @Test
     public void showComment() {
         Comments response = restTemplate.getForObject(
-                "/show/Good Subject", Comments.class);
+                "/show/des/point", Comments.class);
 
         // Validate
-        assertEquals("Comment = Good Subject", response.getDescription());
+        assertEquals("Comment = aew Point = 3", response.getDescription(),response.getStar());
     }
 
 }
