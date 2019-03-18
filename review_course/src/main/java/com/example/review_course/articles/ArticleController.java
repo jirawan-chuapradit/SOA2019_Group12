@@ -5,15 +5,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
-@RequestMapping(value = "/articles")
+
 @RestController
 public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
 
+    @RequestMapping("/articles")
+    public List<Article> getAllArticles(){
+        return articleService.getAllArticles();
+    }
+
     //    get an Article
-    @RequestMapping("/{id}")
+    @RequestMapping("/articles/{id}")
     public Article getArticle(@PathVariable  String id){
         return articleService.getArticle(id) ;
     }
