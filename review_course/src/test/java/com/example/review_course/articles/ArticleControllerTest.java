@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
 
 public class ArticleControllerTest {
 
+    private ArticleService articleService;
+
     @Autowired
     private TestRestTemplate restTemplate;
 
@@ -24,7 +26,7 @@ public class ArticleControllerTest {
     @Test
     public void getArticle() {
         Article response = restTemplate.getForObject(
-                "articles/001",Article.class);
+                "http://localhost:8080/articles/001",Article.class);
 //
 //         Validate
         assertEquals("001", response.getArticleId());
