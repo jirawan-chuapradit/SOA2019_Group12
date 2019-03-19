@@ -26,7 +26,7 @@ public class ArticleControllerTest {
     @Test
     public void getArticle() {
         Article response = restTemplate.getForObject(
-                "http://localhost:8080/articles/001",Article.class);
+                "/articles/001", Article.class);
 //
 //         Validate
         assertEquals("001", response.getArticleId());
