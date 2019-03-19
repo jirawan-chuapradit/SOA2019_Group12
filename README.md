@@ -11,21 +11,27 @@ cd /review_course
 mvnw clean package
 java -jar target\review_course-0.0.1-SNAPSHOT.jar
 ```
+
+# Test
+```
+mvnw test
+```
+
 # Deploy
 
 # API & Endpoint
 ## Article Service
-| Endpoint | Status |
-|--|--|
-| GET /article      | - |
-| GET /article/rank |-|
-| GET /subject |-|
-| POST /article |-|
-| GET /article/all |-|
-| POST /article/comment |-|
+| Endpoint |
+|--|
+| GET /article      |
+| GET /article/rank |
+| GET /subject |
+| POST /article |
+| GET /article/all |
+| POST /article/comment |
 
 ## Authentication Service
-| Endpoint | Status |
-|--|--|
-| GET /user |-|
-| POST /user |-|
+| Endpoint |
+|--|
+| GET /user |
+| POST /user |
