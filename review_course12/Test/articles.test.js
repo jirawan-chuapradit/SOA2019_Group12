@@ -1,9 +1,9 @@
 //Testing articles
 
-const article = require('../articles');
+const article = require("../articles");
 
-describe('getAllArticles', () => {
-    it('should return all article',  () => {
+describe("getAllArticles", () => {
+    it("should return all article",  () => {
 
         const result = article.findAll();
 
@@ -16,8 +16,8 @@ describe('getAllArticles', () => {
 });
 
 
-describe('getArticlesByID', () => {
-    it('should return Article By ID',  () => {
+describe("getArticlesByID", () => {
+    it("should return Article By ID",  () => {
 
         const result = article.findById(1);
         expect(result).toEqual({"id":1,"category":"สังคมศาสตร์","subject":"ECONOMICS FOR BUSINESS","stars":"* * * * *","description":"ดีมากๆ เเรียนเกี่ยวกับแนวคิดการทำงานของระบบเศษฐกิจอ่ะไม่มีเช็คชื่อ ส่งงานอย่างเดียว","grade":"A"});
