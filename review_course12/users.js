@@ -27,7 +27,7 @@ var users = [
     {
         "id": 5,
         "username": "shanks",
-        "name": "'Red-Haired' Shanks",
+        "name": "Red-Haired Shanks",
         "position": "The 4 Emperors"
     }
 ];

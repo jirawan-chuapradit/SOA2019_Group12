@@ -1,6 +1,6 @@
-const getArticles = require('./articles');
+const getArticles = require("./articles");
 
-test('get All article'), () => {
+test("get All article"), () => {
     expected(getArticles)
 }
 
