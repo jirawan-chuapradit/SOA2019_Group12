@@ -76,11 +76,4 @@ app.post("/newarticle", function (req, res) {
 
 /* สั่งให้ server ทำการรัน Web Server ด้วย port ที่เรากำหนด */
 app.listen(config.port)
-<<<<<<< HEAD
-=======
 console.log(`Server running at http://127.0.0.1:${config.port}/`);
-
-
-
-
->>>>>>> 579ff228cd46ac3bbcb396eb1b7dd30377e6e1b5
