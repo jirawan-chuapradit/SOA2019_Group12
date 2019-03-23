@@ -15,7 +15,6 @@
     "module_name": "^1.0.0"
   },
   "devDependencies": {
-    "jest": "^24.5.0",
-    "nodemon": "^1.18.10"
+    "jest": "^24.5.0"
   }
 }
