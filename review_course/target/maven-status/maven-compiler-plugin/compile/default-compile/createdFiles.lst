@@ -1,0 +1,8 @@
+com\example\review_course\articles\Article.class
+com\example\review_course\articles\Comments\CommentController.class
+com\example\review_course\hello\HelloResponse.class
+com\example\review_course\hello\HelloController.class
+com\example\review_course\articles\ArticleService.class
+com\example\review_course\articles\Comments\Comments.class
+com\example\review_course\ReviewCourseApplication.class
+com\example\review_course\articles\ArticleController.class
