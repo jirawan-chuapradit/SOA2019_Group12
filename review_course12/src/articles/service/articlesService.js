@@ -1,6 +1,14 @@
 // const stores = require("../../../data/stores")
 const mockArticles = require('../../../data/mockArticles')
 const _ = require('underscore')
+// var app = require('express')();
+// var bodyParser = require('body-parser');
+
+// // parse application/json
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
 
 exports.getAllArticles = (req, res) => {
     // res.json(mockArticles)
@@ -19,8 +27,16 @@ exports.getAllArticles = (req, res) => {
 }
 
 exports.postNewArticle = (req, res) => {
-    mockArticles.push(req.body)
-    res.status(201).json(req.body)
+    
+    
+    var json = req.body;
+    console.log(json)
+    res.send('Add new ' + json.name + ' Completed!'); 
+    
+    // const body = req.body.Body
+   
+    // mockArticles.push(req.body)
+    // res.status(201).json(req.body)
 }
 
 exports.getArticlePage = (req, res) => {
