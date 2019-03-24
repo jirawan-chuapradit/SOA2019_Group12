@@ -12,6 +12,8 @@ router.use(bodyParser.urlencoded({
 
 
 router.get("/", articleService.getAllArticles)
+
+// /articles/newArticle
 router.post("/newArticle", articleService.postNewArticle)
 router.get("/:id", articleService.getArticlePage)
 
