@@ -1,6 +1,6 @@
 //Testing comments
 
-// const comment = require('../comment');
+const comment = require('../comment');
 
 // describe('getAllcomment', () => {
 //     it('should return all comment', () => {
@@ -45,25 +45,25 @@ describe('getCommentByArticleID', () => {
 
         // const result = comment.findByArticletId(1);
         
-    //     expect(result).toEqual([
-    //         {
-    //             "id_comment": 1,
-    //             "id_article": 1,
-    //             "content": "รีวิวดีมากเลยครับ",
-    //             "stars": "* * *",
-    //             "id_profile": 1,
+        expect(filtered).toEqual([
+            {
+                "id": 1,
+                "id_article": 1,
+                "content": "รีวิวดีมากเลยครับ",
+                "stars": "* * *",
+                "id_profile": 1,
 
-    //         },
-    //         {
-    //             "id_comment": 2,
-    //             "id_article": 1,
-    //             "content": "ขอบคุณมากๆ ค้าาา",
-    //             "stars": "* * *",
-    //             "id_profile": 1,
+            },
+            {
+                "id": 2,
+                "id_article": 1,
+                "content": "ขอบคุณมากๆ ค้าาา",
+                "stars": "* * *",
+                "id_profile": 1,
 
-    //         }
-    //     ]);
+            }
+        ]);
 
 
-//     });
-// });
+    });
+});
