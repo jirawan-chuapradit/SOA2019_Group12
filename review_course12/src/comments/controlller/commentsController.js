@@ -12,6 +12,8 @@ router.use(bodyParser.urlencoded({
 }));
 
 router.get("/", CommentService.getAllComments)
+
+// articles/newComment
 router.post("/newComment", CommentService.postNewComment)
 router.get("/:id", CommentService.getCommentPage)
 

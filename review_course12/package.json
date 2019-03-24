@@ -12,7 +12,10 @@
     "body-parser": "^1.18.3",
     "config": "^3.0.1",
     "express": "^4.16.4",
+    "jest-cli": "^24.5.0",
     "module_name": "^1.0.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "underscore": "^1.9.1"
   },
   "devDependencies": {
