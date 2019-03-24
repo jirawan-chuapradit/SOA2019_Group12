@@ -22,6 +22,14 @@ var comment = [
         "stars": "*",
         "id_profile": 2,
 
+    },
+    {
+        "id_comment": 4,
+        "id_article": 3,
+        "content": "สำหรับเราว่าโอเคเลย",
+        "stars": "***",
+        "id_profile": 1
+
     }
 ];
 
