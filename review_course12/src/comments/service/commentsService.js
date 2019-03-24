@@ -19,8 +19,11 @@ exports.getAllComments = (req, res) => {
 }
 
 exports.postNewComment = (req, res) => {
+    var json = req.body;
+    console.log(json)
+    res.send('Add new ' + json.id + ' Completed!'); 
     mockComments.push(req.body)
-    res.status(201).json(req.body)
+   
 }
 
 exports.getCommentPage = (req, res) => {
