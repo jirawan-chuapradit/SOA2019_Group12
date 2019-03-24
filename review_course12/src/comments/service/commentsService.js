@@ -8,7 +8,7 @@ exports.getAllComments = (req, res) => {
     var response = [];
 
     if ( typeof req.query.id != "undefined"){
-        response = mockComments.filter(function (store) {
+        response = mockComืยments.filter(function (store) {
             if (store.id === 1)
                 return store;
         });
