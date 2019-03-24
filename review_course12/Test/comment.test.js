@@ -1,55 +1,68 @@
 //Testing comments
 
-const comment = require('../comment');
+// const comment = require('../comment');
 
-describe('getAllcomment', () => {
-    it('should return all comment', () => {
+// describe('getAllcomment', () => {
+//     it('should return all comment', () => {
 
-        const result = comment.findAll();
+//         // const result = comment.findAll();
+//         // console.log(result)
 
-        // 'use strict';
 
-        // const fs = require('fs');
-        // fs.readFile('../review_course12/data/mockComments.json', (err, data) => {
-        //     if (err) throw err;
-        //     let mockComments = JSON.parse(data);
-        //     console.log(student);
-        //     expect(result).toEqual(mockComments);
-        // });
+//         var _ = require("underscore");
 
-        var fs = require('fs');
-        var obj;
-        fs.readFile('../review_course12/data/mockComments.json', 'utf8', function (err, data) {
-            if (err) throw err;
-            obj = JSON.parse(data);
-            console.log(obj);
-            expect(result).toEqual(obj);
-        });
-    });
-});
+//         'use strict';
 
-// describe('getCommentByArticleID', () => {
-//     it('should return Comments By ID of Article', () => {
+//         const fs = require('fs');
 
-//         const result = comment.findByArticletId(1);
-//         expect(result).toEqual([
-//             {
-//                 "id_comment": 1,
-//                 "id_article": 1,
-//                 "content": "รีวิวดีมากเลยครับ",
-//                 "stars": "* * *",
-//                 "id_profile": 1,
+//         let rawdata = fs.readFileSync('../review_course12/data/mockComments.json');
+//         let mockCommentS = JSON.parse(rawdata);
+//         console.log(mockCommentS);
 
-//             },
-//             {
-//                 "id_comment": 2,
-//                 "id_article": 1,
-//                 "content": "ขอบคุณมากๆ ค้าาา",
-//                 "stars": "* * *",
-//                 "id_profile": 1,
+//         var filtered = _.where(mockCommentS, {id_article: "1"});
+//         console.log(filtered)
 
-//             }
-//         ]);
+//         // expect(result).toEqual(mockCommentS)
+//     });
+// });
+
+describe('getCommentByArticleID', () => {
+    it('should return Comments By ID of Article', () => {
+
+        
+        var _ = require("underscore");
+
+        'use strict';
+
+        const fs = require('fs');
+
+        let rawdata = fs.readFileSync('../review_course12/data/mockcomments.json');
+        let mockCommentS = JSON.parse(rawdata);
+        console.log(mockCommentS);
+
+        var filtered = _.where(mockCommentS, {id_article: 1});
+        console.log(filtered)
+
+        // const result = comment.findByArticletId(1);
+        
+    //     expect(result).toEqual([
+    //         {
+    //             "id_comment": 1,
+    //             "id_article": 1,
+    //             "content": "รีวิวดีมากเลยครับ",
+    //             "stars": "* * *",
+    //             "id_profile": 1,
+
+    //         },
+    //         {
+    //             "id_comment": 2,
+    //             "id_article": 1,
+    //             "content": "ขอบคุณมากๆ ค้าาา",
+    //             "stars": "* * *",
+    //             "id_profile": 1,
+
+    //         }
+    //     ]);
 
 
 //     });
