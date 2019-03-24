@@ -3,14 +3,17 @@ const mockArticles = require('../../../data/mockArticles')
 const _ = require('underscore')
 
 exports.getAllArticles = (req, res) => {
-    // res.json(mockArticles)
-    console.log(req.query)
     var response = [];
 
-    if ( typeof req.query.id != "undefined"){
+    if ( typeof req.query.category != "undefined"){
         response = mockArticles.filter(function (store) {
-            if (store.id === 1)
-                return store;
+            if (store.category === req.query.category){
+                console.log(store.subject)
+                console.log(req.query.subject)
+                if (store.subject === req.query.subject){
+                    return store;
+                }
+            }
         });
     } else {
         response = mockArticles;
