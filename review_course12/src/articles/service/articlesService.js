@@ -11,17 +11,14 @@ const _ = require('underscore')
 // }));
 
 exports.getAllArticles = (req, res) => {
+    // res.json(mockArticles)
+    console.log(req.query)
     var response = [];
 
-    if ( typeof req.query.category != "undefined"){
+    if ( typeof req.query.id != "undefined"){
         response = mockArticles.filter(function (store) {
-            if (store.category === req.query.category){
-                console.log(store.subject)
-                console.log(req.query.subject)
-                if (store.subject === req.query.subject){
-                    return store;
-                }
-            }
+            if (store.id === 1)
+                return store;
         });
     } else {
         response = mockArticles;
@@ -30,16 +27,22 @@ exports.getAllArticles = (req, res) => {
 }
 
 exports.postNewArticle = (req, res) => {
-    
-    
     var json = req.body;
     console.log(json)
-    res.send('Add new ' + json.name + ' Completed!'); 
-    
-    // const body = req.body.Body
+    res.send('Add new ' + json.category + ' Completed!'); 
    
-    // mockArticles.push(req.body)
+    // let article = json;
+
+    // var obj = {
+    //     articleList: []
+    //  };
+
+    //  obj.articleList.push(article);
+
+    //  var json = JSON.stringify(obj);
+    mockArticles.push(json)
     // res.status(201).json(req.body)
+
 }
 
 exports.getArticlePage = (req, res) => {
