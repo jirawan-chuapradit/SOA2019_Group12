@@ -19,8 +19,10 @@ app.use(bodyParser.urlencoded({
 
 const articlesController = require("./src/articles/controller/articlesController")
 const authenticationController = require("./src/authentication/controller/authenticationController")
+const commentsController = require("./src/comments/controlller/commentsController")
 app.use("/articles", articlesController)
 app.use("/login", authenticationController)
+app.use("/comment", commentsController);
 
 app.get("/api/stores", function (req, res) {
     var response = [];
@@ -35,6 +37,9 @@ app.get("/api/stores", function (req, res) {
     }
     res.json(response);
 })
+
+
+
 
 /* Routing */
 app.get("/", function (req, res) {
@@ -83,9 +88,9 @@ app.post("/newarticle", function (req, res) {
 //*** comment ***
 
 //get
-app.get('/comment', function (req,res) {
-    res.json(comment.findAll());
-});
+// app.get('/comment', function (req,res) {
+//     res.json(comment.findAll());
+// });
 
 app.get('/comment/:id', function (req, res) {
     var id = req.params.id;

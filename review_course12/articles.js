@@ -14,14 +14,6 @@ var articles = [
         "stars": "* * * *",
         "description": "อาจารย์สอนดี แต่เนื้อหาเยอะ ไม่เหมาะกับคนที่ ไม่ชอบอ่านหนังสือ",
         "grade": "A"
-    },
-    {
-        "id": 3,
-        "category": "ภาษา",
-        "subject": "ENGLISH FOR MARKETING",
-        "stars": "* *",
-        "description": "เน้นเวิร์คช้อป ไม่เข้าเรียนได้ ส่วนตัวคิดว่าดี แต่ได้ A ยาก",
-        "grade": "B"
     }
 ];
 
