@@ -26,15 +26,11 @@ https://beaming-gadget-234817.appspot.com/articles
 ## Article Service
 | Endpoint |
 |--|
-| GET /article      |
-| GET /article/rank |
-| GET /subject |
-| POST /article |
-| GET /article/all |
-| POST /article/comment |
+| GET /articles      |
+| GET /article/{id} |
+| GET /articles?category={value1}&subject={value2} |
+| POST /articles |
+| GET /comment |
+|GET /comment/{id}|
+| POST /comment |
 
-## Authentication Service
-| Endpoint |
-|--|
-| GET /user |
-| POST /user |
