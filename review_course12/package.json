@@ -4,7 +4,8 @@
   "description": "zoom test Node.js with Express4 Tutorial",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
