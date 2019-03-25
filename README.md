@@ -4,20 +4,23 @@
 ## Clone Project 
 ```
 git clone https://github.com/jirawan-chuapradit/SOA2019_Group12.git
-cd /review_course
+cd /review_course12
 ```
 ## Compile & Run
 ```
-mvnw clean package
-java -jar target\review_course-0.0.1-SNAPSHOT.jar
+node index.js
 ```
 
 # Test
 ```
-mvnw test
+npm test
 ```
 
 # Deploy
+```
+https://beaming-gadget-234817.appspot.com/articles
+```
+
 
 # API & Endpoint
 ## Article Service
