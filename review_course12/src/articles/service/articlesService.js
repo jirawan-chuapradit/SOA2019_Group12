@@ -16,6 +16,7 @@ exports.getAllArticles = (req, res) => {
         response = mockArticles;
     }
     res.json(response);
+
 }
 
 exports.postNewArticle = (req, res) => {
@@ -23,6 +24,7 @@ exports.postNewArticle = (req, res) => {
     console.log(json)
     res.send('Add new ' + json.category + ' Completed!'); 
     mockArticles.push(json)
+    // res.status(500).send({ error: "boo:(" });
 
 }
 
