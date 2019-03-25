@@ -23,8 +23,9 @@ exports.getAllArticles = (req, res) => {
 exports.postNewArticle = (req, res) => {
     var json = req.body;
     console.log(json)
-    res.send('Add new ' + json.category + ' Completed!'); 
     mockArticles.push(json)
+    res.status(201).send({isCreateNewArticlse:true}); 
+    
     // res.status(500).send({ error: "boo:(" });
 
 }
