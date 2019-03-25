@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router();
-const CommentService = require("../service/CommentsService")
+const CommentService = require("../service/commentsService")
 
 var bodyParser = require('body-parser');
 

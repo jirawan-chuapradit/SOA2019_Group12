@@ -73,3 +73,12 @@ describe("getArticlesByID", () => {
 
     });
 });
+
+// TEST POST ARTICLE
+// describe("POST /article/newArticle",() =>{
+//     it("should return HTTP response status code 200",  () => {
+//         const res = request(server).post('../article/newArticle/{"id": 5,"category": "ภาษา"}')
+//         expect(res.status).toBe(200);
+//
+//     });
+// });

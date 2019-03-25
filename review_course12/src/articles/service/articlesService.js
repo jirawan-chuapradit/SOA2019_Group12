@@ -3,19 +3,21 @@ const mockArticles = require('../../../data/mockArticles')
 const _ = require('underscore')
 
 exports.getAllArticles = (req, res) => {
-    // res.json(mockArticles)
-    console.log(req.query)
     var response = [];
 
-    if ( typeof req.query.id != "undefined"){
+    if ( typeof req.query.category != "undefined"){
         response = mockArticles.filter(function (store) {
-            if (store.id === 1)
-                return store;
+            if (store.category === req.query.category){
+                if (store.subject === req.query.subject){
+                    return store;
+                }
+            }
         });
     } else {
         response = mockArticles;
     }
     res.json(response);
+
 }
 
 exports.postNewArticle = (req, res) => {
@@ -23,6 +25,7 @@ exports.postNewArticle = (req, res) => {
     console.log(json)
     res.send('Add new ' + json.category + ' Completed!'); 
     mockArticles.push(json)
+    // res.status(500).send({ error: "boo:(" });
 
 }
 
