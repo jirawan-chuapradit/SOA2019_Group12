@@ -44,3 +44,5 @@ const server = app.listen(8080, () => {
     const port = server.address().port
     console.log(`Server running at http://${host}:${port}/`)
 })
+
+module.exports = app

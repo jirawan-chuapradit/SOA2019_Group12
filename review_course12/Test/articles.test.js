@@ -1,6 +1,8 @@
 // Testing articles
 
 const article = require("../articles");
+const request = require('supertest')
+const server = require('../../review_course12/index')
 
 describe("getAllArticles", () => {
     it("should return all article",  () => {
@@ -75,10 +77,20 @@ describe("getArticlesByID", () => {
 });
 
 // TEST POST ARTICLE
-// describe("POST /article/newArticle",() =>{
-//     it("should return HTTP response status code 200",  () => {
-//         const res = request(server).post('../article/newArticle/{"id": 5,"category": "ภาษา"}')
-//         expect(res.status).toBe(200);
-//
-//     });
-// });
+describe("POST /article/newArticle",() =>{
+    it("should return HTTP response status code 201",  async () => {
+    
+
+        let case2 = {
+            "id" : 5,
+            "category": "ภาษา"
+        }
+
+        const res = await request(server).post('/articles/newArticle').send(case2).set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+
+        
+        expect(res.status).toBe(201);
+
+    });
+});

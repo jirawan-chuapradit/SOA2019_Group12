@@ -18,9 +18,8 @@ npm test
 
 # Deploy
 ```
-https://beaming-gadget-234817.appspot.com/articles
+https://beaming-gadget-234817.appspot.com/{Endpoint following next section}
 ```
-
 
 # API & Endpoint
 ## Article Service

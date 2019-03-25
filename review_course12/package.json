@@ -17,7 +17,8 @@
     "module_name": "^1.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "start": "^5.1.0",
+    "supertest": "^4.0.2",
+
     "underscore": "^1.9.1"
   },
   "devDependencies": {
