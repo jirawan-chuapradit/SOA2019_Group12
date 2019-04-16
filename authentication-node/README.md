@@ -7,5 +7,9 @@
 ```
 # Run
 ```
-npm run dev (Require MongoDB)
+1. cd ..\SOA2019_Group12\authentication-node
+2.npm run dev (Require MongoDB)
+
+3. cd ..\SOA2019_Group12\authentication-node\client
+4. npm start
 ```
