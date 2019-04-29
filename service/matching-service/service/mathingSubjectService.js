@@ -8,8 +8,8 @@ const matchingSubjectDb = require("../models/matchingSubjectSchema");
  * postcondition: subject have been created
  */
 exports.addSubject = (req, res) => {
+  console.log(req.body);
   const mathingData = {
-    _id: req.body._id,
     subject: req.body.subject,
     category: req.body.category,
     grade: req.body.grade,
@@ -19,20 +19,45 @@ exports.addSubject = (req, res) => {
     difficulty: req.body.difficulty
   };
 
-  matchingSubjectDb.findOne({
-    subject: req.body.subject
-  })
+  matchingSubjectDb
+    .findOne({
+      subject: req.body.subject
+    })
     .then(subject => {
       if (!subject) {
-        matchingSubjectDb.create(mathingData)
+        matchingSubjectDb
+          .create(mathingData)
           .then(subject => {
-            res.status(200).json({ status: req.body.subject + " registered!!!" });
+            res
+              .status(200)
+              .json({ status: req.body.subject + " registered!!!" });
           })
           .catch(err => {
             res.send("error: " + err);
           });
       } else {
-        res.status(200).json({ error: req.body.subject + " already exists" });
+        //update
+        matchingSubjectDb
+          .update(
+            { subject: mathingData.subject },
+            {
+              $set: {
+                grade: mathingData.grade,
+                midterm: mathingData.midterm,
+                attendance: mathingData.attendance,
+                groupWorker: mathingData.groupWorker,
+                difficulty: mathingData.difficulty
+              }
+            }
+          )
+          .then(function(result) {
+            res.status(200);
+            console.log("update success")
+          })
+          .catch(err => {
+            res.send("error: " + err);
+            console.log(err)
+          });
       }
     })
     .catch(err => {
@@ -43,15 +68,17 @@ exports.addSubject = (req, res) => {
 /**
  * Function:  searh data
  */
-exports.finding = (req,res) =>{
-  
-  matchingSubjectDb.find({
-    grade: { $gt: req.body.grade },
-    midterm: { $gt: req.body.midterm},
-    attendance :{ $gt: req.body.attendance},
-    groupWorker :{ $gt: req.body.groupWorker},
-    difficulty: { $gt: req.body.difficulty }
-  })
+exports.finding = (req, res) => {
+  console.log(req.query);
+
+  matchingSubjectDb
+    .find({
+      grade: { $gt: req.body.grade },
+      midterm: { $gt: req.body.midterm },
+      attendance: { $gt: req.body.attendance },
+      groupWorker: { $gt: req.body.groupWorker },
+      difficulty: { $gt: req.body.difficulty }
+    })
 
     .then(subject => {
       if (!Array.isArray(subject) || !subject.length) {
@@ -61,11 +88,17 @@ exports.finding = (req,res) =>{
           status: "Sorry, Can't find the article suitable for you :("
         });
       } else {
-        res.status(200).json({ status: subject });
+        return res.json({ info: subject });
       }
     })
     .catch(err => {
       res.send("error: " + err);
     });
-}
+};
 
+exports.test = (req, res) => {
+  return res.json({
+    test: 1,
+    test2: 2
+  });
+};

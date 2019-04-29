@@ -2,10 +2,6 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const MatchingSubjectSchema = new Schema({
-    _id: {
-        type: Number,
-        required: true,
-    },
     subject: {
         type: String,
         required: true,
