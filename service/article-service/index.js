@@ -34,14 +34,14 @@ const client = new Eureka({
     }
 })
 
-// client.logger.level('debug')
-// client.start(error => {
-//     console.log(error || 'NodeJS Eureka Started !')
+client.logger.level('debug')
+client.start(error => {
+    console.log(error || 'NodeJS Eureka Started !')
 
-//     app.use("/", articleController)
-// })
+    app.use("/", articleController)
+})
 
-app.use("/", articleController)
+// app.use("/", articleController)
 
 const server = app.listen(port, () => {
     const host = server.address().address

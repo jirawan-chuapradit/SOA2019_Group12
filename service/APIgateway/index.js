@@ -34,13 +34,34 @@ client.logger.level('debug')
 client.start(error => {
     console.log(error || 'NodeJS Eureka Started !')
 
+    // Service discovery from Eureka server
     const articleServiceInstance = client.getInstancesByAppId('article-service')
     const articleServiceUrl = `http://${articleServiceInstance[0].hostName}:${articleServiceInstance[0].port.$}`
     const articleServiceProxy = httpProxy(articleServiceUrl)
     console.log(`Article-service: ${articleServiceUrl}`)
 
+
+    const matchingServiceInstance = client.getInstancesByAppId('matching-service')
+    const matchingServiceUrl = `http://${matchingServiceInstance[0].hostName}:${matchingServiceInstance[0].port.$}`
+    const matchingServiceProxy = httpProxy(matchingServiceUrl)
+    console.log(`Matching-service: ${matchingServiceUrl}`)
+
+    const notificationServiceInstance = client.getInstancesByAppId('notification-service')
+    const notificationerviceUrl = `http://${notificationServiceInstance[0].hostName}:${notificationServiceInstance[0].port.$}`
+    const notificationServiceProxy = httpProxy(notificationerviceUrl)
+    console.log(`Notification-service: ${notificationerviceUrl}`)
+
+ // Proxy request
     app.use('/api/article', (req, res, next) => {
         articleServiceProxy(req, res, next)
+    })
+
+    app.use('/api/matching', (req, res, next) => {
+        matchingServiceProxy(req, res, next)
+    })
+
+    app.use('/api/theArticles', (req, res, next) => {
+        notificationServiceProxy(req, res, next)
     })
 })
 
