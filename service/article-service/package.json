@@ -4,13 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --exit"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eureka-js-client": "^4.4.2",
     "express": "^4.16.4",
+    "mocha": "^6.1.4",
     "mongoose": "^5.5.2"
+  },
+  "devDependencies": {
+    "nyc": "^14.0.0"
   }
 }

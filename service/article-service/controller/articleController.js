@@ -9,15 +9,12 @@ router.use(bodyParser.urlencoded({
     extended: true
 }));
 
-// router.post("/:article", articleService.addComment)
-router.get('/test', articleService.addComment)
 router.get("/:id", articleService.getArticlePage)
+router.post('/:id', articleService.addComment)
+
 router.get("/", articleService.getAllArticles)
 router.post("/", articleService.createArticle)
 
-router.use((req, res, next) => {
-    console.log("Called: ", req.path)
-    next()
-})
+router.get('/matching', articleService.matching)
 
 module.exports = router;
