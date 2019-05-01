@@ -3,8 +3,12 @@ const db = require('../model/articleSchema')
 exports.getArticlePage = (req, res) => {
     async function getArticlePage(){
         const selectedArticle = req.url.substring(1, req.url.length)
-        const article = await db.find({ _id: selectedArticle })
-        res.status(200).json(article)
+
+        const article = await db.findOne({ _id: selectedArticle })
+        if (article != null)
+            res.status(200).json(article)
+        else
+            res.status(400).json({ error: 'Article Not Found' })
     }
     getArticlePage()
 }
@@ -56,19 +60,27 @@ exports.createArticle = (req, res) => {
 }
 
 exports.addComment = (req, res) => {
-    console.log(req.body)
-    // async function addComment(){
+    const comment = req.body.comment[0]
+    async function addComment(){
+        db.findOne({_id: req.body._id}).then( function(db) {
+            db.comment.push({
+                articleId: comment.articleId,
+                content: comment.content,
+                star: comment.star,
+                profileId: comment.profileId
+            })
+            db.save(function (err, post){
+                if (err) {
+                    return res.status(400).json({ success: false })
+                } else {
+                    return res.status(200).json({ success: true })
+                }
+            })
+        })
+    }
+    addComment()
+}
 
-        // db.findOne({subject: 'entrepreneurship'}).then( function(db) {
-        //     db.comment.push({
-        //         articleId: 2,
-        //         content: "comment3",
-        //         star: 3,
-        //         profileId: 123123
-        //     })
-
-        //     db.save()
-        // })
-
-    // addComment()
+exports.matching = (req, res) => {
+    
 }

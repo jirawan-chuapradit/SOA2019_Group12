@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5cc7355826cae25204c2c63f"},"subject":"data-sci","category":"human","grade":{"$numberDouble":"3.466666666666667"},"midterm":{"$numberInt":"3"},"attendance":{"$numberInt":"3"},"groupWorker":{"$numberInt":"3"},"difficulty":{"$numberInt":"3"},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5cc738c747ee244cd0f29f38"},"subject":"english","category":"human","grade":{"$numberInt":"3"},"midterm":{"$numberInt":"3"},"attendance":{"$numberInt":"3"},"groupWorker":{"$numberInt":"3"},"difficulty":{"$numberInt":"3"},"__v":{"$numberInt":"0"}}
