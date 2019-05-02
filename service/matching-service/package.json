@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon index.js",
     "build": "babel src -d dist --copy-files",
-    "test": "webpack -w --progress --colors --config webpack-test.config.js --timeout 10000"
+    "test": "mocha",
+    "coverage": "nyc --reporter=text mocha"
   },
   "author": "",
   "license": "ISC",
@@ -25,9 +26,6 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "mocha": "^6.1.4",
-    "nyc": "^14.0.0",
-    "webpack": "^1.14.0",
-    "webpack-node-externals": "^1.5.4",
-    "webpack-shell-plugin": "0.4.3"
+    "nyc": "^14.0.0"
   }
 }

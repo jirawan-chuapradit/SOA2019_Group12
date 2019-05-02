@@ -7,8 +7,20 @@ const server = require("../index");
 
 chai.use(chaiHttp);
 
-describe("Matcging", () => {
-  describe("should pass", () => {
+describe("Matching", () => {
+  describe("/GET", () => {
+    
+     // Test to get subject that match with rank
+    it("Should not found", done => {
+      chai
+        .request(server)
+        .get("matching/about")
+        .end(function(err, res) {
+          expect(404)
+          done();
+        });
+    });
+
     // Test to get subject that match with rank
     it("Should get subject that match with rank", done => {
       chai
@@ -44,35 +56,42 @@ describe("Matcging", () => {
           difficulty: "5"
         })
         .end((err, res) => {
-            console.log(res.status);
-            console.log(res.body);
-            res.should.have.status(200);
-            res.body.should.be.a('object');
-            done();
+          console.log(res.status);
+          console.log(res.body);
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          done();
         });
     });
 
-      // Test POST with not exists subject calculate Avg Rank of Subject
-      it("Should POST not exist", done => {
-        chai
-          .request(server)
-          .post("/matching/addMatchingSubject")
-          .send({
-            subject: 'SVV',
-            category: 'Software Engineer',
-            grade: 3,
-            midterm: 3,
-            attendance: 3,
-            groupWorker: 2,
-            difficulty: 5,
-          })
-          .end((err, res) => {
-              console.log(res.status);
-              console.log(res.body);
-              res.should.have.status(200);
-              res.body.should.be.a('object');
-              done();
-          });
-      });
+    // Test POST with not exists subject calculate Avg Rank of Subject
+    it("Should POST not exist", done => {
+      chai
+        .request(server)
+        .post("/matching/addMatchingSubject")
+        .send({
+          subject: "SVV",
+          category: "Software Engineer",
+          grade: 3,
+          midterm: 3,
+          attendance: 3,
+          groupWorker: 2,
+          difficulty: 5
+        })
+        .end((err, res) => {
+          console.log(res.status);
+          console.log(res.body);
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          done();
+        });
+    });
+
+
+  });
+
+  
+  describe("/ Post", () => {
+
   });
 });
