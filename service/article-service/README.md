@@ -87,5 +87,3 @@
     RETURN ``` 201 ``` WITH success message
     
     RETURN ``` 400 ``` WHEN using wrong url
-    
-
