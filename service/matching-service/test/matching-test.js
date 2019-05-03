@@ -22,8 +22,8 @@ describe("Matching", () => {
     });
 
     // Test to get subject that match with rank
-    it("Should get subject that match with rank", done => {
-      chai
+    it("Should get subject that match with rank",  done => {
+       chai
         .request(server)
         .get("/matching")
         .send({
@@ -70,7 +70,7 @@ describe("Matching", () => {
         .request(server)
         .post("/matching/addMatchingSubject")
         .send({
-          subject: "ITF23",
+          subject: "ITF27",
           category: "Software Engineer",
           grade: 3,
           midterm: 3,

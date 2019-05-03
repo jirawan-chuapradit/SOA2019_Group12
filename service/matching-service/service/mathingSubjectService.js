@@ -7,7 +7,7 @@ const matchingSubjectDb = require("../models/matchingSubjectSchema");
  * precondition: must have knowledge about MatchingSubjectSchema
  * postcondition: subject have been created
  */
-exports.addSubject = (req, res) => {
+exports.addSubject = async(req, res) => {
   console.log(req.body);
   const mathingData = {
     subject: req.body.subject,
@@ -19,7 +19,7 @@ exports.addSubject = (req, res) => {
     difficulty: req.body.difficulty
   };
 
-  matchingSubjectDb.create(mathingData).then(subject => {
+  await matchingSubjectDb.create(mathingData).then(subject => {
     res.status(201).json({ status: req.body.subject + " registered!!!" });
   });
 };
