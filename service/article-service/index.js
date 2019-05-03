@@ -1,47 +1,53 @@
+const ENV = process.env.NODE_ENV || 'development'
+require('custom-env').env(ENV)
+
 const express = require("express")
 const app = express()
-const port = 8000
 const bodyParser = require("body-parser")
 const Eureka = require('eureka-js-client').Eureka
+
+var port = process.env.PORT || 8000
 
 const articleController = require('./controller/articleController')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-const client = new Eureka({
-    instance: {
-        app: 'article-service',
-        hostName: 'localhost',
-        ipAddr: '127.0.0.1',
-        statusPageUrl: 'http://localhost:' + port,
-        vipAddress: 'article-service',
-        port: {
-            $: port,
-            '@enabled': 'true',
+if (ENV === 'test' || ENV === 'development'){
+    app.use("/", articleController)
+} else {
+    const client = new Eureka({
+        instance: {
+            app: 'article-service',
+            hostName: process.env.EUREKA_CLIENT_HOST || 'localhost',
+            ipAddr: '127.0.0.1',
+            statusPageUrl: 'http://localhost:' + port,
+            vipAddress: 'article-service',
+            port: {
+                $: port,
+                '@enabled': 'true',
+            },
+            dataCenterInfo: {
+                '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
+                name: 'MyOwn',
+            },
+            registerWithEureka: true,
+            fetchRegistry: true,
         },
-        dataCenterInfo: {
-            '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
-            name: 'MyOwn',
-        },
-        registerWithEureka: true,
-        fetchRegistry: true,
-    },
-    eureka: {
-        host: 'localhost',
-        port: 8761,
-        servicePath: '/eureka/apps/',
-    }
-})
-
-// client.logger.level('debug')
-// client.start(error => {
-//     console.log(error || 'NodeJS Eureka Started !')
-
-//     app.use("/", articleController)
-// })
-
-app.use("/", articleController)
+        eureka: {
+            host: process.env.EUREKA_SERVER_HOST || 'localhost',
+            port: process.env.EUREKA_SERVER_PORT || 8761,
+            servicePath: '/eureka/apps/',
+        }
+    })
+    
+    client.logger.level('debug')
+    client.start(error => {
+        console.log(error || 'NodeJS Eureka Started !')
+    
+        app.use("/", articleController)
+    })
+}
 
 const server = app.listen(port, () => {
     const host = server.address().address

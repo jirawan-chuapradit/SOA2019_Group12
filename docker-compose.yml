@@ -1,0 +1,20 @@
+version: "3"
+services:
+#Article Service
+  # article:
+  #   image: article_service:latest
+  #   links:
+  #     - mongodb
+  #   environment:
+  #     WAIT_HOST: mongodb:27017
+  #   ports:
+  #     - '8000:8000'
+#Authentication Service
+#Database
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    ports: 
+      - '27017:27017'
+#APIGateway
+#Service Discovery

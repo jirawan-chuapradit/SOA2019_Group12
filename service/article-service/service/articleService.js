@@ -1,21 +1,28 @@
 const db = require('../model/articleSchema')
+// const axios = require('axios')
+// const server = require('../index')
 
 exports.getArticlePage = (req, res) => {
     async function getArticlePage(){
-        const selectedArticle = req.url.substring(1, req.url.length)
-
-        const article = await db.findOne({ _id: selectedArticle })
-        if (article != null)
-            res.status(200).json(article)
-        else
-            res.status(400).json({ error: 'Article Not Found' })
+        var selectedArticle = req.url.substring(1, req.url.length)
+        try {
+            selectedArticle = parseInt(selectedArticle, 10)
+            const article = await db.find({ _id: selectedArticle })
+            // console.log('articles length: ',article.length)
+            if (article.length != 0)
+                res.status(200).json(article)
+            else
+                res.status(404).json({ error: 'Article Not Found' })
+        } catch (error) {
+            res.status(400).json({error: 'Bad Request'})
+        }
     }
     getArticlePage()
 }
 
 exports.getAllArticles = (req, res) => {
     async function getAllArticles(){
-        const all = await db.findOne()
+        const all = await db.find()
         res.status(200).json(all)
     }
     async function searchArticles(){
@@ -23,7 +30,12 @@ exports.getAllArticles = (req, res) => {
             subject: req.query.subject, 
             category: req.query.category
         })
-        res.status(200).json(result)
+        if (result.length != 0)
+            res.status(200).json(result)
+        else 
+            res.status(404).json({
+                error: 'Content Not Found'
+            })
     }
     if (Object.keys(req.query).length === 0){ 
         getAllArticles()
@@ -32,55 +44,72 @@ exports.getAllArticles = (req, res) => {
 
 exports.createArticle = (req, res) => {
     const reqBody = req.body
-    const a = new db({
-        _id: reqBody._id,
-        category: reqBody.category,
-        subject: reqBody.subject,
-        star: reqBody.star,
-        description: reqBody.description,
-        grade: reqBody.grade,
-        comment: {
-            articleId: reqBody.comment.articleId,
-            content: reqBody.comment.content,
-            star: reqBody.comment.star,
-            profileId: reqBody.comment.profileId
+    async function createArticle(reqBody){
+        const a = await new db({
+            title: reqBody.title,
+            subject: reqBody.subject,
+            category: reqBody.category,
+            author: reqBody.author,
+            description: reqBody.description,
+            grade: reqBody.grade,
+            midterm: reqBody.midterm,
+            attendance: reqBody.attendance,
+            groupWorker: reqBody.groupWorker,
+            difficulty: reqBody.difficulty,
+        })
+        a.save(function(err, post) {
+            if (err) {
+                return res.status(400).json({
+                    success: false
+                })
+            } else {
+                return res.status(201).json({
+                    success: true
+                })
         }
-    })
-    a.save(function(err, post) {
-        if (err) {
-            return res.status(400).json({
-                success: false
-            })
-        } else {
-        return res.status(201).json({
-            success: true
         })
     }
-    })
+    createArticle(reqBody)
 }
 
 exports.addComment = (req, res) => {
+    console.log(req.url)
+    var path = req.url.substring(1, req.url.length)
     const comment = req.body.comment[0]
-    async function addComment(){
-        db.findOne({_id: req.body._id}).then( function(db) {
-            db.comment.push({
-                articleId: comment.articleId,
-                content: comment.content,
-                star: comment.star,
-                profileId: comment.profileId
+        path = Number(path)
+    if (isNaN(path)) return res.status(400).json({error: 'Bad Request'})
+    else {
+        function addComment(){
+            db.findOne({_id: path}).then(function (db) {
+                db.comment.push({
+                    content: comment.content,
+                    star: comment.star,
+                    profileId: comment.profileId
+                })
+                db.save(function (err, post){
+                    return res.status(201).json({ success: true })
+                })
             })
-            db.save(function (err, post){
-                if (err) {
-                    return res.status(400).json({ success: false })
-                } else {
-                    return res.status(200).json({ success: true })
-                }
-            })
-        })
+        }
+        addComment()
     }
-    addComment()
-}
-
-exports.matching = (req, res) => {
+    
+    
     
 }
+
+// exports.getArticleDB = (req, res) => {
+//     async function getDB() {
+//         const result = await db.find()
+//         console.log("Length: ",result.length)
+//         // console.log(Object.values(result))
+//         const arr = Object.values(result)
+//         arr.forEach(e => {
+//             console.log(typeof JSON.stringify(e))
+//             console.log(e)
+//         });
+//         return res.status(200)
+//     }
+
+//     getDB()
+// }
