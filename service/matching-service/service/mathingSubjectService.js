@@ -19,49 +19,48 @@ exports.addSubject = (req, res) => {
     difficulty: req.body.difficulty
   };
 
-  matchingSubjectDb
+  matchingSubjectDb.create(mathingData).then(subject => {
+    res.status(201).json({ status: req.body.subject + " registered!!!" });
+  });
+};
+
+exports.editSubject = async (req, res) => {
+  const mathingData = {
+    subject: req.body.subject,
+    category: req.body.category,
+    grade: req.body.grade,
+    midterm: req.body.midterm,
+    attendance: req.body.attendance,
+    groupWorker: req.body.groupWorker,
+    difficulty: req.body.difficulty
+  };
+
+  await matchingSubjectDb
     .findOne({
       subject: req.body.subject
     })
-    .then(subject => {
-      if (!subject) {
-        matchingSubjectDb
-          .create(mathingData)
-          .then(subject => {
-            res
-              .status(200)
-              .json({ status: req.body.subject + " registered!!!" });
-          })
-          .catch(err => {
-            res.send("error: " + err);
-          });
+    .then(s => {
+      if (!s) {
+        console.log("err: not found subject");
+        return res.status(400).json({ message: "Not found" });
       } else {
-        //update
-        matchingSubjectDb
-          .update(
-            { subject: mathingData.subject },
-            {
-              $set: {
-                grade: mathingData.grade,
-                midterm: mathingData.midterm,
-                attendance: mathingData.attendance,
-                groupWorker: mathingData.groupWorker,
-                difficulty: mathingData.difficulty
-              }
+        matchingSubjectDb.updateOne(
+          { subject: mathingData.subject },
+          {
+            $set: {
+              grade: mathingData.grade,
+              midterm: mathingData.midterm,
+              attendance: mathingData.attendance,
+              groupWorker: mathingData.groupWorker,
+              difficulty: mathingData.difficulty
             }
-          )
-          .then(function(result) {
-            res.status(200);
-            console.log("update success")
-          })
-          .catch(err => {
-            res.send("error: " + err);
-            console.log(err)
-          });
+          },
+          function(err, res) {
+            console.log("200 :found subject");
+          }
+        );
+        return res.status(200).json({ message: "update success" });
       }
-    })
-    .catch(err => {
-      res.send("error: " + err);
     });
 };
 
@@ -90,15 +89,5 @@ exports.finding = (req, res) => {
       } else {
         return res.json({ info: subject });
       }
-    })
-    .catch(err => {
-      res.send("error: " + err);
     });
-};
-
-exports.test = (req, res) => {
-  return res.json({
-    test: 1,
-    test2: 2
-  });
 };

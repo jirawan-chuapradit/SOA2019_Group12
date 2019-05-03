@@ -9,14 +9,14 @@ chai.use(chaiHttp);
 
 describe("Matching", () => {
   describe("/GET", () => {
-    
-     // Test to get subject that match with rank
+    // Test to get subject that match with rank
     it("Should not found", done => {
       chai
         .request(server)
-        .get("matching/about")
+        .get("/matching/about")
         .end(function(err, res) {
-          expect(404)
+          console.log(res.status);
+          expect(404).to.equal(res.status);
           done();
         });
     });
@@ -70,7 +70,7 @@ describe("Matching", () => {
         .request(server)
         .post("/matching/addMatchingSubject")
         .send({
-          subject: "SVV",
+          subject: "ITF23",
           category: "Software Engineer",
           grade: 3,
           midterm: 3,
@@ -81,17 +81,55 @@ describe("Matching", () => {
         .end((err, res) => {
           console.log(res.status);
           console.log(res.body);
+          res.should.have.status(201);
+          res.body.should.be.a("object");
+          done();
+        });
+    });
+  });
+
+  describe("/ PUT", () => {
+    // Test PUT with  exists subject calculate Avg Rank of Subject
+    it("Should Pass", done => {
+      chai
+        .request(server)
+        .put("/matching/editMatchingSubject")
+        .send({
+          subject: "Compro",
+          category: "Software Engineer",
+          grade: 1,
+          midterm: 3,
+          attendance: 2,
+          groupWorker: 5,
+          difficulty: 2
+        })
+        .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a("object");
           done();
         });
     });
 
-
-  });
-
-  
-  describe("/ Post", () => {
-
+    it("Should Error", done => {
+      chai
+        .request(server)
+        .put("/matching/editMatchingSubject")
+        .send({
+          subject: "Compro222",
+          category: "Software Engineer",
+          grade: 2,
+          midterm: 2,
+          attendance: 1,
+          groupWorker: 5,
+          difficulty: 2
+        })
+        .end((err, res) => {
+          console.log(res.status);
+          console.log(res.body);
+          res.should.have.status(400);
+          // res.body.should.be.a("object");
+          done();
+        });
+    });
   });
 });
