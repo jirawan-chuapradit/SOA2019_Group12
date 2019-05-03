@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
-const mongodb = 'mongodb://127.0.0.1/Article'
+const mongodb = process.env.MONGODB_URL || 'mongodb://127.0.0.1/Article-service'
 
 mongoose.connect(mongodb, {useNewUrlParser: true}, function (err){
     if (err) throw err
-    else console.log("Successfully Connected DB")
+    else console.log("Successfully Connected DB with URL:", mongodb)
 })
 
 const db = mongoose.connection

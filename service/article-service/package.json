@@ -4,20 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --exit"
+    "start": "cross-env NODE_ENV=production nodemon index.js",
+    "test": "cross-env NODE_ENV=test nyc --reporter=text mocha --exit",
+    "dev": "cross-env NODE_ENV=development nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "custom-env": "^1.0.0",
     "eureka-js-client": "^4.4.2",
     "express": "^4.16.4",
     "mocha": "^6.1.4",
-    "mongoose": "^5.5.2"
+    "mongoose": "^5.5.2",
+    "mongoose-sequence": "^5.0.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cross-env": "^5.2.0",
+    "mocha": "^6.1.4",
     "nyc": "^14.0.0"
   }
 }

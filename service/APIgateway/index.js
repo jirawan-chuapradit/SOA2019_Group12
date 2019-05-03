@@ -4,6 +4,7 @@ const Eureka = require('eureka-js-client').Eureka
 
 const HOST = '0.0.0.0'
 const PORT = 3000
+const ENV = process.env.NODE_ENV || 'development'
 
 const client = new Eureka({
     instance: {
@@ -24,13 +25,25 @@ const client = new Eureka({
         fetchRegistry: true,
     },
     eureka: {
-        host: 'localhost',
-        port: 8761,
+        host: '104.199.152.94',
+        port: 80,
         servicePath: '/eureka/apps/',
     }
 })
 
 client.logger.level('debug')
+
+/**
+ * THIS SERVICE MUST CONNECT TO EUREKA SERVER
+ * NEW SERVICE INSERT CODE FOLLOW AS THIS PATTERN
+ *      const [SERVICE_NAME]ServiceInstance = client.getInstancesByAppId('[SERVICE_NAME]-service')
+        const [SERVICE_NAME]ServiceUrl = `http://${[SERVICE_NAME]ServiceInstance[0].hostName}:${[SERVICE_NAME]ServiceInstance[0].port.$}`
+        const [SERVICE_NAME]ServiceProxy = httpProxy([SERVICE_NAME]ServiceUrl)
+
+        app.use('/api/[SERVICE_NAME]', (req, res, next) => {
+            [SERVICE_NAME]ServiceProxy(req, res, next)
+        })
+ */
 client.start(error => {
     console.log(error || 'NodeJS Eureka Started !')
 
@@ -43,6 +56,7 @@ client.start(error => {
         articleServiceProxy(req, res, next)
     })
 })
+
 
 app.listen(PORT, HOST)
 console.log(`Running API gateway on http://${HOST}:${PORT}`)

@@ -15,6 +15,6 @@ router.post('/:id', articleService.addComment)
 router.get("/", articleService.getAllArticles)
 router.post("/", articleService.createArticle)
 
-router.get('/matching', articleService.matching)
+// router.get('/get/db', articleService.getArticleDB)
 
 module.exports = router;
