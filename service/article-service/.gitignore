@@ -1,5 +1,6 @@
 ### Node ###
 .env.production
+.vscode
 
 # Logs
 logs
