@@ -42,7 +42,7 @@ exports.addTheArticles =   (req, res) => {
     .then(response => {
       console.log(response.data);
       console.log('GOTO http://localhost:5050/matching/addMatchingSubject')
-      
+      console.log(response.status);
     })
     .catch(error => {
       console.log(error);
@@ -52,7 +52,7 @@ exports.addTheArticles =   (req, res) => {
     .then(response => {
       console.log(response.data);
       console.log('GoTO http://localhost:5050/matching/editMatchingSubject ')
-      
+      console.log(response.status);
     })
     .catch(error => {
       console.log(error);
