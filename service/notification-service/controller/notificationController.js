@@ -11,11 +11,6 @@ router.use(
   })
 );
 
-router.post("/theArticles", NotificationService.getTheArticles);
-
-router.use((req, res, next) => {
-  // console.log("called: ", req.path);
-  next();
-});
+router.post("/addNewSubject", NotificationService.addTheArticles);
 
 module.exports = router;

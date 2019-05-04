@@ -6,7 +6,7 @@ services:
   #   links:
   #     - mongodb
   #   environment:
-  #     WAIT_HOST: mongodb:27017
+  #     WAIT_HOST: mongo:27017
   #   ports:
   #     - '8000:8000'
 #Authentication Service

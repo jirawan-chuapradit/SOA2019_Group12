@@ -9,9 +9,9 @@ const ENV = process.env.NODE_ENV || 'development'
 const client = new Eureka({
     instance: {
         app: 'api-gateway',
-        hostName: 'localhost',
-        ipAddr: '127.0.0.1',
-        statusPageUrl: 'http://localhost' + PORT,
+        hostName: '35.247.168.170',
+        ipAddr: '35.247.168.170',
+        statusPageUrl: 'http://35.247.168.170:' + PORT,
         vipAddress: 'api-gateway',
         port: {
             $: PORT,
@@ -47,10 +47,12 @@ client.logger.level('debug')
 client.start(error => {
     console.log(error || 'NodeJS Eureka Started !')
 
-    const articleServiceInstance = client.getInstancesByAppId('article-service')
-    const articleServiceUrl = `http://${articleServiceInstance[0].hostName}:${articleServiceInstance[0].port.$}`
+    const articleServiceInstance = client.getInstancesByAppId('ARTICLE-SERVICE')
+    const articleServiceUrl = `http://35.231.108.249:${articleServiceInstance[0].port.$}`
+    // const articleServiceUrl = `http://${articleServiceInstance[0].hostName}:${articleServiceInstance[0].port.$}`
     const articleServiceProxy = httpProxy(articleServiceUrl)
     console.log(`Article-service: ${articleServiceUrl}`)
+    console.log(articleServiceInstance[0].hostName)
 
     app.use('/api/article', (req, res, next) => {
         articleServiceProxy(req, res, next)
