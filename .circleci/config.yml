@@ -18,7 +18,7 @@ jobs:
                     docker image push $DOCKER_USERNAME/article_service
     #API Gateway
     api-gateway:
-        working_directory: ~/SOA2019_Group12/service/api-gateway
+        working_directory: ~/SOA2019_Group12/service/APIgateway
         docker:
             - image: circleci/node:latest
         steps:
