@@ -10,14 +10,29 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { article: "" };
+    this.state = {
+      article: [{
+        attendance: 2,
+        author: "Tester",
+        category: "Tester",
+        comment: [],
+        description: "Test kubb",
+        difficulty: 1,
+        grade: "A",
+        groupWorker: 5,
+        midterm: 3,
+        subject: "Test",
+        title: "Tester",
+        _id: 1
+      }]
+    };
   }
 
   componentDidMount() {
     // process.env.REACT_APP_API_URL +"/article/"
-    axios.get("http://35.247.168.170/api/article").then(res => {
+    axios.get("http://localhost:3001/article").then(res => {
       console.log(res.data);
-      { this.setState({ products: res.data }) }
+      { this.setState({ article: res.data }) }
     });
   }
 

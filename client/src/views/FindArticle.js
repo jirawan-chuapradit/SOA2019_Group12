@@ -73,7 +73,7 @@ class FindArticle extends React.Component {
                     <div className="col-25">
                       <label htmlFor="subject">ชื่อวิชา</label>
                     </div>
-<div className="col-75"> 
+<div className="col-75">  
 
           <select>
             {view.subject.map(m => <option>{m}</option>)}
