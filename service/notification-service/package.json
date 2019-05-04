@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "mocha",
-    "coverage": "nyc --reporter=text mocha --exit"
+    "test": "nyc --reporter=text mocha --exit"
   },
   "author": "",
   "license": "ISC",
