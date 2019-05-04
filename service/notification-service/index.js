@@ -51,7 +51,7 @@ const client = new Eureka({
 client.logger.level('debug');
 client.start((error) => {
     console.log(error || 'Eureka client started');
-    app.use("/", NotificationController);
+    app.use("/computing", NotificationController);
 });
 
 

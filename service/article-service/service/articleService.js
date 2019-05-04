@@ -22,6 +22,7 @@ exports.getArticlePage = (req, res) => {
 }
 
 exports.getAllArticles = (req, res) => {
+    console.log("getAllArticle")
     async function getAllArticles(){
         const all = await db.find()
         res.status(200).json(all)
@@ -95,8 +96,12 @@ exports.addComment = (req, res) => {
         addComment()
     }
     
-    
-    
+}
+
+exports.getHomePage =  (req, res) => {
+    console.log("get home page")
+      db.find( ).limit(3) .sort({subject: -1})
+    res.status(200).json({info: subject})
 }
 
 // exports.getArticleDB = (req, res) => {
