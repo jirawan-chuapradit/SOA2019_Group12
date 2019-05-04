@@ -14,8 +14,8 @@ jobs:
                 name: Build Article service's Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docer build -t $DOCKER_USERNAME/article_service .
-                    docker push $DOCKER_USERNAME/article_service
+                    docker image build -t $DOCKER_USERNAME/article_service .
+                    docker image push $DOCKER_USERNAME/article_service
 
 workflows:
     version: 2
