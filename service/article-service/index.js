@@ -5,6 +5,7 @@ const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const Eureka = require('eureka-js-client').Eureka
+const cors = require('cors')
 
 var port = process.env.PORT || 8000
 
@@ -12,6 +13,7 @@ const articleController = require('./controller/articleController')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
 
 if (ENV === 'test' || ENV === 'development'){
     app.use("/", articleController)
@@ -19,12 +21,12 @@ if (ENV === 'test' || ENV === 'development'){
     const client = new Eureka({
         instance: {
             app: 'article-service',
-            hostName: '35.231.108.249',//process.env.EUREKA_CLIENT_HOST || 'localhost',
-            ipAddr: '35.231.108.249',
-            statusPageUrl: 'http://35.231.108.249:80',// + port,
+            hostName: process.env.EUREKA_CLIENT_HOST || 'localhost',
+            ipAddr: '127.0.0.1',
+            statusPageUrl: 'http://localhost:' + port,
             vipAddress: 'article-service',
             port: {
-                $: 80,//port,
+                $: port,
                 '@enabled': 'true',
             },
             dataCenterInfo: {
