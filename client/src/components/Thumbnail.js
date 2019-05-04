@@ -2,8 +2,23 @@ import React , { Component} from 'react';
 import team1 from '../assets/image/team1.jpg';
 import team2 from '../assets/image/team2.jpg';
 import team3 from '../assets/image/team3.jpg';
+import axios from 'axios';
 
 class Thumbnail extends Component{
+
+  constructor(props) {
+    super(props);
+    this.state = { article: "" };
+}
+
+componentDidMount(){
+  // วิธีที่ 3 ผ่าน Axios
+  axios.get("http://35.247.168.170/api/article").then(res => {
+    console.log(res.data);
+    { this.setState({ article: res.data }) }
+});
+}
+
     render(){
       return (
   
