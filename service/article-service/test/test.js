@@ -103,8 +103,9 @@ describe('GET single article', () => {
     // CAN get a article
     it('should get single article', (done) => {
         const id = 1
+        const path = `/title/${id}`
         chai.request(server)
-            .get(`/${id}`)
+            .get(path)
             .end((err, res) => {
                 res.should.have.status(200)
                 res.should.be.a('object')
@@ -116,7 +117,7 @@ describe('GET single article', () => {
     it("shouldn't get article", (done) => {
         const id = 0
         chai.request(server)
-            .get(`/${id}`)
+            .get(`/title/${id}`)
             .end((err, res) => {
                 res.should.have.status(404)
                 res.should.be.a('object')
@@ -127,7 +128,7 @@ describe('GET single article', () => {
     // CAN'T get a article with WRONG url
     it("shouldn't get article with this url", (done) => {
         chai.request(server)
-            .get('/abc')
+            .get('/title/abc')
             .end((err, res) => {
                 res.should.have.status(400)
                 res.should.be.a('object')
@@ -138,9 +139,9 @@ describe('GET single article', () => {
 
 describe("Add Comment", () => {
     it('should success to add comment', (done) => {
-        const id = 18
+        const id = 20
         chai.request(server)
-            .post(`/${id}`)
+            .post(`/title/${id}`)
             .send({
                 comment:[
                     {
@@ -159,7 +160,7 @@ describe("Add Comment", () => {
     it('should success to add comment', (done) => {
         const id = 'abcd'
         chai.request(server)
-            .post(`/${id}`)
+            .post(`/title/${id}`)
             .send({
                 comment:[
                     {

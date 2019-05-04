@@ -7,7 +7,6 @@ import Matching from './views/Matching';
 import CreateArticle from './views/CreateArticle';
 import Login from './views/Login';
 import AllArticleOfSubject from './views/AllArticleOfSubject';
-
 import star from './components/star';
 import Article from './views/Article';
 
@@ -23,7 +22,6 @@ ReactDOM.render(
     <Route path="/star" component={star}/>
     <Route path="/CreateArticle" component={CreateArticle}/>
     <Route path="/Login" component={Login}/>
-
     <Route path="/AllArticleOfSubject" component={AllArticleOfSubject}/>
     <Route path="/Article" component={Article}/>
 

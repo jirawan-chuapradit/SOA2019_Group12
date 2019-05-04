@@ -19,12 +19,12 @@ if (ENV === 'test' || ENV === 'development'){
     const client = new Eureka({
         instance: {
             app: 'article-service',
-            hostName: process.env.EUREKA_CLIENT_HOST || 'localhost',
-            ipAddr: '127.0.0.1',
-            statusPageUrl: 'http://localhost:' + port,
+            hostName: '35.231.108.249',//process.env.EUREKA_CLIENT_HOST || 'localhost',
+            ipAddr: '35.231.108.249',
+            statusPageUrl: 'http://35.231.108.249:80',// + port,
             vipAddress: 'article-service',
             port: {
-                $: port,
+                $: 80,//port,
                 '@enabled': 'true',
             },
             dataCenterInfo: {

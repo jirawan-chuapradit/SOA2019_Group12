@@ -1,25 +1,95 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../assets/css/create.css';
 import '../assets/css/header.css';
 import logo from '../assets/image/logo.png'
 
-class FindArticle extends Component{
-
-  constuctor() {
-    this.routeChange = this.routeChange.bind(this);
+class FindArticle extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedView: 'วิชาเลือกกลุ่มวิชาภาษา'
+    }
   }
-
-  routeChange() {
-    let path = "/AllArticleOfSubject";
-    this.props.history.push(path);
-  }
-
-
-    render(){
-      return(
   
+  render() {
+    const { selectedView } = this.state
+    const VIEWS = [
+      {
+        category: "วิชาเลือกกลุ่มวิชาภาษา", 
+        subject: ["ENGLISH FOR MARKETING", "DEVELOPMENT OF READING AND WRITING SKILLS IN ENGLISH" , "ENGLISH FOR MANAGEMENT"
+        ,"ENGLISH FOR PROFESSIONAL PURPOSES" , "ENGLISH SKILL DEVELOPMENT FOR LIFE-LONG LEARNING"]
+      },
+       {
+        category: 'วิชาเลือกกลุ่มวิชามนุษย์ศาสตร์', 
+        subject: ["PERSONALITY AND MENTAL HEALTH DEVELOPMENT", "HOLISTIC HEALTH DEVELOPMENT", "HUMAN AND TOURISM",
+       "HAPPINESS SKILLS" , "ENHANCEMENT OF QUALITY OF LIFE"]
+      },
+      {
+        category: "วิชาเลือกกลุ่มวิชาสังคมศาสตร์", 
+        subject: ["ECONOMICS FOR BUSINESS", "ENTREPRENEURSHIP", "GENERAL BUSINESS",
+      "ENGINEERING AND TECHNOLOGY LAWS", "THAI INTELLECTUAL PROPERTY" , "GENERAL BUSINESS"]
+      },
+      {
+        category: "วิชาศึกษาทั่วไปกลุ่มวิชาคณิตศาสตร์และวิทยาศาสตร์", 
+        subject: ["MATHEMATICS IN DAILY LIFE", "INTRODUCTION TO FOOD NUTRITION", "PHYSICS FOR DAILY LIFE",
+      "FOOD SCIENCE IN DAILY LIFE"]
+      },
+      {
+        category: "วิชาเลือกเสรี", 
+        subject: ["ENGLISH FOR SCIENCE AND TECHNOLOGY", "BAMBOO ARCHITECTURE", "TECHNOLOGY PHOTOGRAPHY" , "INDIVIDUAL STUDY"]
+      },
+      {
+        category: "วิชาเลือกกลุ่มคุณค่าแห่งชีวิต", 
+        subject: ["DESIGNING YOUR LIFE", "PHOTOGRAPHY APPRECIATION", "PHOTOGRAPHY APPRECIATION" , "MEDITATION FOR LIFE DEVELOPMENT", "FILM APPRECIATION"]
+      },
+      {
+        category: "วิชาเลือกกลุ่มวิถีแห่งสังคม", 
+        subject: ["MILITARY SCIENCE", "THAI ASTROLOGY", "ASEAN STUDY", "THAI ASTROLOGY"]
+      },
+      {
+        category: "วิชาเลือกกลุ่มศาสตร์แห่งความคิด", 
+        subject: ["SERIES IN DAILY LIFE", "FUN WITH AI", "INTEGRATED THINKING"]
+      },
+      {
+        category: "วิชาเลือกกลุ่มศิลปแห่งการจัดการ", 
+        subject: ["		MODERN ENTREPRENEUR", "SOCIAL ENTREPRENEUR", "MODERN MANAGEMENT AND LEADERSHIP"]
+      },{
+        category: "วิชาเลือกกลุ่มภาษาและการสื่อสาร", 
+        subject: ["WRITING AND SPEAKING IN THE PROFESSIONS", "ENGLISH FOR WORK PREPARATION", "ENGLISH FOR MARKETING"]
+      }
+
+    ]
+
+    const getMajorMethod = () => {
+      const view = VIEWS.filter(({category}) => category === selectedView)[0]
+      return (
         <div>
-<header><a href="/" ><img src={logo} alt="Logo"/> </a> </header>
+        <div className="container">
+          <div className="finding_form"></div>
+          <form className="form_area" id="myForm"> 
+
+ <div className="col-lg-12 form_group">
+ <div className="row">
+                    <div className="col-25">
+                      <label htmlFor="subject">ชื่อวิชา</label>
+                    </div>
+<div className="col-75"> 
+
+          <select>
+            {view.subject.map(m => <option>{m}</option>)}
+          </select> </div>
+        
+         </div> </div>
+         <a href="/AllArticleOfSubject">
+                  <button className="primary-btn"  onClick={this.routeChange}>ค้นหา</button> </a>
+              
+    </form> </div>
+         </div>
+      )
+    }
+    return (
+      <div>
+        <header><a href="/" ><img src={logo} alt="Logo"/> </a> </header>
         <nav>
           <ul>
             <li><a href="/">หน้าแรก</a></li>
@@ -35,70 +105,35 @@ class FindArticle extends Component{
 
           </ul>
         </nav>
-        <section className="sec1" />
-
-
-     <section className="Add">
+        {/* <section className="sec1" /> */}
+        <br/><br/><br/>
         <div className="container">
-          <div className="register_form">
-          <center>
-            <h3><font face="Fc active" size={17}>ค้นหาวิชาที่ต้องการ</font></h3></center>
-            <form className="form_area" id="myForm"  method="post"> 
-            {/* action="mail.html" */}
-             
-                  <div className="row">
+          <div className="finding_form"></div>
+          <form className="form_area" id="myForm"  method="post"> 
+
+            <center><h3><font face="Fc active" size={17}>ค้นหาวิชาที่ต้องการ</font></h3></center>
+
+        <div className="col-lg-12 form_group">
+ <div className="row">
                     <div className="col-25">
-                      <label htmlFor="name">หมวดหมู่วิชา</label>
+                      <label htmlFor="category">หมวดหมู่วิชา</label>
                     </div>
-                    <div className="col-75">
-                      <select id="subject" name="subject">
-                      <option value="วิชาเลือกหมวดหมู่ภาษา">1. วิชาเลือกกลุ่มวิชาภาษา</option>
-                      <option value="วิชาเลือกหมวดหมู่มนุษย์">2. วิชาเลือกกลุ่มวิชามนุษย์</option>
-                        <option value="วิชาเลือกหมวดหมู่สังคม">3. วิชาเลือกกลุ่มวิชาสังคม</option>
-                        <option value="วิชาศึกษาทั่วไปกลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์">4. วิชาศึกษาทั่วไปกลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์</option>
-                        <option value="วิชาเลือกทางสาขา">5. วิชาเลือกทางสาขา</option>
-                        <option value="วิชาเลือกเสรี">6. วิชาเลือกเสรี</option>
-                        <option value="กลุ่มเวลาเรียนของรายวิชา">7. กลุ่มเวลาเรียนของรายวิชา</option>
-                        <option value="วิชาภาษาอังกฤษ">8. วิชาภาษาอังกฤษ</option>
-                        <option value="วิชาวิทยาศาสตร์กับคณิตศาสตร์">9. วิชาวิทยาศาสตร์กับคณิตศาสตร์</option>
+<div className="col-75"> 
 
-                      </select>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-25">
-                      <label htmlFor="name">ชื่อวิชา</label>
-                    </div>
-                    <div className="col-75">
-                      <select id="subject" name="subject">
-                        <option value="Individual Study">Individual Study</option>
-                        <option value="Happiness Skills">Happiness Skills</option>
-                      </select>
-                    </div>
-                  </div>
-              
-                  
-                  </form>
-                </div> 
-               
-                <div className="col-lg-12 text-center">
-                <br></br>
-
-                <br></br>
-
-                <br></br>
-                <a href="/AllArticleOfSubject">
-                  <button className="primary-btn"  onClick={this.routeChange}>ค้นหา</button> </a>
-                </div>
-              </div>
+<select onChange={(e) => this.setState({selectedView: e.target.value})}>
+          {VIEWS.map(({category}) => <option value={category}>{category}</option>)}
+        </select>
+          
+          </div>
         
-        </section> 
+         </div> </div> </form></div>
 
         
-       </div>
-      );
-    }
-  
+
+        {getMajorMethod()}
+      </div>
+    )
   }
+}
 
-  export default FindArticle;
+export default FindArticle;

@@ -4,7 +4,8 @@ const db = require('../model/articleSchema')
 
 exports.getArticlePage = (req, res) => {
     async function getArticlePage(){
-        var selectedArticle = req.url.substring(1, req.url.length)
+        var selectedArticle = req.url.substring(7, req.url.length)
+        console.log(selectedArticle)
         try {
             selectedArticle = parseInt(selectedArticle, 10)
             const article = await db.find({ _id: selectedArticle })
@@ -21,6 +22,7 @@ exports.getArticlePage = (req, res) => {
 }
 
 exports.getAllArticles = (req, res) => {
+    console.log("getAllArticle")
     async function getAllArticles(){
         const all = await db.find()
         res.status(200).json(all)
@@ -74,7 +76,7 @@ exports.createArticle = (req, res) => {
 
 exports.addComment = (req, res) => {
     console.log(req.url)
-    var path = req.url.substring(1, req.url.length)
+    var path = req.url.substring(7, req.url.length)
     const comment = req.body.comment[0]
         path = Number(path)
     if (isNaN(path)) return res.status(400).json({error: 'Bad Request'})
@@ -94,8 +96,12 @@ exports.addComment = (req, res) => {
         addComment()
     }
     
-    
-    
+}
+
+exports.getHomePage =  (req, res) => {
+    console.log("get home page")
+      db.find( ).limit(3) .sort({subject: -1})
+    res.status(200).json({info: subject})
 }
 
 // exports.getArticleDB = (req, res) => {

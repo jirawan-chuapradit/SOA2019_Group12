@@ -9,11 +9,13 @@ router.use(bodyParser.urlencoded({
     extended: true
 }));
 
-router.get("/:id", articleService.getArticlePage)
-router.post('/:id', articleService.addComment)
+router.get("/title/:id", articleService.getArticlePage)
+router.post('/title/:id', articleService.addComment)
 
 router.get("/", articleService.getAllArticles)
 router.post("/", articleService.createArticle)
+
+router.get("/home", articleService.getHomePage)
 
 // router.get('/get/db', articleService.getArticleDB)
 
