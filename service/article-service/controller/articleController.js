@@ -9,12 +9,16 @@ router.use(bodyParser.urlencoded({
     extended: true
 }));
 
-router.get("/:id", articleService.getArticlePage)
-router.post('/:id', articleService.addComment)
+router.get("/title/:id", articleService.getArticlePage)
+router.post('/title/:id', articleService.addComment)
 
 router.get("/", articleService.getAllArticles)
 router.post("/", articleService.createArticle)
 
-router.get('/matching', articleService.matching)
+router.get("/Home", articleService.getHomePage)
+router.get("/Article/:subject", articleService.getAllTitles)
+router.get("/Article/:subject/:title", articleService.getTitle)
+
+// router.get('/get/db', articleService.getArticleDB)
 
 module.exports = router;

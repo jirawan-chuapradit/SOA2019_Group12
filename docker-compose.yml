@@ -1,0 +1,33 @@
+version: "3"
+services:
+#Article Service
+  article:
+    container_name: article-service
+    image: earthzphanu/article_service:latest
+    links:
+      - mongo
+    environment:
+      WAIT_HOSTS: mongo:27017
+      MONGOURL: mogodb://mongo:27017/article
+    ports:
+      - '8000:8000'
+#Authentication Service
+#Database
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    environment:
+      - MONGO_DATA_DIR=/data/mongo
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data:/data/mongo
+    ports: 
+      - '27017:27017'
+
+#APIGateway
+#Service Discovery
+  eureka:
+    container_name: eureka
+    image: earthzphanu/eureka_server
+    ports:
+      - '8761:8761'

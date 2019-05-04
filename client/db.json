@@ -1,0 +1,19 @@
+{
+  "article": [
+    {
+      "_id": 2,
+      "title": "Zoom article",
+      "subject": "SOA",
+      "category": "IT",
+      "author": "Zoom",
+      "description": "Test kaa",
+      "grade": "A",
+      "midterm": 3,
+      "attendance": 4,
+      "groupWorker": 5,
+      "difficulty": 1,
+      "comment": [],
+      "__v": 0
+    }
+  ]
+}

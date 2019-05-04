@@ -19,11 +19,7 @@ router.use(
  */
 router.get("/", matchingSubjectService.finding);
 router.post("/addMatchingSubject", matchingSubjectService.addSubject);
-router.get("/test", matchingSubjectService.test)
+router.put("/editMatchingSubject", matchingSubjectService.editSubject);
 
-router.use((req, res, next) => {
-  console.log("called: ", req.path);
-  next();
-});
 
 module.exports = router;

@@ -1,86 +1,163 @@
-const db = require('../model/articleSchema')
+const db = require("../model/articleSchema");
+const axios = require("axios");
+// const server = require('../index')
 
 exports.getArticlePage = (req, res) => {
-    async function getArticlePage(){
-        const selectedArticle = req.url.substring(1, req.url.length)
-
-        const article = await db.findOne({ _id: selectedArticle })
-        if (article != null)
-            res.status(200).json(article)
-        else
-            res.status(400).json({ error: 'Article Not Found' })
+  async function getArticlePage() {
+    var selectedArticle = req.url.substring(7, req.url.length);
+    console.log(selectedArticle);
+    try {
+      selectedArticle = parseInt(selectedArticle, 10);
+      const article = await db.find({ _id: selectedArticle });
+      // console.log('articles length: ',article.length)
+      if (article.length != 0) res.status(200).json(article);
+      else res.status(404).json({ error: "Article Not Found" });
+    } catch (error) {
+      res.status(400).json({ error: "Bad Request" });
     }
-    getArticlePage()
-}
+  }
+  getArticlePage();
+};
 
 exports.getAllArticles = (req, res) => {
-    async function getAllArticles(){
-        const all = await db.findOne()
-        res.status(200).json(all)
-    }
-    async function searchArticles(){
-        const result = await db.find({
-            subject: req.query.subject, 
-            category: req.query.category
-        })
-        res.status(200).json(result)
-    }
-    if (Object.keys(req.query).length === 0){ 
-        getAllArticles()
-    } else searchArticles()
-}
+  console.log("getAllArticle");
+  async function getAllArticles() {
+    const all = await db.find();
+    res.status(200).json(all);
+  }
+  async function searchArticles() {
+    const result = await db.find({
+      subject: req.query.subject,
+      category: req.query.category
+    });
+    if (result.length != 0) res.status(200).json(result);
+    else
+      res.status(404).json({
+        error: "Content Not Found"
+      });
+  }
+  if (Object.keys(req.query).length === 0) {
+    getAllArticles();
+  } else searchArticles();
+};
 
 exports.createArticle = (req, res) => {
-    const reqBody = req.body
-    const a = new db({
-        _id: reqBody._id,
-        category: reqBody.category,
-        subject: reqBody.subject,
-        star: reqBody.star,
-        description: reqBody.description,
-        grade: reqBody.grade,
-        comment: {
-            articleId: reqBody.comment.articleId,
-            content: reqBody.comment.content,
-            star: reqBody.comment.star,
-            profileId: reqBody.comment.profileId
-        }
-    })
+  console.log("create article");
+  const reqBody = req.body;
+  async function createArticle(reqBody) {
+    const a = await new db({
+      title: reqBody.title,
+      subject: reqBody.subject,
+      category: reqBody.category,
+      author: reqBody.author,
+      description: reqBody.description,
+      grade: reqBody.grade,
+      midterm: reqBody.midterm,
+      attendance: reqBody.attendance,
+      groupWorker: reqBody.groupWorker,
+      difficulty: reqBody.difficulty
+    });
     a.save(function(err, post) {
-        if (err) {
-            return res.status(400).json({
-                success: false
+      if (err) {
+        return res.status(400).json({
+          success: false
+        });
+      } else {
+        db.find({
+          subject: reqBody.subject
+        }).then(subject => {
+          console.log(subject);
+          axios
+            .post("http://localhost:5051/computing/addNewSubject", subject)
+            .then(response => {
+              console.log(response);
+              console.log(
+                "GO TO http://localhost:5051/computing/addNewSubject"
+              );
             })
-        } else {
-        return res.status(201).json({
+            .catch(error => {
+              console.log(error);
+            });
+
+          return res.status(201).json({
             success: true
-        })
-    }
-    })
-}
+          });
+        });
+      }
+    });
+  }
+  createArticle(reqBody);
+};
 
 exports.addComment = (req, res) => {
-    const comment = req.body.comment[0]
-    async function addComment(){
-        db.findOne({_id: req.body._id}).then( function(db) {
-            db.comment.push({
-                articleId: comment.articleId,
-                content: comment.content,
-                star: comment.star,
-                profileId: comment.profileId
-            })
-            db.save(function (err, post){
-                if (err) {
-                    return res.status(400).json({ success: false })
-                } else {
-                    return res.status(200).json({ success: true })
-                }
-            })
-        })
+  console.log(req.url);
+  var path = req.url.substring(7, req.url.length);
+  const comment = req.body.comment[0];
+  path = Number(path);
+  if (isNaN(path)) return res.status(400).json({ error: "Bad Request" });
+  else {
+    function addComment() {
+      db.findOne({ _id: path }).then(function(db) {
+        db.comment.push({
+          content: comment.content,
+          star: comment.star,
+          profileId: comment.profileId
+        });
+        db.save(function(err, post) {
+          return res.status(201).json({ success: true });
+        });
+      });
     }
-    addComment()
-}
+    addComment();
+  }
+};
 
-exports.matching = (req, res) => {
-    
-}
+exports.getHomePage = async (req, res) => {
+  console.log("get home page");
+  const subject = await db
+    .find({}, { subject: 1, _id: 0 })
+    .limit(3)
+    .sort({ _id: -1 });
+  res.status(200).json(subject);
+};
+
+exports.getAllTitles = async (req, res) => {
+  console.log("get All Titles");
+  console.log("subject: " + req.params.subject);
+  const titles = await db.find(
+    { subject: req.params.subject },
+    { title: 1, _id: 0 }
+  );
+  if (!Array.isArray(titles) || !titles.length) {
+    return res.status(200).json("Sorry. Title Not found!!");
+  } else {
+    return res.status(200).json(titles);
+  }
+};
+
+exports.getTitle = async (req, res) => {
+  console.log("get TItle");
+
+  const title = await db.find(
+    { title: req.params.title, subject: req.params.subject },
+    { _id: 0 }
+  );
+
+  return res.status(200).json(title);
+};
+
+// exports.getArticleDB = (req, res) => {
+//     async function getDB() {
+//         const result = await db.find()
+//         console.log("Length: ",result.length)
+//         // console.log(Object.values(result))
+//         const arr = Object.values(result)
+//         arr.forEach(e => {
+//             console.log(typeof JSON.stringify(e))
+//             console.log(e)
+//         });
+//         return res.status(200)
+//     }
+
+//     getDB()
+// }
