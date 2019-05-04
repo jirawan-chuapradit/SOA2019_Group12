@@ -81,7 +81,7 @@ class FindArticle extends React.Component {
         
          </div> </div>
          <a href="/AllArticleOfSubject">
-                  <button className="primary-btn"  onClick={this.routeChange}>ค้นหา</button> </a>
+                  <button className="primary-btn" href="/AllArticleOfSubject" onClick={this.routeChange}>ค้นหา</button> </a>
               
     </form> </div>
          </div>

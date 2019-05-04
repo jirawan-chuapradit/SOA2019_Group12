@@ -19,12 +19,6 @@ class App extends Component {
       console.log(res.data);
       { this.setState({ products: res.data }) }
     });
-
-    // วิธีที่ 3 ผ่าน Axios
-    // axios.get("http://35.247.168.170/api/article").then(res => {
-    //   console.log("console log=" + res.data);
-    //   { this.setState({ article: res.data }) }
-    // });
   }
 
   render() {
@@ -32,7 +26,6 @@ class App extends Component {
 
     return (
       <div>
-
 
         <header><a href="/" ><img src={logo} alt="Logo" /> </a> </header>
         <nav>

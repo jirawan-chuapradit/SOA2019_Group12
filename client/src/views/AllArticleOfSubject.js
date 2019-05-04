@@ -50,7 +50,7 @@ class AllArticleOfSubject extends Component{
     <Card.Text >
      <Star fa-pull-left />
     </Card.Text>
-    <Button variant="primary">อ่านบทความ</Button>
+    <Button variant="primary" href="/Article" >อ่านบทความ</Button>
   </Card.Body>
 </Card>;
 
