@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const mongodb = 'mongodb://127.0.0.1/Article-service'
+const mongodb = 'mongodb://localhost/Article-service'
 
 mongoose.connect(mongodb, {useNewUrlParser: true}, function (err){
     if (err) throw err
