@@ -8,18 +8,13 @@ class Thumbnail extends Component{
 
   constructor(props) {
     super(props);
-    this.state = { article: "" };
 }
 
-componentDidMount(){
-  // วิธีที่ 3 ผ่าน Axios
-  axios.get("http://35.247.168.170/api/article").then(res => {
-    console.log(res.data);
-    { this.setState({ article: res.data }) }
-});
-}
+
 
     render(){
+      const {title, subject, category} = this.props.article;
+      console.log("eiei" +{ title})
       return (
   
         <div className="w3-row-padding" id="about">
@@ -34,7 +29,7 @@ componentDidMount(){
           <div className="w3-card-4">
             <img src={team1} alt="John" style={{width: '100%'}} />
             <div className="w3-container">
-              <h3 className="mt-2">ชื่อบทความ [Title]</h3>
+              <h3 className="mt-2">ชื่อบทความ {title}</h3>
               <p className="w3-opacity"> ชื่อผู้เขียน [Author]</p>
               <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
               <p><button className="w3-button w3-light-grey w3-block">อ่านบทความต่อ..</button></p>
