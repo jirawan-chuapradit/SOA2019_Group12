@@ -25,7 +25,7 @@ var articleSchema = mongoose.Schema({
     },
     grade: {
         type: String,
-        enum: ["A", "B", "B+", "C", "C+", "D", "D+", "F"],
+        enum: ["4", "3", "3.5", "2", "2.5", "1", "1.5", "0"],
         required: true,
     },
     midterm: {

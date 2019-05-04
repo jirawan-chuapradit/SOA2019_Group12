@@ -15,7 +15,9 @@ router.post('/title/:id', articleService.addComment)
 router.get("/", articleService.getAllArticles)
 router.post("/", articleService.createArticle)
 
-router.get("/home", articleService.getHomePage)
+router.get("/Home", articleService.getHomePage)
+router.get("/Article/:subject", articleService.getAllTitles)
+router.get("/Article/:subject/:title", articleService.getTitle)
 
 // router.get('/get/db', articleService.getArticleDB)
 
