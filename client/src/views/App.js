@@ -15,6 +15,7 @@ class App extends Component {
     return (
       <div>
 
+
         <header><a href="/" ><img src={logo} alt="Logo" /> </a> </header>
         <nav>
           <ul>

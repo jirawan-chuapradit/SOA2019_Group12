@@ -21,7 +21,6 @@ class Thumbnail extends Component{
             <div className="w3-container">
               <h3 className="mt-2">ชื่อบทความ [Title]</h3>
               <p className="w3-opacity"> ชื่อผู้เขียน [Author]</p>
-              <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
               <p><button className="w3-button w3-light-grey w3-block">อ่านบทความต่อ..</button></p>
             </div>
           </div>
@@ -33,7 +32,6 @@ class Thumbnail extends Component{
             <div className="w3-container">
             <h3 className="mt-2">ชื่อบทความ [Title]</h3>
               <p className="w3-opacity"> ชื่อผู้เขียน [Author]</p>
-              <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
               <p><button className="w3-button w3-light-grey w3-block">อ่านบทความต่อ..</button></p>
             </div>
           </div>
@@ -45,7 +43,6 @@ class Thumbnail extends Component{
             <div className="w3-container">
             <h3 className="mt-2">ชื่อบทความ [Title]</h3>
               <p className="w3-opacity"> ชื่อผู้เขียน [Author]</p>
-              <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
               <p><button className="w3-button w3-light-grey w3-block">อ่านบทความต่อ..</button></p>
             </div>
           </div>
