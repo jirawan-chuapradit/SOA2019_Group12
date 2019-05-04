@@ -4,24 +4,128 @@ jobs:
     article:
         working_directory: ~/SOA2019_Group12/service/article-service
         docker:
-            - image: circleci/node:12-alpine
+            - image: circleci/node:latest
         steps:
             - setup_remote_docker:
                 docker_layer_caching: true
             - checkout:
-                path: ~SOA2019_Group12/service
+                path: ~/SOA2019_Group12
             - run:
                 name: Build Article service's Image
                 command: |
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker image build -t $DOCKER_USERNAME/article_service .
                     docker image push $DOCKER_USERNAME/article_service
-
+    #API Gateway
+    api-gateway:
+        working_directory: ~/SOA2019_Group12/service/api-gateway
+        docker:
+            - image: circleci/node:latest
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group12
+            - run:
+                name: Build API Gateway's Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker image build -t $DOCKER_USERNAME/api_gateway .
+                    docker image push $DOCKER_USERNAME/api_gateway
+    #Eureka
+    eureka:
+        working_directory: ~/SOA2019_Group12/service/Eureka
+        docker:
+            - image: circleci/openjdk:latest
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group12
+            - run:
+                name: Build Eureka's Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker image build -t $DOCKER_USERNAME/eureka_server .
+                    docker image push $DOCKER_USERNAME/eureka_server
+    #Authentication Service
+    authentication:
+        working_directory: ~/SOA2019_Group12/service/authentication-service
+        docker:
+            - image: circleci/node:latest
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group12
+            - run:
+                name: Build Authentication Service's Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker image build -t $DOCKER_USERNAME/authentication_service .
+                    docker image push $DOCKER_USERNAME/authentication_service
+    #Matching Service
+    matching:
+        working_directory: ~/SOA2019_Group12/service/matching-service
+        docker:
+            - image: circleci/node:latest
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group12
+            - run:
+                name: Build Matching Service's Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker image build -t $DOCKER_USERNAME/matching_service .
+                    docker image push $DOCKER_USERNAME/matching_service
+    #Notification Service
+    notification:
+        working_directory: ~/SOA2019_Group12/service/notification-service
+        docker:
+            - image: circleci/node:latest
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group12
+            - run:
+                name: Build notification Service's Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker image build -t $DOCKER_USERNAME/notification_service .
+                    docker image push $DOCKER_USERNAME/notification_service
 workflows:
     version: 2
     compile:
         jobs:
             - article:
+                filters:
+                    branches:
+                        only:
+                            master
+            - api-gateway:
+                filters:
+                    branches:
+                        only:
+                            master
+            - eureka:
+                filters:
+                    branches:
+                        only:
+                            master
+            - authentication:
+                filters:
+                    branches:
+                        only:
+                            master
+            - matching:
+                filters:
+                    branches:
+                        only:
+                            master
+            - notification:
                 filters:
                     branches:
                         only:
