@@ -25,11 +25,6 @@ var articleSchema = new Schema({
         required: true,
     },
     grade: {
-        type: String,
-        enum: ["A", "B", "B+", "C", "C+", "D", "D+", "F"],
-        required: true,
-    },
-    grade2: {
         type: Number
     },
     midterm: {
