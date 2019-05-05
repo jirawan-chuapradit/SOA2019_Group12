@@ -1,13 +1,15 @@
-const ENV = process.env.NODE_ENV || 'development'
-require('custom-env').env(ENV)
+const ENV = process.env.NODE_ENV || 'development';
+require('custom-env').env(ENV);
 
-const express = require("express")
-const app = express()
-const bodyParser = require("body-parser")
-const Eureka = require('eureka-js-client').Eureka
-const cors = require('cors')
+require('module-alias/register');
+// require('@conf/db');
 
-var port = process.env.PORT || 8000
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const Eureka = require('eureka-js-client').Eureka;
+const cors = require('cors');
+var port = process.env.PORT || 8000;
 
 const articleController = require('./controller/articleController')
 
@@ -24,7 +26,8 @@ if (ENV === 'test' || ENV === 'development'){
             app: 'article-service',
             hostName: process.env.EUREKA_CLIENT_HOST || 'localhost',
             ipAddr: '127.0.0.1',
-            statusPageUrl: (process.env.EUREKA_CLIENT_URL || 'http://localhost:') + port,
+            statusPageUrl: (process.env.EUREKA_CLIENT_URL || 'http://localhost:') + PORT,
+
             vipAddress: 'article-service',
             port: {
                 $: port,
@@ -40,11 +43,13 @@ if (ENV === 'test' || ENV === 'development'){
             leaseExpirationDurationInSeconds: 2
         },
         eureka: {
+                // Eureka server
             host: process.env.EUREKA_SERVER_HOST || 'localhost',
             port: process.env.EUREKA_SERVER_PORT || 8761,
             servicePath: '/eureka/apps/',
         }
     })
+    
     
     client.logger.level('debug')
     client.start(error => {

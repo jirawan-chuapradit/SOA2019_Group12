@@ -1,11 +1,17 @@
-const app = require('express')()
+const ENV = process.env.NODE_ENV || 'development'
+require('custom-env').env(ENV)
+
+const express = require('express')
 const httpProxy = require('express-http-proxy')
 const Eureka = require('eureka-js-client').Eureka
+const cors = require('cors')
 
+// Constants
+const PORT = process.env.PORT || 3000
 const HOST = '0.0.0.0'
-const PORT = 3000
-const ENV = process.env.NODE_ENV || 'development'
+const app = express()
 
+// Configuration
 const client = new Eureka({
     instance: {
         instanceId: 'api-gateway',
@@ -34,21 +40,11 @@ const client = new Eureka({
     }
 })
 
+app.use(cors())
+
 client.logger.level('debug')
-
-/**
- * THIS SERVICE MUST CONNECT TO EUREKA SERVER
- * NEW SERVICE INSERT CODE FOLLOW AS THIS PATTERN
-//  *      const [SERVICE_NAME]ServiceInstance = client.getInstancesByAppId(`[SERVICE_NAME]-service`)
-        const [SERVICE_NAME]ServiceUrl = `http://${[SERVICE_NAME]ServiceInstance[0].hostName}:${[SERVICE_NAME]ServiceInstance[0].port.$}`
-        const [SERVICE_NAME]ServiceProxy = httpProxy([SERVICE_NAME]ServiceUrl)
-
-        app.use('/api/[SERVICE_NAME]', (req, res, next) => {
-            [SERVICE_NAME]ServiceProxy(req, res, next)
-        })
- */
 client.start(error => {
-    console.log(error || 'NodeJS Eureka Started !')
+    console.log(error || 'Eureka client started')
 
     const articleServiceInstance = client.getInstancesByAppId('article-service')
     const articleServiceUrl = `http://${articleServiceInstance[0].hostName}:${articleServiceInstance[0].port.$}`
@@ -83,7 +79,6 @@ client.start(error => {
         notificationServiceProxy(req, res, next)
     })
 })
-
 
 app.listen(PORT)
 console.log(`Running API gateway on http://${HOST}:${PORT}`)

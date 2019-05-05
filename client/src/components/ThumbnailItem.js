@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import team1 from '../assets/image/team1.jpg';
 import team2 from '../assets/image/team2.jpg';
 import team3 from '../assets/image/team3.jpg';
+// import PropTypes from 'prop-types';
+
 
 class ThumbnailItem extends Component {
     state = {
@@ -34,5 +36,7 @@ class ThumbnailItem extends Component {
         )
     }
 }
+
+
 
 export default ThumbnailItem;
