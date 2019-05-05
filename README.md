@@ -3,6 +3,11 @@
 </p>
 <h1 align="center">SOA2019_Group12</h1>
 
+<p align="center">
+<a> <img alt="java" src="https://img.shields.io/static/v1.svg?label=made%20with&message=java&color=orange&logo=java&style=flat"></a>
+<a> <img alt="google" src="https://img.shields.io/static/v1.svg?label=deployed&message=cloud%20platform&color=4285f4&logo=google&style=flat&logoColor=white"></a>
+</p>
+
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
 # ➤ SERVICE <img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/Web-Service-Icon.png" align="right" width="130" height="100" />

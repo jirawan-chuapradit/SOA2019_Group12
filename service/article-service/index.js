@@ -22,6 +22,7 @@ if (ENV === 'test' || ENV === 'development'){
 } else {
     const client = new Eureka({
         instance: {
+            instanceId: 'article-service',
             app: 'article-service',
             hostName: process.env.EUREKA_CLIENT_HOST || 'localhost',
             ipAddr: '127.0.0.1',
@@ -53,7 +54,6 @@ if (ENV === 'test' || ENV === 'development'){
     client.logger.level('debug')
     client.start(error => {
         console.log(error || 'NodeJS Eureka Started !')
-    
         app.use("/", articleController)
     })
 }

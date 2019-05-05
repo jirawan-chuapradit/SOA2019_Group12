@@ -3,7 +3,11 @@ WORKDIR /src
 COPY . .
 EXPOSE 3000
 RUN npm install
-CMD ["npm", "start"]
+
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.5.0/wait /wait 
+RUN chmod +x /wait
+
+CMD /wait && npm start
 
 # docker image build -t earthzphanu/api_gateway .
 # docker login
