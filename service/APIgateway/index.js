@@ -43,33 +43,7 @@ const client = new Eureka({
 
 app.use(cors());
 
-client.logger.level('debug');
-    instance: {
-        app: 'api-gateway',
-        hostName: process.env.EUREKA_CLIENT_HOST || 'localhost',
-        ipAddr: '127.0.0.1',
-        statusPageUrl: (process.env.EUREKA_CLIENT_URL || 'http://localhost:') + PORT,
-        vipAddress: 'api-gateway',
-        port: {
-            $: PORT,
-            '@enabled': true
-        },
-        dataCenterInfo: {
-            '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
-            name: 'MyOwn',
-        },
-        registerWithEureka: true,
-        fetchRegistry: true,
-    },
-    eureka: {
-        host: process.env.EUREKA_SERVER_HOST || 'localhost',
-        port: process.env.EUREKA_SERVER_PORT || 8761,
-        servicePath: '/eureka/apps/',
-    }
-})
-
 client.logger.level('debug')
-
 client.start(error => {
   console.log(error || 'Eureka client started');
 
