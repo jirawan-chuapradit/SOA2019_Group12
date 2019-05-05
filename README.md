@@ -1,6 +1,8 @@
 # SOA2019_Group12
 
-## SERVICE <img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/Web-Service-Icon.png" align="right" width="130" height="100" />
+<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/Web-Service-Icon.png" align="right" width="130" height="100" />
+
+## SERVICE 
 
 | <p align="center">การทำงาน</p>  | <p align="center">SERVICE</p>  |
 | ------------- | ------------- |
