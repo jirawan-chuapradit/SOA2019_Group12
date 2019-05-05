@@ -1,7 +1,13 @@
 # SOA2019_Group12
 
-## SERVICE
+## SERVICE :memo:
+| การทำงาน  | SERVICE |
+| ------------- | ------------- |
+| :heavy_check_mark:  | ชื่อ |
+| :x: | ชื่อ |
 
+หมายเหตุ: :heavy_check_mark: = เสร็จแล้ว
+          :x: = อยู่ในระหว่างปฎิบัติงาน
 
 # วิธีการ Run Service
 ## Clone Project 
