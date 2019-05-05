@@ -9,9 +9,9 @@ const ENV = process.env.NODE_ENV || 'development'
 const client = new Eureka({
     instance: {
         app: 'api-gateway',
-        hostName: 'localhost',
+        hostName: process.env.EUREKA_CLIENT_HOST || 'localhost',
         ipAddr: '127.0.0.1',
-        statusPageUrl: 'http://localhost:' + PORT,
+        statusPageUrl: (process.env.EUREKA_CLIENT_URL || 'http://localhost:') + PORT,
         vipAddress: 'api-gateway',
         port: {
             $: PORT,
@@ -25,8 +25,8 @@ const client = new Eureka({
         fetchRegistry: true,
     },
     eureka: {
-        host: 'localhost',
-        port: 8761,
+        host: process.env.EUREKA_SERVER_HOST || 'localhost',
+        port: process.env.EUREKA_SERVER_PORT || 8761,
         servicePath: '/eureka/apps/',
     }
 })
