@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../assets/css/create.css';
 import '../assets/css/header.css';
 import logo from '../assets/image/logo.png'
+import {getHomeArticle} from '../actions/homeAction'
 import Thumbnail from '../components/Thumbnail';
 import Suggestion from '../components/Suggestion';
 import axios from 'axios';
@@ -9,34 +10,54 @@ import axios from 'axios';
 class App extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      article: [{
-        attendance: 2,
-        author: "Tester",
-        category: "Tester",
-        comment: [],
-        description: "Test kubb",
-        difficulty: 1,
-        grade: "A",
-        groupWorker: 5,
-        midterm: 3,
-        subject: "Test",
-        title: "Tester",
-        _id: 1
-      }]
-    };
+      data: {}   
+     }
   }
+
+  
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     article: [{
+  //       attendance: 2,
+  //       author: "Tester",
+  //       category: "Tester",
+  //       comment: [],
+  //       description: "Test kubb",
+  //       difficulty: 1,
+  //       grade: "A",
+  //       groupWorker: 5,
+  //       midterm: 3,
+  //       subject: "Test",
+  //       title: "Tester",
+  //       _id: 1
+  //     }]
+  //   };
+  // }
+
+  // componentDidMount() {
+  //   var article = getHomeArticle();
+  //   article.then(result => {
+  //     console.log(result.article)
+  //     this.setState({
+  //       data: result.article,
+  //     })
+  //   })
+  // }
 
   componentDidMount() {
     // process.env.REACT_APP_API_URL +"/article/"
-    axios.get("http://localhost:3001/article").then(res => {
+    axios.get("http://localhost:3000/api/article").then(res => {
       console.log(res.data);
       { this.setState({ article: res.data }) }
     });
   }
 
   render() {
+    const { data } = this.state
 
 
     return (
@@ -56,6 +77,10 @@ class App extends Component {
 
 
         <Suggestion />
+        {/* <ThumbnailItem 
+          articleHome={data}       
+         /> */}
+
         <Thumbnail article={this.state.article} />
       </div>
     );
