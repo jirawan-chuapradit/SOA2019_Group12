@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const mongodb = 'mongodb://mongo:27017/Article-service'
+// const mongodb = 'mongodb://mongo:27017/Article-service'
+const mongodb = 'mongodb://0.0.0.0:27017/Article-service'
 
 mongoose.connect(mongodb, {useNewUrlParser: true}, function (err){
     if (err) throw err
