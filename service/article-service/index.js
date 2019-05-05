@@ -23,7 +23,7 @@ if (ENV === 'test' || ENV === 'development'){
             app: 'article-service',
             hostName: process.env.EUREKA_CLIENT_HOST || 'localhost',
             ipAddr: '127.0.0.1',
-            statusPageUrl: 'http://localhost:' + port,
+            statusPageUrl: (process.env.EUREKA_CLIENT_URL || 'http://localhost:') + port,
             vipAddress: 'article-service',
             port: {
                 $: port,

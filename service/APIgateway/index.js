@@ -9,9 +9,9 @@ const ENV = process.env.NODE_ENV || 'development'
 const client = new Eureka({
     instance: {
         app: 'api-gateway',
-        hostName: '35.247.168.170',
-        ipAddr: '35.247.168.170',
-        statusPageUrl: 'http://35.247.168.170:' + PORT,
+        hostName: 'localhost',
+        ipAddr: '127.0.0.1',
+        statusPageUrl: 'http://localhost:' + PORT,
         vipAddress: 'api-gateway',
         port: {
             $: PORT,
@@ -25,8 +25,8 @@ const client = new Eureka({
         fetchRegistry: true,
     },
     eureka: {
-        host: '104.199.152.94',
-        port: 80,
+        host: 'localhost',
+        port: 8761,
         servicePath: '/eureka/apps/',
     }
 })
@@ -36,7 +36,7 @@ client.logger.level('debug')
 /**
  * THIS SERVICE MUST CONNECT TO EUREKA SERVER
  * NEW SERVICE INSERT CODE FOLLOW AS THIS PATTERN
- *      const [SERVICE_NAME]ServiceInstance = client.getInstancesByAppId('[SERVICE_NAME]-service')
+//  *      const [SERVICE_NAME]ServiceInstance = client.getInstancesByAppId(`[SERVICE_NAME]-service`)
         const [SERVICE_NAME]ServiceUrl = `http://${[SERVICE_NAME]ServiceInstance[0].hostName}:${[SERVICE_NAME]ServiceInstance[0].port.$}`
         const [SERVICE_NAME]ServiceProxy = httpProxy([SERVICE_NAME]ServiceUrl)
 
@@ -47,12 +47,11 @@ client.logger.level('debug')
 client.start(error => {
     console.log(error || 'NodeJS Eureka Started !')
 
-    const articleServiceInstance = client.getInstancesByAppId('ARTICLE-SERVICE')
-    const articleServiceUrl = `http://35.231.108.249:${articleServiceInstance[0].port.$}`
+    const articleServiceInstance = client.getInstancesByAppId('article-service')
+    const articleServiceUrl = `http://${articleServiceInstance[0].hostName}:${articleServiceInstance[0].port.$}`
     // const articleServiceUrl = `http://${articleServiceInstance[0].hostName}:${articleServiceInstance[0].port.$}`
     const articleServiceProxy = httpProxy(articleServiceUrl)
     console.log(`Article-service: ${articleServiceUrl}`)
-    console.log(articleServiceInstance[0].hostName)
 
     app.use('/api/article', (req, res, next) => {
         articleServiceProxy(req, res, next)
