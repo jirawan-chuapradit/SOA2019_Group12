@@ -96,6 +96,18 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker image build -t $DOCKER_USERNAME/notification_service .
                     docker image push $DOCKER_USERNAME/notification_service
+    deploy:
+        machine:
+            enabled: true
+        steps:
+            - run:
+                name: Deploy Over SSH
+                command: |
+                    echo $PRIVATE_KEY > private_key
+                    chmod 600 private_key
+                    ssh-add private_key
+                    ssh $SSH_USER@$SSH_HOST -i private_key "cd SOA2019_Group12;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
+
 workflows:
     version: 2
     compile:
@@ -130,3 +142,11 @@ workflows:
                     branches:
                         only:
                             master
+            - deploy:
+                requires:
+                    - article
+                    - authentication
+                    - api-gateway
+                    - eureka
+                    - matching
+                    - notification
