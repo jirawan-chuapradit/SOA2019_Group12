@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "nyc --reporter=text mocha --exit"
   },
   "author": "",
@@ -16,8 +16,7 @@
     "eureka-js-client": "^4.4.2",
     "express": "4.16.4",
     "mongodb": "3.2.3",
-    "mongoose": "5.5.1",
-    "nodemon": "^1.18.11"
+    "mongoose": "5.5.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
