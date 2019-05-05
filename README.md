@@ -3,11 +3,9 @@
 </p>
 <h1 align="center">SOA2019_Group12</h1>
 
-
-
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
-## ➤SERVICE <img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/Web-Service-Icon.png" align="right" width="130" height="100" />
+# ➤ SERVICE <img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/Web-Service-Icon.png" align="right" width="130" height="100" />
 
 
 | <p align="center">การทำงาน</p>  | <p align="center">SERVICE</p>  |
@@ -17,7 +15,9 @@
 
 หมายเหตุ: :heavy_check_mark: = เสร็จแล้ว ,:x: = อยู่ในระหว่างปฎิบัติงาน
 
-# วิธีการ Run Service
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
+
+# ➤ วิธีการ Run Service<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/icons8-exercise.png" align="right" width="130"  />
 ## Clone Project 
 ```
 git clone https://github.com/jirawan-chuapradit/SOA2019_Group12.git
@@ -28,17 +28,21 @@ cd /review_course12
 node index.js
 ```
 
-# Test
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
+
+# ➤ Test<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images.png" align="right" width="130"  />
 ```
 npm test
 ```
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
-# Deploy
+# ➤ Deploy<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/icon-deploy.png" align="right" width="130"  />
 ```
 https://beaming-gadget-234817.appspot.com/{Endpoint following next section}
 ```
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
-# API & Endpoint
+# ➤  API & Endpoint<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/603197.png" align="right" width="130"  />
 ## Article Service
 | Endpoint |
 |--|
