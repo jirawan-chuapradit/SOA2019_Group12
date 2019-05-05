@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/jirawan-chuapradit/SOA2019_Group12.svg?style=svg)](https://circleci.com/gh/jirawan-chuapradit/SOA2019_Group12)
+
 <p align="center">
   <img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/logo.png" alt="Logo" width="578" height="135" />
 </p>
