@@ -1,8 +1,14 @@
-# SOA2019_Group12
+<p align="center">
+  <img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/logo.png" alt="Logo" width="578" height="135" />
+</p>
+<h1 align="center">SOA2019_Group12</h1>
 
-<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/Web-Service-Icon.png" align="right" width="130" height="100" />
 
-## SERVICE 
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
+
+## ➤SERVICE <img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/Web-Service-Icon.png" align="right" width="130" height="100" />
+
 
 | <p align="center">การทำงาน</p>  | <p align="center">SERVICE</p>  |
 | ------------- | ------------- |
@@ -43,4 +49,7 @@ https://beaming-gadget-234817.appspot.com/{Endpoint following next section}
 | GET /comment |
 |GET /comment/{id}|
 | POST /comment |
+
+
+
 
