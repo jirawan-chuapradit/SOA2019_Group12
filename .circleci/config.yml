@@ -52,7 +52,7 @@ jobs:
     authentication:
         working_directory: ~/SOA2019_Group12/service/authentication-service
         docker:
-            - image: circleci/node:latest
+            - image: circleci/node:11.13.0
         steps:
             - setup_remote_docker:
                 docker_layer_caching: true
