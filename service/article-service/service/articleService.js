@@ -177,8 +177,7 @@ exports.getAllTitles = async (req, res) => {
   console.log("get All Titles");
   console.log("subject: " + req.params.subject);
   const titles = await db.find(
-    { subject: req.params.subject },
-    { title: 1, _id: 0 }
+    { subject: req.params.subject }
   );
   if (!Array.isArray(titles) || !titles.length) {
     return res.status(200).json("Sorry. Title Not found!!");
@@ -191,8 +190,7 @@ exports.getTitle = async (req, res) => {
   console.log("get TItle");
 
   const title = await db.find(
-    { title: req.params.title, subject: req.params.subject },
-    { _id: 0 }
+    { _id: req.params.id}
   );
 
   return res.status(200).json(title);
