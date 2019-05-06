@@ -6,8 +6,7 @@
   "scripts": {
     "start": "nodemon index.js",
     "build": "babel src -d dist --copy-files",
-    "test": "mocha",
-    "coverage": "nyc --reporter=text mocha --exit"
+    "test": "nyc --reporter=text mocha --exit"
   },
   "author": "",
   "license": "ISC",
