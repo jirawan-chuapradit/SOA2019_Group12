@@ -61,6 +61,7 @@ services:
       EUREKA_SERVER_PORT: 8761
     ports:
       - '5050:5050'
+
 #Database
   mongo:
     image: mongo:latest
@@ -86,6 +87,7 @@ services:
       - matching
     environment:
       WAIT_HOSTS: eureka:8761, article:8000, authentication:5000, matching:5050
+      WAIT_HOSTS_TIMEOUT: 120
       EUREKA_CLIENT_HOST: 'api-gateway'
       EUREKA_CLIENT_URL: 'http://api-gateway:'
       EUREKA_SERVER_HOST: 'eureka'

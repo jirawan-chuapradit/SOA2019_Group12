@@ -91,6 +91,7 @@ jobs:
                 name: Deploy over SSH
                 command: |
                     ssh -vv -o "StrictHostKeyChecking=no" ${SSH_USER}@${SSH_HOST} bash -ic '"cd /home/earth/SOA2019_Group12 && \
+                        sudo git pull origin master && \
                         sudo docker-compose stop && \
                         sudo docker-compose rm -f && \
                         sudo docker-compose pull && \
