@@ -1,5 +1,5 @@
 const ENV = process.env.NODE_ENV || 'development'
-require('custom-env').env(ENV)
+// require('custom-env').env(ENV)
 
 const express = require('express')
 const httpProxy = require('express-http-proxy')
@@ -44,6 +44,7 @@ app.use(cors())
 
 client.logger.level('debug')
 client.start(error => {
+
     console.log(error || 'Eureka client started')
 
     const articleServiceInstance = client.getInstancesByAppId('article-service')
@@ -61,11 +62,7 @@ client.start(error => {
     const matchingServiceProxy = httpProxy(matchingServiceUrl)
     console.log(`matching-service: ${matchingServiceUrl}`)
 
-    const notificationServiceInstance = client.getInstancesByAppId('notification-service')
-    const notificationServiceUrl = `http://${notificationServiceInstance[0].hostName}:${notificationServiceInstance[0].port.$}`
-    const notificationServiceProxy = httpProxy(notificationServiceUrl)
-    console.log(`notification-service: ${notificationServiceUrl}`)
-
+ // Proxy request
     app.use('/api/article', (req, res, next) => {
         articleServiceProxy(req, res, next)
     })
@@ -74,9 +71,6 @@ client.start(error => {
     })
     app.use('/api/authentication', (req, res, next) => {
         authenticationServiceProxy(req, res, next)
-    })
-    app.use('/api/notification', (req, res, next) => {
-        notificationServiceProxy(req, res, next)
     })
 })
 

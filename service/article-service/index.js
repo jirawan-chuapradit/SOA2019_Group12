@@ -58,6 +58,7 @@ if (ENV === 'test' || ENV === 'development'){
     })
 }
 
+
 const server = app.listen(port, () => {
     const host = server.address().address
     const port = server.address().port
