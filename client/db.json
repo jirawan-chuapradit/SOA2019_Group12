@@ -14,6 +14,64 @@
       "difficulty": 1,
       "comment": [],
       "__v": 0
-    }
+    },
+    {
+      "_id": 1,
+      "title": "Earth article",
+      "subject": "Test",
+      "category": "Human",
+      "author": "Earth",
+      "description": "Test kubb",
+      "grade": "A",
+      "midterm": 3,
+      "attendance": 4,
+      "groupWorker": 5,
+      "difficulty": 1,
+      "comment": [],
+      "__v": 0
+    },
+    {
+      "_id": 3,
+      "title": "Earth article",
+      "subject": "Test",
+      "category": "Human",
+      "author": "Earth",
+      "description": "Test kubb",
+      "grade": "A",
+      "midterm": 3,
+      "attendance": 4,
+      "groupWorker": 5,
+      "difficulty": 1,
+      "comment": [],
+      "__v": 0
+    },{
+      "_id": 4,
+      "title": "Earth article",
+      "subject": "Test",
+      "category": "Human",
+      "author": "Earth",
+      "description": "Test kubb",
+      "grade": "A",
+      "midterm": 3,
+      "attendance": 4,
+      "groupWorker": 5,
+      "difficulty": 1,
+      "comment": [],
+      "__v": 0
+      },{
+        "_id": 5,
+        "title": "Earth article",
+        "subject": "Test",
+        "category": "Human",
+        "author": "Earth",
+        "description": "Test kubb",
+        "grade": "A",
+        "midterm": 3,
+        "attendance": 4,
+        "groupWorker": 5,
+        "difficulty": 1,
+        "comment": [],
+        "__v": 0
+        }
   ]
 }

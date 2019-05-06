@@ -12,7 +12,8 @@
 body {
   background: #fff;
   color: #444;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Mitr', sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
 }
 
 a {
@@ -1570,4 +1571,8 @@ h6 {
 
 #text-right{
   text-align: right;
+}
+
+#lockHeight{
+  height: 150;
 }

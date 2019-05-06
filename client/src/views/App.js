@@ -9,22 +9,19 @@ import axios from 'axios';
 class App extends Component {
 
   constructor(props) {
-    super(props);
-    this.state = { article: "" };
+    super(props)
+    this.state = {
+      data: {}   
+     }
   }
+
 
   componentDidMount() {
     // process.env.REACT_APP_API_URL +"/article/"
-    axios.get("http://35.247.168.170/api/article").then(res => {
+    axios.get("http://localhost:3000/api/article").then(res => {
       console.log(res.data);
-      { this.setState({ products: res.data }) }
+      { this.setState({ article: res.data }) }
     });
-
-    // วิธีที่ 3 ผ่าน Axios
-    // axios.get("http://35.247.168.170/api/article").then(res => {
-    //   console.log("console log=" + res.data);
-    //   { this.setState({ article: res.data }) }
-    // });
   }
 
   render() {
@@ -32,7 +29,6 @@ class App extends Component {
 
     return (
       <div>
-
 
         <header><a href="/" ><img src={logo} alt="Logo" /> </a> </header>
         <nav>
@@ -48,6 +44,10 @@ class App extends Component {
 
 
         <Suggestion />
+        {/* <ThumbnailItem 
+          articleHome={data}       
+         /> */}
+
         <Thumbnail article={this.state.article} />
       </div>
     );

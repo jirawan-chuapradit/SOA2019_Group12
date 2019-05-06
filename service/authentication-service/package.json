@@ -14,6 +14,7 @@
     "bcrypt": "3.0.5",
     "body-parser": "1.18.3",
     "cors": "2.8.5",
+    "eureka-js-client": "^4.4.2",
     "express": "4.16.4",
     "jsonwebtoken": "8.5.1",
     "jwt-decode": "^2.2.0",

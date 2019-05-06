@@ -184,7 +184,7 @@ class Result extends Component {
            อ่านบทความเกี่ยวกับวิชานี้
 
            <p>
-				<a class="btn" href="#">View details »</a>
+				<a class="btn" href="/AllArticleOfSubject">View details »</a>
 			</p>
 				</div>
         

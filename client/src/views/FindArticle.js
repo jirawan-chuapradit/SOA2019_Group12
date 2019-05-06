@@ -2,14 +2,44 @@ import React from 'react';
 import '../assets/css/create.css';
 import '../assets/css/header.css';
 import logo from '../assets/image/logo.png'
+// import AllArticleOfSubject from '../views/AllArticleOfSubject';
+import ArticleList from '../components/ArticleList'
+import axios from 'axios';
+
 
 class FindArticle extends React.Component {
+
+
   constructor(props) {
     super(props)
     this.state = {
-      selectedView: 'วิชาเลือกกลุ่มวิชาภาษา'
+      selectedView: 'วิชาเลือกกลุ่มวิชาภาษา',
+      data: {} ,
+      value: 'ENGLISH FOR MARKETING'
     }
   }
+
+  // componentWillMount() {
+  //   // process.env.REACT_APP_API_URL +"/article/"
+  //   axios.get("http://localhost:3000/api/article/Article/"+this.state.value).then(res => {
+  //     console.log(res.data);
+  //     { this.setState({ article: res.data }) }
+  //   });
+  // }
+ 
+
+  componentDidMount() {
+    // process.env.REACT_APP_API_URL +"/article/"
+    axios.get("http://localhost:3000/api/article/Article/"+this.state.value).then(res => {
+      console.log(res.data);
+      { this.setState({ article: res.data }) }
+    });
+  }
+
+  handleChange = (event) =>
+  
+    this.setState({value: event.target.value}) ;
+
   
   render() {
     const { selectedView } = this.state
@@ -73,17 +103,22 @@ class FindArticle extends React.Component {
                     <div className="col-25">
                       <label htmlFor="subject">ชื่อวิชา</label>
                     </div>
-<div className="col-75"> 
+<div className="col-75">  
 
-          <select>
+          <select value={this.state.value} onChange={this.handleChange} >
             {view.subject.map(m => <option>{m}</option>)}
           </select> </div>
         
          </div> </div>
          <a href="/AllArticleOfSubject">
-                  <button className="primary-btn"  onClick={this.routeChange}>ค้นหา</button> </a>
+                  <button className="primary-btn" href="/AllArticleOfSubject" onClick={this.routeChange}>ค้นหา</button> </a>
               
     </form> </div>
+
+    <ArticleList articles={this.state.article} />
+
+    {/* <AllArticleOfSubject article={this.state.article} /> */}
+
          </div>
       )
     }
