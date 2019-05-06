@@ -16,17 +16,24 @@ class AllArticleOfSubject extends Component{
       
     }
 
+    state = {
+      isRedirect : false
+    }
+
+
     render(){
+
+      
 
   const {title , author} = this.props.article;
 
 
 
-      // const article = this.props.article;
-      // console.log(this.props.article)
-      // if(this.state.isRedirect){
-      //   window.location.href = `/article?id=${article._id}`;
-      // }
+      const article = this.props.article;
+      console.log(this.props.article)
+      if(this.state.isRedirect){
+        window.location.href = `/article?id=${article._id}`;
+      }
 
       // const article = this.state.article;
 
@@ -48,7 +55,7 @@ class AllArticleOfSubject extends Component{
     <Card.Text>
     ชื่อผู้เขียน {author}
     </Card.Text>
-    <Button variant="warning" >อ่านบทความต่อ..</Button>
+    <Button variant="warning" onClick={this.redirectToArticle} >อ่านบทความต่อ..</Button>
   </Card.Body>
 </Card>
 </div></form></div>

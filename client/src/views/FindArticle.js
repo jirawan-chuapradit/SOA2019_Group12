@@ -80,36 +80,36 @@ class FindArticle extends React.Component {
       },
       {
         category: "วิชาเลือกกลุ่มวิชาสังคมศาสตร์",
-        subject: ["ECONOMICS FOR BUSINESS", "ENTREPRENEURSHIP", "GENERAL BUSINESS",
+        subject: ["","ECONOMICS FOR BUSINESS", "ENTREPRENEURSHIP", "GENERAL BUSINESS",
           "ENGINEERING AND TECHNOLOGY LAWS", "THAI INTELLECTUAL PROPERTY", "GENERAL BUSINESS"]
       },
       {
         category: "วิชาศึกษาทั่วไปกลุ่มวิชาคณิตศาสตร์และวิทยาศาสตร์",
-        subject: ["MATHEMATICS IN DAILY LIFE", "INTRODUCTION TO FOOD NUTRITION", "PHYSICS FOR DAILY LIFE",
+        subject: ["","MATHEMATICS IN DAILY LIFE", "INTRODUCTION TO FOOD NUTRITION", "PHYSICS FOR DAILY LIFE",
           "FOOD SCIENCE IN DAILY LIFE"]
       },
       {
         category: "วิชาเลือกเสรี",
-        subject: ["ENGLISH FOR SCIENCE AND TECHNOLOGY", "BAMBOO ARCHITECTURE", "TECHNOLOGY PHOTOGRAPHY", "INDIVIDUAL STUDY"]
+        subject: ["","ENGLISH FOR SCIENCE AND TECHNOLOGY", "BAMBOO ARCHITECTURE", "TECHNOLOGY PHOTOGRAPHY", "INDIVIDUAL STUDY"]
       },
       {
         category: "วิชาเลือกกลุ่มคุณค่าแห่งชีวิต",
-        subject: ["DESIGNING YOUR LIFE", "PHOTOGRAPHY APPRECIATION", "PHOTOGRAPHY APPRECIATION", "MEDITATION FOR LIFE DEVELOPMENT", "FILM APPRECIATION"]
+        subject: ["","DESIGNING YOUR LIFE", "PHOTOGRAPHY APPRECIATION", "PHOTOGRAPHY APPRECIATION", "MEDITATION FOR LIFE DEVELOPMENT", "FILM APPRECIATION"]
       },
       {
         category: "วิชาเลือกกลุ่มวิถีแห่งสังคม",
-        subject: ["MILITARY SCIENCE", "THAI ASTROLOGY", "ASEAN STUDY", "THAI ASTROLOGY"]
+        subject: ["","MILITARY SCIENCE", "THAI ASTROLOGY", "ASEAN STUDY", "THAI ASTROLOGY"]
       },
       {
         category: "วิชาเลือกกลุ่มศาสตร์แห่งความคิด",
-        subject: ["SERIES IN DAILY LIFE", "FUN WITH AI", "INTEGRATED THINKING"]
+        subject: ["","SERIES IN DAILY LIFE", "FUN WITH AI", "INTEGRATED THINKING"]
       },
       {
         category: "วิชาเลือกกลุ่มศิลปแห่งการจัดการ",
-        subject: ["		MODERN ENTREPRENEUR", "SOCIAL ENTREPRENEUR", "MODERN MANAGEMENT AND LEADERSHIP"]
+        subject: ["","MODERN ENTREPRENEUR", "SOCIAL ENTREPRENEUR", "MODERN MANAGEMENT AND LEADERSHIP"]
       }, {
         category: "วิชาเลือกกลุ่มภาษาและการสื่อสาร",
-        subject: ["WRITING AND SPEAKING IN THE PROFESSIONS", "ENGLISH FOR WORK PREPARATION", "ENGLISH FOR MARKETING"]
+        subject: ["","WRITING AND SPEAKING IN THE PROFESSIONS", "ENGLISH FOR WORK PREPARATION", "ENGLISH FOR MARKETING"]
       }
 
     ]
