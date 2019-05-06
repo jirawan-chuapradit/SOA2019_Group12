@@ -67,22 +67,74 @@ exports.createArticle = (req, res) => {
           subject: reqBody.subject
         }).then(subject => {
           console.log(subject);
-          axios
-            .post("http://localhost:5051/computing/addNewSubject", subject)
-            .then(response => {
-              console.log(response);
-              console.log(
-                "GO TO http://localhost:5051/computing/addNewSubject"
-              );
-            })
-            .catch(error => {
-              console.log(error);
-            });
+          //computing
+          var size = Object.keys(subject).length;
+          console.log("size: " + size);
 
-          return res.status(201).json({
-            success: true
-          });
+          var grade1 = 0;
+          var midterm1 = 0;
+          var attendance1 = 0;
+          var groupWorker1 = 0;
+          var difficulty1 = 0;
+
+          for (var i = 0; i < size; i++) {
+            grade1 += subject[i]["grade"];
+            midterm1 += subject[i]["midterm"];
+            attendance1 += subject[i]["attendance"];
+            groupWorker1 += subject[i]["groupWorker"];
+            difficulty1 += subject[i]["difficulty"];
+          }
+
+          const mathingData = {
+            subject: subject[0]["subject"],
+            category: subject[0]["category"],
+            grade: grade1 / size,
+            midterm: midterm1 / size,
+            attendance: attendance1 / size,
+            groupWorker: groupWorker1 / size,
+            difficulty: difficulty1 / size
+          };
+
+
+          if (size < 2) {
+            axios
+              .post(
+                "http://localhost:5050/matching/addMatchingSubject",
+                mathingData
+              )
+              .then(response => {
+                console.log(response.data);
+                console.log(
+                  "GOTO http://localhost:5050/matching/addMatchingSubject"
+                );
+                console.log(response.status);
+              })
+              .catch(error => {
+                console.log(error);
+              });
+          } else {
+            axios
+              .put(
+                "http://localhost:5050/matching/editMatchingSubject",
+                mathingData
+              )
+              .then(response => {
+                console.log(response.data);
+                console.log(
+                  "GoTO http://localhost:5050/matching/editMatchingSubject "
+                );
+                console.log(response.status);
+              })
+              .catch(error => {
+                console.log(error);
+              });
+          }
         });
+
+        return res.status(201).json({
+          success: true
+        });
+
       }
     });
   }
