@@ -15,12 +15,18 @@ public class ArticleService {
     }
 
     @HystrixCommand(fallbackMethod = "reliable")
-    public String testCall() {
-        URI uri = URI.create("http://localhost:8000/");
+    public String testCallNew() {
+        URI uri = URI.create("http://localhost:5050/matching/addMatchingSubject");
+        return this.restTemplate.getForObject(uri, String.class);
+    }
+
+    @HystrixCommand(fallbackMethod = "reliable")
+    public String testCallEdit() {
+        URI uri = URI.create("http://localhost:5050/matching/editMatchingSubject");
         return this.restTemplate.getForObject(uri, String.class);
     }
 
     public String reliable() {
-        return "Test Service unavailable please try again";
+        return "Matching Service unavailable please try again";
     }
 }
