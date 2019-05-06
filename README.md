@@ -41,6 +41,10 @@ Run the service with the development environment "npm install"
 ```
 node index.js
 ```
+## Testing
+```
+Running test with Chai and Mocha "npm test"
+```
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
