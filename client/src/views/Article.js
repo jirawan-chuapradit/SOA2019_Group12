@@ -12,25 +12,54 @@ import axios from 'axios';
 
 class Article extends Component {
 
-    //   constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //       selectedView: 'Cheating'
-    //     }
-    //   }
+    constructor(props) {
+        super(props)
+        this.state = {
+            _id: 0,
+            title: "",
+            subject: "",
+            category: "",
+            author: "",
+            description: "",
+            grade: "",
+            midterm: 0,
+            attendance: 0,
+            groupWorker: 0,
+            difficulty: 0,
+            comment: [],
+            __v: 0,
+            article : {}
+        }
+    }
 
-    componentDidMount(){
+
+
+    componentDidMount() {
         const url_string = window.location.href
         var url = new URL(url_string);
         var c = url.searchParams.get("id");
-        console.log(c);
+        console.log("id :" + c);
         this.fetchArticle(c)
+        // axios.get('http://localhost:8000/Article/findbyid/' + c).then(res => {
+        //     console.log("data :" + res.data);
+        //     { this.setState(res.data) }
+        // });
     }
 
+    // axios.get("http://localhost:8000/").then(res => {
+
+
     fetchArticle = async (c) => {
-        const res = await axios.get('localhost:8000/Article/findbyid/'+c)
+        const res = await axios.get('http://localhost:8000/Article/findbyid/'+c)
         console.log(res.data)
+        
+        // this.setState.article(res.data)
+        { this.setState({ article: res.data }) }
+        //  this.setState( {article :res.data})
+
+        console.log("this.state.article =  " + this.state.article)
     }
+
     render() {
         return (
 
@@ -46,7 +75,7 @@ class Article extends Component {
                     </ul>
                 </nav>
                 <section className="sec1" />
-                <Content />
+                <Content article={this.props.article}/>
                 <Comment />
                 <CommentForm />
             </div>
