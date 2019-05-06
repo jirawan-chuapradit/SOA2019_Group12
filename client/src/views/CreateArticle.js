@@ -17,46 +17,24 @@ class CreateArticle extends Component {
     this.confirmCreateArticle = this.confirmCreateArticle.bind(this);
   }
 
-  componentDidMount() {
-    // วิธีที่ 1
-    this.setState({
-      article: {
-        "_id": 10,
-        "title": "Zoom test new article",
-        "subject": "SOA",
-        "category": "IT",
-        "author": "Zoom",
-        "description": "Test kaa",
-        "grade": "A",
-        "midterm": 3,
-        "attendance": 4,
-        "groupWorker": 5,
-        "difficulty": 1,
-        "comment": [],
-        "__v": 0
-      }
-    })
-  }
-
 
 
   confirmCreateArticle() {
-    const { totalPrice, orders } = this.state;
-    if (orders && orders.length > 0) {
-      axios.post("http://localhost:3002/article", {
-        "_id": 10,
-        "title": "Zoom test new article",
-        "subject": "SOA",
-        "category": "IT",
-        "author": "Zoom",
-        "description": "Test kaa",
-        "grade": "A",
-        "midterm": 3,
-        "attendance": 4,
-        "groupWorker": 5,
-        "difficulty": 1,
-        "comment": [],
-        "__v": 0
+    console.log("confirmCreateArticle")
+    // const { totalPrice, orders } = this.state;
+    // if (orders && orders.length > 0) {
+      axios.post("http://localhost:8000", {
+          "title": "eieeiza",
+            "category": "aewaew",
+              "author": "Earth",
+        
+            "subject": "COM OR",
+            "description": "Test kubb",
+            "grade": "3.5",
+            "midterm": 3,
+            "attendance": 4,
+            "groupWorker": 5,
+            "difficulty": 1
       })
         .then(res => {
           console.log(res);
@@ -64,8 +42,9 @@ class CreateArticle extends Component {
         .catch(function (error) {
           console.log(error);
         })
+
+        
     }
-  }
 
 
   render() {

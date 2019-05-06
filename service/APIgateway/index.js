@@ -51,33 +51,33 @@ client.start(error => {
     const articleServiceProxy = httpProxy(articleServiceUrl)
     console.log(`Article-service: ${articleServiceUrl}`)
 
-    const authenticationServiceInstance = client.getInstancesByAppId('authentication-service')
-    const authenticationServiceUrl = `http://${authenticationServiceInstance[0].hostName}:${authenticationServiceInstance[0].port.$}`
-    const authenticationServiceProxy = httpProxy(authenticationServiceUrl)
-    console.log(`authentication-service: ${authenticationServiceUrl}`)
+    // const authenticationServiceInstance = client.getInstancesByAppId('authentication-service')
+    // const authenticationServiceUrl = `http://${authenticationServiceInstance[0].hostName}:${authenticationServiceInstance[0].port.$}`
+    // const authenticationServiceProxy = httpProxy(authenticationServiceUrl)
+    // console.log(`authentication-service: ${authenticationServiceUrl}`)
 
-    const matchingServiceInstance = client.getInstancesByAppId('matching-service')
-    const matchingServiceUrl = `http://${matchingServiceInstance[0].hostName}:${matchingServiceInstance[0].port.$}`
-    const matchingServiceProxy = httpProxy(matchingServiceUrl)
-    console.log(`matching-service: ${matchingServiceUrl}`)
+    // const matchingServiceInstance = client.getInstancesByAppId('matching-service')
+    // const matchingServiceUrl = `http://${matchingServiceInstance[0].hostName}:${matchingServiceInstance[0].port.$}`
+    // const matchingServiceProxy = httpProxy(matchingServiceUrl)
+    // console.log(`matching-service: ${matchingServiceUrl}`)
 
-    const notificationServiceInstance = client.getInstancesByAppId('notification-service')
-    const notificationServiceUrl = `http://${notificationServiceInstance[0].hostName}:${notificationServiceInstance[0].port.$}`
-    const notificationServiceProxy = httpProxy(notificationServiceUrl)
-    console.log(`notification-service: ${notificationServiceUrl}`)
+    // const notificationServiceInstance = client.getInstancesByAppId('notification-service')
+    // const notificationServiceUrl = `http://${notificationServiceInstance[0].hostName}:${notificationServiceInstance[0].port.$}`
+    // const notificationServiceProxy = httpProxy(notificationServiceUrl)
+    // console.log(`notification-service: ${notificationServiceUrl}`)
 
     app.use('/api/article', (req, res, next) => {
         articleServiceProxy(req, res, next)
     })
-    app.use('/api/matching', (req, res, next) => {
-        matchingServiceProxy(req, res, next)
-    })
-    app.use('/api/authentication', (req, res, next) => {
-        authenticationServiceProxy(req, res, next)
-    })
-    app.use('/api/notification', (req, res, next) => {
-        notificationServiceProxy(req, res, next)
-    })
+    // app.use('/api/matching', (req, res, next) => {
+    //     matchingServiceProxy(req, res, next)
+    // })
+    // app.use('/api/authentication', (req, res, next) => {
+    //     authenticationServiceProxy(req, res, next)
+    // })
+    // app.use('/api/notification', (req, res, next) => {
+    //     notificationServiceProxy(req, res, next)
+    // })
 })
 
 app.listen(PORT)
