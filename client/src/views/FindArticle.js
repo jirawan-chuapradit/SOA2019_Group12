@@ -19,25 +19,30 @@ class FindArticle extends React.Component {
     }
   }
 
-  // componentWillMount() {
-  //   // process.env.REACT_APP_API_URL +"/article/"
-  //   axios.get("http://localhost:3000/api/article/Article/"+this.state.value).then(res => {
-  //     console.log(res.data);
-  //     { this.setState({ article: res.data }) }
-  //   });
-  // }
- 
-
-  componentDidMount() {
+  componentWillMount() {
     // process.env.REACT_APP_API_URL +"/article/"
-    
     // axios.get("http://localhost:3000/api/article/Article/"+this.state.value).then(res => {
-      axios.get("http://localhost:8000/Article/" + this.state.value).then(res => {
+      axios.get("http://localhost:8000/Article/"+this.state.value).then(res => {
 
       console.log(res.data);
       { this.setState({ article: res.data }) }
     });
   }
+ 
+//   confirmCreateFinding(){
+
+//     axios.get("http://localhost:8000/Article/ENGLISH FOR MARKETING").then(res => {
+
+//       console.log(res.data);
+//       { this.setState({ article: res.data }) }
+//     });
+// return(
+//   <ArticleList articles={this.state.article} />
+
+// )
+
+//   }
+
 
   handleChange = (event) =>
   
@@ -113,8 +118,7 @@ class FindArticle extends React.Component {
           </select> </div>
         
          </div> </div>
-         <a href="/AllArticleOfSubject">
-                  <button className="primary-btn" href="/AllArticleOfSubject" onClick={this.routeChange}>ค้นหา</button> </a>
+                  <button className="primary-btn" onClick={() => this.confirmCreateFinding()} >ค้นหา</button>
               
     </form> </div>
 
