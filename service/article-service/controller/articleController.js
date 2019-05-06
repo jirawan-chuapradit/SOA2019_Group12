@@ -3,6 +3,7 @@ const router = express.Router();
 const articleService = require("../service/articleService")
 var bodyParser = require('body-parser');
 
+
 // parse application/json
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({

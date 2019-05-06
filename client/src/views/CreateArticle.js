@@ -261,7 +261,6 @@ class CreateArticle extends Component {
                   </div>
                 </div>
 
-                <button onClick={() => this.showConsoleLog()} >show log</button>
                 <button onClick={() => this.confirmCreateArticle()} >ตกลง</button>
 
               </form>
