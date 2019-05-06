@@ -32,22 +32,6 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker image build -t $DOCKER_USERNAME/api_gateway .
                     docker image push $DOCKER_USERNAME/api_gateway
-    #Eureka
-    eureka:
-        working_directory: ~/SOA2019_Group12/service/Eureka
-        docker:
-            - image: circleci/openjdk:latest
-        steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - checkout:
-                path: ~/SOA2019_Group12
-            - run:
-                name: Build Eureka's Image
-                command: |
-                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker image build -t $DOCKER_USERNAME/eureka_server .
-                    docker image push $DOCKER_USERNAME/eureka_server
     #Authentication Service
     authentication:
         working_directory: ~/SOA2019_Group12/service/authentication-service
@@ -80,6 +64,22 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker image build -t $DOCKER_USERNAME/matching_service .
                     docker image push $DOCKER_USERNAME/matching_service
+    circuit-breaker:
+        working_directory: ~/SOA2019_Group12/service/circuitbreaker
+        docker:
+            - image: circleci/openjdl:latest
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group12
+            - run:
+                name: Build Circuit Breaker's Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker image build -t $DOCKER_USERNAME/circuit_breaker .
+                    docker image push $DOCKER_USERNAME/circuit_breaker
+        
     deploy:
         machine:
             enabled: true
@@ -110,7 +110,7 @@ workflows:
                     branches:
                         only:
                             master
-            - eureka:
+            - circuit-breaker:
                 filters:
                     branches:
                         only:
@@ -130,5 +130,5 @@ workflows:
                     - article
                     - authentication
                     - api-gateway
-                    - eureka
+                    - circuit-breaker
                     - matching

@@ -12,6 +12,7 @@ services:
     links:
       - mongo
       - eureka
+      - circuit-breaker
     depends_on:
       - mongo
       - eureka
@@ -54,6 +55,7 @@ services:
     links:
       - mongo
       - eureka
+      - circuit-breaker
     depends_on:
       - mongo
       - eureka
@@ -107,3 +109,9 @@ services:
     image: springcloud/eureka
     ports:
       - '8761:8761'
+# Circuit Breaker
+  circuit-breaker:
+    container_name: curcuit-breaker
+    image: earthzphanu/circuit_breaker
+    ports:
+      - '8080:8080'
