@@ -11,7 +11,6 @@ import {Redirect} from 'react-router'
 class AllArticleOfSubject extends Component{
 
 
-
     redirectToArticle = () => {
       this.setState({isRedirect:true})
       
@@ -19,12 +18,15 @@ class AllArticleOfSubject extends Component{
 
     render(){
 
+  const {title , author} = this.props.article;
 
-      const article = this.props.article;
-      console.log(this.props.article)
-      if(this.state.isRedirect){
-        window.location.href = `/article?id=${article._id}`;
-      }
+
+
+      // const article = this.props.article;
+      // console.log(this.props.article)
+      // if(this.state.isRedirect){
+      //   window.location.href = `/article?id=${article._id}`;
+      // }
 
       // const article = this.state.article;
 
