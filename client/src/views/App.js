@@ -18,7 +18,8 @@ class App extends Component {
 
   componentDidMount() {
     // process.env.REACT_APP_API_URL +"/article/"
-    axios.get("http://localhost:3000/api/article").then(res => {
+    // http://localhost:3000/api/article
+    axios.get("http://localhost:3002/article").then(res => {
       console.log(res.data);
       { this.setState({ article: res.data }) }
     });

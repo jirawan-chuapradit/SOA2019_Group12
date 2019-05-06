@@ -14,14 +14,9 @@ class ThumbnailItem extends Component {
         this.setState({item:this.props.item})
     }
 
-    showImage(){
-        let image = {team1,team2,team3}
-        // listImage = 
-    }
 
     render() {
         const item = this.state.item
-        let count =1
         return (
             <div className="w3-third w3-margin-bottom  p-5">
                 <div className="w3-card-4">
