@@ -23,9 +23,9 @@ const client = new Eureka({
     // application instance information
     instance: {
         app: 'notification-service',
-        hostName: 'localhost',
+        hostName: process.env.EUREKA_CLIENT_HOST || 'localhost',
         ipAddr: '127.0.0.1',
-        statusPageUrl: 'http://localhost:' + port,
+        statusPageUrl: (process.env.EUREKA_CLIENT_URL || 'http://localhost:') + port,
         vipAddress: 'notification-service',
         port: {
             $: port,
@@ -42,8 +42,8 @@ const client = new Eureka({
     },
     eureka: {
         // Eureka server
-        host: 'localhost',
-        port: 8761,
+        host: process.env.EUREKA_SERVER_HOST || 'localhost',
+        port: process.env.EUREKA_SERVER_PORT || 8761,
         servicePath: '/eureka/apps/',
     },
 });
@@ -56,7 +56,7 @@ client.start((error) => {
 
 
 
-const mongoURI = 'mongodb://localhost:27017/Article'
+const mongoURI = process.env.MONGODB_URL || 'mongodb://localhost:27017/Article'
 
 mongoose
 .connect(mongoURI, {useNewUrlParser: true})

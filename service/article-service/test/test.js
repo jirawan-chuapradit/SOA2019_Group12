@@ -20,7 +20,7 @@ describe("POST new article", () => {
         category: "Test category",
         author: "Tester",
         description: "This desctipton is for test",
-        grade: "A",
+        grade: "3.5",
         midterm: 4,
         attendance: 3,
         groupWorker: 2,
@@ -42,7 +42,7 @@ describe("POST new article", () => {
         category: "Test category",
         author: "Tester",
         description: "This desctipton is for test",
-        grade: "A",
+        grade: "3.5",
         midterm: 4,
         attendance: 3,
         groupWorker: 2
