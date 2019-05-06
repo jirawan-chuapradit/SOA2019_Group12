@@ -105,7 +105,7 @@ services:
       - matching
       - notification
     environment:
-      WAIT_HOSTS: eureka:8761, article:8000, authentication:5000, notification:5051, matching:5050
+      WAIT_HOSTS: eureka:8761, article:8000, authentication:5000, matching:5050
       EUREKA_CLIENT_HOST: 'api-gateway'
       EUREKA_CLIENT_URL: 'http://api-gateway:'
       EUREKA_SERVER_HOST: 'eureka'
