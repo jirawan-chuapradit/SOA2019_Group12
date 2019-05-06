@@ -7,6 +7,7 @@ services:
     # build: ./service/article-service
     # image: article_service
     image: earthzphanu/article_service:latest
+    restart: on-failure
     container_name: article
     links:
       - mongo
@@ -28,6 +29,7 @@ services:
   authentication:
     container_name: authentication
     image: earthzphanu/authentication_service:latest
+    restart: on-failure
     links:
       - mongo
       - eureka
@@ -48,6 +50,7 @@ services:
   matching:
     container_name: matching
     image: earthzphanu/matching_service:latest
+    restart: on-failure
     links:
       - mongo
       - eureka
@@ -81,6 +84,7 @@ services:
   api-gateway:
     container_name: api-gateway
     image: earthzphanu/api_gateway
+    restart: on-failure
     links:
       - eureka
     depends_on:

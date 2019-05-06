@@ -31,49 +31,7 @@ describe("POST new article", () => {
       })
       .end((err, res) => {
         res.should.have.status(201);
-        done();
-      });
-      chai
-      .request(server)
-      .post("/")
-      .send({
-        title: "title",
-        subject: "Test subject",
-        category: "วิชาเลือกกลุ่มวิชาภาษา",
-        author: "Tester",
-        description: "This desctipton is for test",
-        grade: "3.5",
-        midterm: 4,
-        attendance: 3,
-        groupWorker: 2,
-        difficulty: 1
-      })
-      .end((err, res) => {
-        res.should.have.status(201);
-        done();
-      });
-  });
-
-  it("should create new article AGAIN", function(done) {
-    this.timeout(10000);
-    chai
-      .request(server)
-      .post("/")
-      .send({
-        title: "title",
-        subject: "Test subject",
-        category: "วิชาเลือกกลุ่มวิชาภาษา",
-        author: "Tester",
-        description: "This desctipton is for test",
-        grade: "3.5",
-        midterm: 4,
-        attendance: 3,
-        groupWorker: 2,
-        difficulty: 1
-      })
-      .end((err, res) => {
-        res.should.have.status(201);
-        done();
+        done()
       });
   });
 
@@ -297,7 +255,7 @@ describe("/GET Article", () => {
   it("Should get a title", done => {
     chai
       .request(server)
-      .get("/Article/IST/Earth article")
+      .get("/Article/findbyid/1")
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.a("object");
