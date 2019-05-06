@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @EnableCircuitBreaker
 @RestController
@@ -18,33 +20,23 @@ public class CircuitbreakerApplication {
 	@Autowired
 	private ArticleService articleService;
 	
-	@Autowired
-	private MatchingService matchingService;
-
-	@Autowired
-	private AuthService authService;
+	
 
     @Bean
     public RestTemplate rest(RestTemplateBuilder builder) {
         return builder.build();
     }
 
-    @GetMapping("/article-service")
-    public String getArticle() {
-        return articleService.testCall();
+    @PostMapping("/addmatching-service")
+    public String postNewArticle() {
+        return articleService.testCallNew();
 	}
 
-	@GetMapping("/matching-service")
-	public String getMatching(){
-		return matchingService.testCall();
+	@PutMapping("/editmatching-service")
+    public String postEditArticle() {
+        return articleService.testCallEdit();
 	}
 
-	@GetMapping("/auth-service")
-	public String getAuth(){
-		return authService.testCall();
-	}
-
-	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CircuitbreakerApplication.class, args);

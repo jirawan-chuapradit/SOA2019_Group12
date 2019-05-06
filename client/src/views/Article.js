@@ -5,6 +5,7 @@ import logo from '../assets/image/logo.png'
 import Content from '../components/Content';
 import CommentForm from '../components/CommentForm';
 import Comment from '../components/Comment';
+import axios from 'axios';
 
 
 
@@ -17,6 +18,19 @@ class Article extends Component {
     //       selectedView: 'Cheating'
     //     }
     //   }
+
+    componentDidMount(){
+        const url_string = window.location.href
+        var url = new URL(url_string);
+        var c = url.searchParams.get("id");
+        console.log(c);
+        this.fetchArticle(c)
+    }
+
+    fetchArticle = async (c) => {
+        const res = await axios.get('localhost:8000/Article/findbyid/'+c)
+        console.log(res.data)
+    }
     render() {
         return (
 
