@@ -7,7 +7,7 @@ import ArticleList from '../components/ArticleList'
 import axios from 'axios';
 
 
-class FindArticle extends React.Component {
+class FindArticleZoom extends React.Component {
 
 
   constructor(props) {
@@ -15,32 +15,12 @@ class FindArticle extends React.Component {
     this.state = {
       selectedView: 'วิชาเลือกกลุ่มวิชาภาษา',
       data: {} ,
-      value: 'aew'
+      value: ''
     }
   }
 
-  // componentWillMount() {
-    
-  //   this.state.value = this.handleChange()
-    
-  // }
- 
-  // confirmCreateFinding(){
 
-  //   axios.get("http://localhost:8000/Article/"+ this.state.value).then(res => {
-
-  //     console.log(res.data);
-  //     { this.setState({ article: res.data }) }
-    
-  //       // <ArticleList articles={this.state.article} />
-      
-      
-  //   });
-
-
-  // }
-
-
+  //โยนค่ามาที่ State ทุกครั้งที่มีการเปลี่ยนแปลง ให้เปลี่ยนค่าใน state ด้วย
   handleChange = (event) =>
     this.setState({value: event.target.value}) ;
   
@@ -131,6 +111,7 @@ class FindArticle extends React.Component {
     </form> </div>
 
     <ArticleList articles={this.state.article} />
+    
 
     {/* <AllArticleOfSubject article={this.state.article} /> */}
 
@@ -186,4 +167,4 @@ class FindArticle extends React.Component {
   }
 }
 
-export default FindArticle;
+export default FindArticleZoom;

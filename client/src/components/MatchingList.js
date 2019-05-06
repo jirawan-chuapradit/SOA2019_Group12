@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AllArticleOfSubject from "../views/AllArticleOfSubject";
 
-class ArticleList extends Component {
+class MatchingList extends Component {
 
     showArticle() {
         return this.props.articles && this.props.articles.map(article => (
@@ -9,6 +9,8 @@ class ArticleList extends Component {
         )
     }
 
+    //สองบรรทัดนี้เหมือนกัน
+    // <ProductItem productName = {product.productName} unitPrice = {product.productPrice} />
 
     render() {
         return (
@@ -28,4 +30,4 @@ class ArticleList extends Component {
 
 }
 
-export default ArticleList;
+export default MatchingList;

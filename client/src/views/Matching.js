@@ -3,24 +3,80 @@ import logo from '../assets/image/logo.png'
 import '../assets/css/create.css';
 import '../assets/css/header.css';
 import Star from '../components/star'
+import MatchingList from '../components/MatchingList'
+
+import axios from 'axios';
+
+import StarRatingComponent from 'react-star-rating-component';
+
 
 class Matching extends Component{
 
-  constructor( props){
-    super (props)
-      this.state = {show : false}
+  constructor(props) {
+    super(props);
+    this.state = {
+      midterm: 4,
+      attendance: 4,
+      groupWorker : 4,
+      difficulty : 4,
+      data: {}   
 
-      this.showResult = this.showResult.bind(this)
-   
-    }
+    };
+  }
 
-    showResult = () => {
-      const { show } = this.state;
-      this.setState ( { show : !show })
-    }
+ 
+  onAttendanceClick(nextValue, prevValue, name) {
+    this.setState({attendance: nextValue});
+  }
+  onMidtermClick(nextValue, prevValue, name) {
+    this.setState({midterm: nextValue});
+  }
+  onGroupWorkerClick(nextValue, prevValue, name) {
+    this.setState({groupWorker: nextValue});
+  }onDifficultyClick(nextValue, prevValue, name) {
+    this.setState({difficulty: nextValue});
+  }
+
+  componentDidMount() {
+      axios.get("http://localhost:5050/matching",
+      {
+        body :
+        (
+          {
+            'midterm': 4,
+        'attendance' : 4,
+        'groupWorker' : 4,
+        'difficulty' : 4
+      
+      })
+  
+      }
+      )
+     
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
+
+
 
 
   render(){
+
+    const { attendance } = this.state;
+    const { midterm } = this.state;
+    const { groupWorker } = this.state;
+    const { difficulty } = this.state;
+
+
+
+    const ratingChanged = (newRating) => {
+      console.log(newRating)
+    }
+
     return(
 
       <div>
@@ -47,7 +103,6 @@ class Matching extends Component{
         <center>
           <h3><font face="Fc active" size={8}>ค้นหาวิชาที่เหมาะกับฉัน</font></h3></center>
           <form className="form_area" id="myForm"  method="post"> 
-          {/* action="mail.html" */}
            
                 <div className="row">
                   <div className="col-25">
@@ -55,20 +110,14 @@ class Matching extends Component{
                   </div>
                   <div className="col-75">
 
-                  <Star />
+                  <StarRatingComponent          
+          name="groupWorker" 
+          size={40}
+          starCount={5}
+          value={groupWorker}
+          onStarClick={this.onGroupWorkerClick.bind(this)}
+        /> 
 
-                    {/* <select id="้homework" name="้homework">
-                      <option value="้homework1">1</option>
-                      <option value="้homework2">2</option>
-                      <option value="้homework3">3</option>
-                      <option value="้homework4">4</option>
-                      <option value="้homework5">5</option>
-                      <option value="้homework6">6</option>
-                      <option value="้homework7">7</option>
-                      <option value="้homework8">8</option>
-
-
-                    </select> */}
                   </div>
                 </div>
                 <div className="row">
@@ -77,18 +126,14 @@ class Matching extends Component{
                   </div>
                   <div className="col-75">
 
-                  <Star />
+                  <StarRatingComponent          
+          name="midterm" 
+          size={40}
+          starCount={5}
+          value={midterm}
+          onStarClick={this.onMidtermClick.bind(this)}
+        /> 
 
-                    {/* <select id="midterm" name="midterm">
-                    <option value="้midterm1">1</option>
-                      <option value="้midterm2">2</option>
-                      <option value="้midterm3">3</option>
-                      <option value="้midterm4">4</option>
-                      <option value="้midterm5">5</option>
-                      <option value="้midterm6">6</option>
-                      <option value="้midterm7">7</option>
-                      <option value="้midterm8">8</option>
-                    </select> */}
                   </div>
                 </div>
 
@@ -98,18 +143,15 @@ class Matching extends Component{
                   </div>
                   <div className="col-75">
 
-                  <Star />
+                  <StarRatingComponent          
+          name="attendance" 
+          size={40}
+          starCount={5}
+          value={attendance}
+          onStarClick={this.onAttendanceClick.bind(this)}
+        /> 
 
-                    {/* <select id="check" name="check">
-                    <option value="้check1">1</option>
-                      <option value="้check2">2</option>
-                      <option value="้check3">3</option>
-                      <option value="้check4">4</option>
-                      <option value="้check5">5</option>
-                      <option value="้check6">6</option>
-                      <option value="้check7">7</option>
-                      <option value="้check8">8</option>
-                    </select> */}
+                
                   </div>
                 </div>
 
@@ -118,18 +160,14 @@ class Matching extends Component{
                     <label htmlFor="name">ความยากของเนื้อหา</label>
                   </div>
                   <div className="col-75">
-                  <Star />
+                  <StarRatingComponent          
+          name="difficulty" 
+          size={40}
+          starCount={5}
+          value={difficulty}
+          onStarClick={this.onDifficultyClick.bind(this)}
+        /> 
 
-                    {/* <select id="้hard" name="้hard">
-                    <option value="้้hard1">1</option>
-                      <option value="้้hard2">2</option>
-                      <option value="้้hard3">3</option>
-                      <option value="้้hard4">4</option>
-                      <option value="้้hard5">5</option>
-                      <option value="้้hard6">6</option>
-                      <option value="้้hard7">7</option>
-                      <option value="้้hard8">8</option>
-                    </select> */}
                   </div>
                 </div>
 
@@ -143,10 +181,12 @@ class Matching extends Component{
               <br></br>
 
               <br></br>
-                <button className="primary-btn" onClick={ this.showResult}>ค้นหา</button>
+                <button className="primary-btn" >ค้นหา</button>
                 <br></br>
       <br></br>
-                { this.state.show && <Result />} 
+      <MatchingList articles={this.state.article} />
+
+                {/* { this.state.show && <Result />}  */}
 
               </div>
             </div>
