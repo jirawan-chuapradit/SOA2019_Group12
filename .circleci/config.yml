@@ -67,7 +67,7 @@ jobs:
     circuit-breaker:
         working_directory: ~/SOA2019_Group12/service/circuitbreaker
         docker:
-            - image: circleci/openjdl:latest
+            - image: circleci/openjdk:latest
         steps:
             - setup_remote_docker:
                 docker_layer_caching: true
