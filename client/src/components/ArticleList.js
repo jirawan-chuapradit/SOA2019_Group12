@@ -13,13 +13,10 @@ class ArticleList extends Component {
     render() {
         return (
 
-            <div className="w3-row-padding" id="about">
-        <div className="w3-center w3-padding-64">
-        </div>
+            
         <div>
         {this.showArticle()}
         </div>
-      </div>
 
            
             
