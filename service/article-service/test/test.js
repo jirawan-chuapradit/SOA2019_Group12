@@ -4,8 +4,11 @@ var expect = chai.expect;
 const should = chai.should();
 const chaiHttp = require("chai-http");
 const server = require("../index");
-
-
+const id = 1
+const db = require('../model/articleSchema')
+db.counterReset('_id', (err) =>{
+  console.log(err)
+})
 chai.use(chaiHttp);
 
 describe("POST new article", () => {
@@ -15,9 +18,51 @@ describe("POST new article", () => {
       .request(server)
       .post("/")
       .send({
-        title: "Test title",
+        title: "title",
+        subject: "subject",
+        category: "วิชาเลือกกลุ่มวิชาภาษา",
+        author: "Tester",
+        description: "This desctipton is for test",
+        grade: "3.5",
+        midterm: 4,
+        attendance: 3,
+        groupWorker: 2,
+        difficulty: 1
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+      chai
+      .request(server)
+      .post("/")
+      .send({
+        title: "title",
         subject: "Test subject",
-        category: "Test category",
+        category: "วิชาเลือกกลุ่มวิชาภาษา",
+        author: "Tester",
+        description: "This desctipton is for test",
+        grade: "3.5",
+        midterm: 4,
+        attendance: 3,
+        groupWorker: 2,
+        difficulty: 1
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  });
+
+  it("should create new article AGAIN", function(done) {
+    this.timeout(10000);
+    chai
+      .request(server)
+      .post("/")
+      .send({
+        title: "title",
+        subject: "Test subject",
+        category: "วิชาเลือกกลุ่มวิชาภาษา",
         author: "Tester",
         description: "This desctipton is for test",
         grade: "3.5",
@@ -37,7 +82,7 @@ describe("POST new article", () => {
       .request(server)
       .post("/")
       .send({
-        title: "Test title",
+        title: "title",
         subject: "Test subject",
         category: "Test category",
         author: "Tester",
@@ -69,8 +114,9 @@ describe("GET all articles", () => {
     });
 
     it("Should return search result", done => {
-      const category = "For test";
-      const subject = "TDD test";
+      var category = "วิชาเลือกกลุ่มวิชาภาษา";
+      category = encodeURI(category)
+      const subject = "subject";
       chai
         .request(server)
         .get(`/?category=${category}&subject=${subject}`)
@@ -107,7 +153,6 @@ describe("GET all articles", () => {
 describe("GET single article", () => {
   // CAN get a article
   it("should get single article", done => {
-    const id = 1;
     const path = `/title/${id}`;
     chai
       .request(server)
@@ -121,10 +166,10 @@ describe("GET single article", () => {
 
   // CAN'T get a article
   it("shouldn't get article", done => {
-    const id = 0;
+    const id_zero = 0;
     chai
       .request(server)
-      .get(`/title/${id}`)
+      .get(`/title/${id_zero}`)
       .end((err, res) => {
         res.should.have.status(404);
         res.should.be.a("object");
@@ -147,7 +192,6 @@ describe("GET single article", () => {
 
 describe("Add Comment", () => {
   it("should success to add comment", done => {
-    const id = 20;
     chai
       .request(server)
       .post(`/title/${id}`)
@@ -167,10 +211,10 @@ describe("Add Comment", () => {
   });
 
   it("should success to add comment", done => {
-    const id = "abcd";
+    const id_a = "abcd";
     chai
       .request(server)
-      .post(`/title/${id}`)
+      .post(`/title/${id_a}`)
       .send({
         comment: [
           {
@@ -201,10 +245,23 @@ describe("/GET Article", () => {
   });
 
   //Test get all titles
-  it("Should get all titles", done => {
+  it("Shouldn't get all titles", done => {
     chai
       .request(server)
       .get("/Article/IST")
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.should.be.a("object");
+        done();
+      });
+  });
+
+  //Test get all titles
+  it("Should get all titles", done => {
+    const subject = 'subject'
+    chai
+      .request(server)
+      .get(`/Article/${subject}`)
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.a("object");
@@ -212,13 +269,25 @@ describe("/GET Article", () => {
       });
   });
 
+  // it("Should get all titles", done => {
+  //   chai
+  //     .request(server)
+  //     .get("/Article/Test-ti")
+  //     .end((err, res) => {
+  //       res.should.have.status(200);
+  //       res.should.be.a("object");
+  //       done();
+  //     });
+  // });
+
+
   // Test get empty title
   it("Should get empty title", done => {
     chai
       .request(server)
       .get("/Article/ABC")
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(404);
         res.should.be.a("object");
         done();
       });
@@ -232,6 +301,9 @@ describe("/GET Article", () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.a("object");
+        db.remove({}, err => {
+          console.log("removed")
+        })
         done();
       });
   });

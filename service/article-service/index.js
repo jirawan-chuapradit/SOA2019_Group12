@@ -1,5 +1,6 @@
 const ENV = process.env.NODE_ENV || 'development';
 require('custom-env').env(ENV);
+require('@google-cloud/trace-agent').start();
 
 //require('module-alias/register');
 // require('@conf/db');
