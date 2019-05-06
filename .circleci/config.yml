@@ -80,22 +80,6 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker image build -t $DOCKER_USERNAME/matching_service .
                     docker image push $DOCKER_USERNAME/matching_service
-    #Notification Service
-    notification:
-        working_directory: ~/SOA2019_Group12/service/notification-service
-        docker:
-            - image: circleci/node:latest
-        steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - checkout:
-                path: ~/SOA2019_Group12
-            - run:
-                name: Build notification Service's Image
-                command: |
-                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker image build -t $DOCKER_USERNAME/notification_service .
-                    docker image push $DOCKER_USERNAME/notification_service
     deploy:
         machine:
             enabled: true
@@ -141,11 +125,6 @@ workflows:
                     branches:
                         only:
                             master
-            - notification:
-                filters:
-                    branches:
-                        only:
-                            master
             - deploy:
                 requires:
                     - article
@@ -153,4 +132,3 @@ workflows:
                     - api-gateway
                     - eureka
                     - matching
-                    - notification
