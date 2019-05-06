@@ -99,13 +99,13 @@ exports.createArticle = (req, res) => {
           if (size < 2) {
             axios
               .post(
-                "http://localhost:5050/matching/addMatchingSubject",
+                "http://matching:5050/addMatchingSubject",
                 mathingData
               )
               .then(response => {
                 console.log(response.data);
                 console.log(
-                  "GOTO http://localhost:5050/matching/addMatchingSubject"
+                  "GOTO http://matching:5050/addMatchingSubject"
                 );
                 console.log(response.status);
               })
@@ -115,13 +115,13 @@ exports.createArticle = (req, res) => {
           } else {
             axios
               .put(
-                "http://localhost:5050/matching/editMatchingSubject",
+                "http://matching:5050/editMatchingSubject",
                 mathingData
               )
               .then(response => {
                 console.log(response.data);
                 console.log(
-                  "GoTO http://localhost:5050/matching/editMatchingSubject "
+                  "GoTO http://matching:5050/editMatchingSubject "
                 );
                 console.log(response.status);
               })
@@ -178,6 +178,7 @@ exports.getAllTitles = async (req, res) => {
   console.log("subject: " + req.params.subject);
   const titles = await db.find(
     { subject: req.params.subject }
+
   );
   if (!Array.isArray(titles) || !titles.length) {
     return res.status(200).json("Sorry. Title Not found!!");

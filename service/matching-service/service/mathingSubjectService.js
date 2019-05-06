@@ -72,10 +72,10 @@ exports.finding = (req, res) => {
 
   matchingSubjectDb
     .find({
-      midterm: { $gt: req.query.midterm },
-      attendance: { $gt: req.query.attendance },
-      groupWorker: { $gt: req.query.groupWorker },
-      difficulty: { $gt: req.query.difficulty }
+      midterm: { $gt: req.query.midterm - 1 },
+      attendance: { $gt: req.query.attendance - 1 },
+      groupWorker: { $gt: req.query.groupWorker - 1 },
+      difficulty: { $gt: req.query.difficulty - 1 }
     }, { subject: 1, _id: 0 })
     .then(subject => {
       if (!Array.isArray(subject) || !subject.length) {

@@ -15,7 +15,8 @@ services:
       - mongo
       - eureka
     environment:
-      WAIT_HOSTS: mongo:27017, eureka:8761
+      WAIT_HOSTS: mongo:27017, eureka:8761, matching:5050
+      WAIT_HOSTS_TIMEOUT: 120
       MONGODB_URL: 'mongodb://mongo:27017/Article-service'
       EUREKA_CLIENT_HOST: 'article'
       EUREKA_CLIENT_URL: 'http://article:'
@@ -35,6 +36,7 @@ services:
       - eureka
     environment:
       WAIT_HOSTS: eureka:8761, mongo:27017
+      WAIT_HOSTS_TIMEOUT: 120
       MONGODB_URL: 'mongodb://mongo:27017/mydb2'
       EUREKA_CLIENT_HOST: 'authentication'
       EUREKA_CLIENT_URL: 'http://authentication:'
@@ -54,6 +56,7 @@ services:
       - eureka
     environment:
       WAIT_HOSTS: mongo:27017, eureka:8761
+      WAIT_HOSTS_TIMEOUT: 120
       MONGODB_URL: 'mongodb://mongo:27017/subject'
       EUREKA_CLIENT_HOST: 'matching'
       EUREKA_CLIENT_URL: 'http://matching:'

@@ -134,9 +134,7 @@ class FindArticle extends React.Component {
                     </select> </div>
 
                 </div> </div>
-              <button className="primary-btn" onClick={() => this.confirmCreateFinding()} >ค้นหา</button>
-
-              <h1>{this.state.value}</h1>
+            
 
             </form> </div>
 
