@@ -30,7 +30,10 @@ class FindArticle extends React.Component {
 
   componentDidMount() {
     // process.env.REACT_APP_API_URL +"/article/"
-    axios.get("http://localhost:3000/api/article/Article/"+this.state.value).then(res => {
+    
+    // axios.get("http://localhost:3000/api/article/Article/"+this.state.value).then(res => {
+      axios.get("http://localhost:8000/Article/" + this.state.value).then(res => {
+
       console.log(res.data);
       { this.setState({ article: res.data }) }
     });
