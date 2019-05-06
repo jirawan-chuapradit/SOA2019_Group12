@@ -85,7 +85,7 @@ exports.finding = (req, res) => {
           status: "Sorry, Can't find the article suitable for you :("
         });
       } else {
-        return res.json({ info: subject });
+        return res.json(subject);
       }
     });
 };

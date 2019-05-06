@@ -5,7 +5,6 @@ import Header from '../components/Header';
 import axios from 'axios';
 
 
-
 class CreateArticle extends Component {
 
   constructor(props) {
@@ -22,41 +21,90 @@ class CreateArticle extends Component {
       midterm: 0,
       attendance: 0,
       groupWorker: 0,
-      difficulty : 0,
+      difficulty: 0,
 
       article: ""
     }
     this.confirmCreateArticle = this.confirmCreateArticle.bind(this);
   }
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value })
-    
+  handleTitleChange = (event) => {
+    this.setState({ title: event.target.value })
+  }
+  handleCatagoryChange = (event) => {
+    this.setState({ category: event.target.value })
+  }
+  handleAuthorChange = (event) => {
+    this.setState({ author: event.target.value })
+  }
+  handleSubjectChange = (event) => {
+    this.setState({ subject: event.target.value })
+  }
+  handleDescriptionChange = (event) => {
+    this.setState({ description: event.target.value })
+  }
+  handleGradeChange = (event) => {
+    this.setState({ grade: event.target.value })
+  }
+  handleMidtermChange = (event) => {
+    this.setState({ midterm: event.target.value })
+  }
+  handleAttendanceChange = (event) => {
+    this.setState({ attendance: event.target.value })
+  }
+  handleGroupWorkerChange = (event) => {
+    this.setState({ groupWorker: event.target.value })
+  }
+  handleDifficultyChange = (event) => {
+    this.setState({ difficulty: event.target.value })
   }
 
-  // handleTitleChange = (event) => {
-  //   this.setState({ title: event.target.value })
-  // }
-  // handleSubjectChange = (event) => {
-  //   this.setState({ subject: event.target.value })
-  // }
-  // handleDescriptionChange = (event) => {
-  //   this.setState({ description: event.target.value })
-  // }
-
+  showConsoleLog() {
+    console.log("article name :" + this.state.title)
+    console.log("grade : " + this.state.grade);
+  }
   confirmCreateArticle() {
-    axios.post("http://localhost:8000/", {
-      "title": this.state.title,
-      "category": this.state.category,
-      "author": this.state.author,
-      "subject": this.state.subject,
-      "description": this.state.description,
-      "grade": this.state.grade,
-      "midterm": this.state.midterm,
-      "attendance": this.attendance,
-      "groupWorker": this.state.groupWorker,
-      "difficulty": this.state.difficulty
+
+    axios.post("http://localhost:8000/",
+
+      {
+        "title": this.state.title,
+        "category": this.state.category,
+        "author": 'zoom',
+        "subject": this.state.subject,
+        "description": this.state.description,
+        "grade": this.state.grade,
+        "midterm": 3,
+        "attendance": 4,
+        "groupWorker": 5,
+        "difficulty": 1
+        // "grade": this.state.grade,
+        // "midterm": this.state.midterm,
+        // "attendance": this.state.attendance,
+        // "groupWorker": this.state.groupWorker,
+        // "difficulty": this.state.difficulty
     })
+        
+
+        // "title": "test",
+        // "category": "aewaew",
+        // "author": "Earth",
+        // "subject": "COM OR",
+        // "description": "Test kubb",
+        // "grade": "3.5",
+        // "midterm": 3,
+        // "attendance": 4,
+        // "groupWorker": 5,
+        // "difficulty": 1
+
+        // "description": '',
+        // "grade": 'A',
+        // "midterm": 0,
+        // "attendance": 0,
+        // "groupWorker": 0,
+        // "difficulty": 0
+
+        
       .then(res => {
         console.log(res);
       })
@@ -65,11 +113,7 @@ class CreateArticle extends Component {
       })
   }
 
-
-
   render() {
-
-
     return (
       <div>
         <Header />
@@ -87,8 +131,8 @@ class CreateArticle extends Component {
                         <label htmlFor="name">ชื่อบทความ</label>
                       </div>
                       <div className="col-75">
-                        <input type="text" name="title" value={this.state.title}
-                          onChange={this.handleChange} placeholder="ชื่อบทความของคุณ...." />
+                        <input type="text" id="title" value={this.state.title}
+                          onChange={this.handleTitleChange.bind(this)} placeholder="ชื่อบทความของคุณ...." />
                       </div>
                     </div>
 
@@ -97,7 +141,7 @@ class CreateArticle extends Component {
                         <label htmlFor="name">หมวดหมู่วิชา</label>
                       </div>
                       <div className="col-75">
-                        <select id="subject" name="subject">
+                        <select id="category" name="category" value={this.state.category} onChange={this.handleCatagoryChange.bind(this)}>
                           <option value="วิชาเลือกกลุ่มวิชาภาษา">วิชาเลือกกลุ่มวิชาภาษา</option>
                           <option value="วิชาเลือกกลุ่มวิชามนุษย์ศาสตร์">วิชาเลือกกลุ่มวิชามนุษย์ศาสตร์</option>
                           <option value="วิชาเลือกกลุ่มวิชาสังคมศาสตร์">วิชาเลือกกลุ่มวิชาสังคมศาสตร์</option>
@@ -119,8 +163,8 @@ class CreateArticle extends Component {
                         <label htmlFor="name">ชื่อวิชา</label>
                       </div>
                       <div className="col-75">
-                        <input type="text" name="subject" value={this.state.subject}
-                          onChange={this.handleChange} placeholder="ชื่อวิชา" />
+                        <input type="text" id="subject" value={this.state.subject}
+                          onChange={this.handleSubjectChange.bind(this)} placeholder="ชื่อวิชา" />
                       </div>
                     </div>
                     <div className="row">
@@ -129,8 +173,8 @@ class CreateArticle extends Component {
                       </div>
                       <div className="col-75">
 
-                        <textarea rows="5" cols="50" name="description" value={this.state.description}
-                          onChange={this.handleChange} placeholder="รายละเอียดวิชาของคุณ....">
+                        <textarea rows="5" cols="50" id="description" value={this.state.description}
+                          onChange={this.handleDescriptionChange.bind(this)} placeholder="รายละเอียดวิชาของคุณ....">
                         </textarea>
                       </div>
                     </div>
@@ -139,7 +183,9 @@ class CreateArticle extends Component {
                         <label htmlFor="name">เกรดที่ได้</label>
                       </div>
                       <div className="col-75">
-                        <select id="subject" name="subject">
+                      
+                        <select id="grade" name="grade" value={this.state.grade} 
+                        onChange={this.handleGradeChange.bind(this)}>
                           <option value="A">A</option>
                           <option value="B+">B+</option>
                           <option value="B">B</option>
@@ -157,75 +203,65 @@ class CreateArticle extends Component {
 
                 <div className="row">
                   <div className="col-25">
-                    <label htmlFor="name">มีงานเดี่ยว / งานกลุ่ม</label>
-                  </div>
-                  <div className="col-75">
-                    <select id="้homework" name="้homework">
-                      <option value="้homework1">1</option>
-                      <option value="้homework2">2</option>
-                      <option value="้homework3">3</option>
-                      <option value="้homework4">4</option>
-                      <option value="้homework5">5</option>
-                      <option value="้homework6">6</option>
-
-
-
-                    </select>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-25">
                     <label htmlFor="name">มีสอบกลางภาค</label>
                   </div>
                   <div className="col-75">
-                    <select id="midterm" name="midterm">
-                      <option value="้midterm1">1</option>
-                      <option value="้midterm2">2</option>
-                      <option value="้midterm3">3</option>
-                      <option value="้midterm4">4</option>
-                      <option value="้midterm5">5</option>
-                      <option value="้midterm6">6</option>
-
+                    <select id="midterm" name="midterm" value={this.state.midterm} onChange={this.handleMidtermChange.bind(this)}>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
                     </select>
                   </div>
                 </div>
-
-                <div className="row">
-                  <div className="col-25">
-                    <label htmlFor="name">มีสอบกลางภาค</label>
-                  </div>
-                  <div className="col-75">
-                    <select id="midterm" name="midterm">
-                      <option value="้midterm1">1</option>
-                      <option value="้midterm2">2</option>
-                      <option value="้midterm3">3</option>
-                      <option value="้midterm4">4</option>
-                      <option value="้midterm5">5</option>
-                      <option value="้midterm6">6</option>
-                      <option value="้midterm7">7</option>
-                      <option value="้midterm8">8</option>
-                    </select>
-                  </div>
-                </div>
-
                 <div className="row">
                   <div className="col-25">
                     <label htmlFor="name">เช็คชื่อ / เข้าเรียน</label>
                   </div>
                   <div className="col-75">
-                    <select id="check" name="check">
-                      <option value="้check1">1</option>
-                      <option value="้check2">2</option>
-                      <option value="้check3">3</option>
-                      <option value="้check4">4</option>
-                      <option value="้check5">5</option>
-                      <option value="้check6">6</option>
-                      <option value="้check7">7</option>
-                      <option value="้check8">8</option>
+                    <select id="attendance" name="attendance" value={this.state.attendance} onChange={this.handleAttendanceChange.bind(this)}>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+
                     </select>
                   </div>
                 </div>
 
+                <div className="row">
+                  <div className="col-25">
+                    <label htmlFor="name">มีงานเดี่ยว / งานกลุ่ม</label>
+                  </div>
+                  <div className="col-75">
+                    <select id="groupWorker" name="groupWorker" value={this.state.groupWorker} onChange={this.handleGroupWorkerChange.bind(this)}>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-25">
+                    <label htmlFor="name">ความยากง่ายของเนื้อหา</label>
+                  </div>
+                  <div className="col-75">
+                    <select id="difficulty" name="difficulty" value={this.state.difficulty} onChange={this.handleDifficultyChange.bind(this)}>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button onClick={() => this.showConsoleLog()} >show log</button>
                 <button onClick={() => this.confirmCreateArticle()} >ตกลง</button>
 
               </form>
