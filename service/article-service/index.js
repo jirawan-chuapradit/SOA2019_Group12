@@ -1,7 +1,7 @@
 const ENV = process.env.NODE_ENV || 'development';
 require('custom-env').env(ENV);
 
-require('module-alias/register');
+//require('module-alias/register');
 // require('@conf/db');
 
 const express = require("express");
@@ -26,7 +26,7 @@ if (ENV === 'test' || ENV === 'development'){
             app: 'article-service',
             hostName: process.env.EUREKA_CLIENT_HOST || 'localhost',
             ipAddr: '127.0.0.1',
-            statusPageUrl: (process.env.EUREKA_CLIENT_URL || 'http://localhost:') + PORT,
+            statusPageUrl: (process.env.EUREKA_CLIENT_URL || 'http://localhost:') + port,
 
             vipAddress: 'article-service',
             port: {
