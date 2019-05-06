@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../assets/css/create.css';
 import '../assets/css/header.css';
-import logo from '../assets/image/logo.png';
+import Header from '../components/Header';
 import axios from 'axios';
 
 
@@ -12,85 +12,67 @@ class CreateArticle extends Component {
     super(props)
     this.state = {
       selectedView: 'Cheating',
+
+      title: '',
+      category: '',
+      author: '',
+      subject: '',
+      description: '',
+      grade: '',
+      midterm: 0,
+      attendance: 0,
+      groupWorker: 0,
+      difficulty : 0,
+
       article: ""
     }
     this.confirmCreateArticle = this.confirmCreateArticle.bind(this);
   }
 
-  componentDidMount() {
-    // วิธีที่ 1
-    this.setState({
-      article: {
-        "_id": 10,
-        "title": "Zoom test new article",
-        "subject": "SOA",
-        "category": "IT",
-        "author": "Zoom",
-        "description": "Test kaa",
-        "grade": "A",
-        "midterm": 3,
-        "attendance": 4,
-        "groupWorker": 5,
-        "difficulty": 1,
-        "comment": [],
-        "__v": 0
-      }
-    })
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+    
   }
 
-
+  // handleTitleChange = (event) => {
+  //   this.setState({ title: event.target.value })
+  // }
+  // handleSubjectChange = (event) => {
+  //   this.setState({ subject: event.target.value })
+  // }
+  // handleDescriptionChange = (event) => {
+  //   this.setState({ description: event.target.value })
+  // }
 
   confirmCreateArticle() {
-    const { totalPrice, orders } = this.state;
-    if (orders && orders.length > 0) {
-      axios.post("http://localhost:3002/article", {
-        "_id": 10,
-        "title": "Zoom test new article",
-        "subject": "SOA",
-        "category": "IT",
-        "author": "Zoom",
-        "description": "Test kaa",
-        "grade": "A",
-        "midterm": 3,
-        "attendance": 4,
-        "groupWorker": 5,
-        "difficulty": 1,
-        "comment": [],
-        "__v": 0
+    axios.post("http://localhost:8000/", {
+      "title": this.state.title,
+      "category": this.state.category,
+      "author": this.state.author,
+      "subject": this.state.subject,
+      "description": this.state.description,
+      "grade": this.state.grade,
+      "midterm": this.state.midterm,
+      "attendance": this.attendance,
+      "groupWorker": this.state.groupWorker,
+      "difficulty": this.state.difficulty
+    })
+      .then(res => {
+        console.log(res);
       })
-        .then(res => {
-          console.log(res);
-        })
-        .catch(function (error) {
-          console.log(error);
-        })
-    }
+      .catch(function (error) {
+        console.log(error);
+      })
   }
+
 
 
   render() {
 
 
     return (
-
       <div>
-        <header><a href="/" ><img src={logo} alt="Logo" /> </a> </header>
-        <nav>
-          <ul>
-            <li><a href="/">หน้าแรก</a></li>
-            <li><a href="/CreateArticle" className="active" >สร้างบทความใหม่</a></li>
-
-            <li><a href="/Matching">หาวิชาที่เหมาะกับฉัน</a></li>
-
-            <li><a href="/FindArticle">ค้นหาบทความ</a></li>
-
-            <li><a href="/Login">เข้าสู่ระบบ</a></li>
-
-
-
-          </ul>
-        </nav>
-        <section className="sec1" />
+        <Header />
 
         <section className="Add">
           <div className="container">
@@ -105,7 +87,8 @@ class CreateArticle extends Component {
                         <label htmlFor="name">ชื่อบทความ</label>
                       </div>
                       <div className="col-75">
-                        <input type="text" id="title" name="firstname" placeholder="ชื่อบทความของคุณ...." />
+                        <input type="text" name="title" value={this.state.title}
+                          onChange={this.handleChange} placeholder="ชื่อบทความของคุณ...." />
                       </div>
                     </div>
 
@@ -136,7 +119,8 @@ class CreateArticle extends Component {
                         <label htmlFor="name">ชื่อวิชา</label>
                       </div>
                       <div className="col-75">
-                        <input type="text" id="subject" name="subject" placeholder="ชื่อวิชา" />
+                        <input type="text" name="subject" value={this.state.subject}
+                          onChange={this.handleChange} placeholder="ชื่อวิชา" />
                       </div>
                     </div>
                     <div className="row">
@@ -145,7 +129,8 @@ class CreateArticle extends Component {
                       </div>
                       <div className="col-75">
 
-                        <textarea rows="5" cols="50" name="description" placeholder="รายละเอียดวิชาของคุณ....">
+                        <textarea rows="5" cols="50" name="description" value={this.state.description}
+                          onChange={this.handleChange} placeholder="รายละเอียดวิชาของคุณ....">
                         </textarea>
                       </div>
                     </div>
@@ -249,7 +234,6 @@ class CreateArticle extends Component {
           </div>
 
         </section>
-
 
       </div>
 
