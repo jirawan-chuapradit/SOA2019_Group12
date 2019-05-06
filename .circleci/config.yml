@@ -100,11 +100,17 @@ jobs:
         machine:
             enabled: true
         steps:
+            - add_ssh_keys:
+                fingerprints:
+                    - '87:e4:38:68:08:c7:12:23:dc:00:82:f3:29:7b:3f:3e'
             - run:
                 name: Deploy over SSH
                 command: |
-                    sudo apt-get install sshpass
-                    sshpass -p $SSH_PASS ssh -v $SSH_USER@$SSH_HOST "cd SOA2019_Group12;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
+                    ssh -vv -o "StrictHostKeyChecking=no" ${SSH_USER}@${SSH_HOST} bash -ic '"cd /home/earth/SOA2019_Group12 && \
+                        sudo docker-compose stop && \
+                        sudo docker-compose rm -f && \
+                        sudo docker-compose pull && \
+                        sudo docker-compose up -d"'
 
 workflows:
     version: 2
