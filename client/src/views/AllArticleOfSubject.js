@@ -9,55 +9,60 @@ import Star from '../components/star'
 
 class AllArticleOfSubject extends Component{
 
+  // state = {
+  //   article: []
+  // }
+
+  // constructor(props) {
+  //   super(props);
+  // }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.article !== this.props.article) {
+  //     this.setState({ article: this.props.article })
+  //   }
+  // }
+
+
     render(){
+
+      const {title} = this.props.article;
+
+      // const article = this.state.article;
+
       return(
+
+        <div className="w3-third w3-margin-bottom  p-5">
+                <div className="w3-card-4">
+                    {/* <img src={team1} alt="John" style={{ width: '100%' }} /> */}
+                    <div className="w3-container">
+                        <h3 className="mt-3">ชื่อบทความ {title}</h3>
+                        {/* <p className="w3-opacity"> ชื่อผู้เขียน {item.author}</p> */}
+                        <p><button className="w3-button w3-light-grey w3-block">อ่านบทความต่อ..</button></p>
+                    </div>
+                </div>
+            </div>
   
-        <div>
-<header><a href="/" ><img src={logo} alt="Logo"/> </a> </header>
-        <nav>
-          <ul>
-            <li><a href="/">หน้าแรก</a></li>
-            <li><a href="/CreateArticle">สร้างบทความใหม่</a></li>
-
-            <li><a href="/Matching">หาวิชาที่เหมาะกับฉัน</a></li>
-
-            <li><a href="/FindArticle" className="active">ค้นหาบทความ</a></li>
-
-            <li><a href="/Login">เข้าสู่ระบบ</a></li>
-
-            
-
-          </ul>
-        </nav>
-        <section className="sec1" /> <br/>
+//          <div>
 
 
-        <center>
-            <h1>ชื่อวิชา</h1>
-            <h3>หมวดสังคม
-            , เกรดเฉลี่ยรวม A</h3>
+//             <section className="Add">
+//         <div className="container">
+//           <div className="register_form"></div>
 
+//             <Card>
+//   <Card.Body>
+//     <Card.Title>หัวข้อบทความ {title} </Card.Title>
+//     <Card.Text >
+//      {/* <Star fa-pull-left /> */}
+//     </Card.Text>
+//     <Button variant="primary" href="/Article" >อ่านบทความ</Button>
+//   </Card.Body>
+// </Card>; 
 
-            </center>
-
-            <section className="Add">
-        <div className="container">
-          <div className="register_form"></div>
-
-            <Card>
-  <Card.Body>
-    <Card.Title>หัวข้อบทความ</Card.Title>
-    <Card.Text >
-     <Star fa-pull-left />
-    </Card.Text>
-    <Button variant="primary" href="/Article" >อ่านบทความ</Button>
-  </Card.Body>
-</Card>;
-
-</div></section>
+// </div></section> <br/>
 
         
-       </div>
+//        </div>
       );
     }
   

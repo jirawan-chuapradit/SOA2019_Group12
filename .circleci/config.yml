@@ -96,6 +96,16 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker image build -t $DOCKER_USERNAME/notification_service .
                     docker image push $DOCKER_USERNAME/notification_service
+    deploy:
+        machine:
+            enabled: true
+        steps:
+            - run:
+                name: Deploy over SSH
+                command: |
+                    sudo apt-get install sshpass
+                    sshpass -p $SSH_PASS ssh -v $SSH_USER@$SSH_HOST "cd SOA2019_Group12;docker-compose stop;docker-compose rm -f;docker-compose pull;docker-compose up -d"
+
 workflows:
     version: 2
     compile:
@@ -130,3 +140,11 @@ workflows:
                     branches:
                         only:
                             master
+            - deploy:
+                requires:
+                    - article
+                    - authentication
+                    - api-gateway
+                    - eureka
+                    - matching
+                    - notification

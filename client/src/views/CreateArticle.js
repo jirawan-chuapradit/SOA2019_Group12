@@ -42,7 +42,7 @@ class CreateArticle extends Component{
 
 <section className="Add">
         <div className="container">
-          <div className="register_form">
+          <div className="create_form">
           <center>
             <h3><font face="Fc active" size={17}>สร้างบทความใหม่</font></h3></center>
             <form className="form_area" id="myForm"> 

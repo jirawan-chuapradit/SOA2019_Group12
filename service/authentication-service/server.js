@@ -4,6 +4,7 @@ var bodyPasser = require("body-parser")
 var app = express()
 var mongose = require("mongoose")
 var port = process.env.PORT || 5000
+const Eureka = require('eureka-js-client').Eureka
 
 app.use(bodyPasser.json())
 app.use(cors())
@@ -27,6 +28,7 @@ var Users = require('./routes/Users')
 
 const client = new Eureka({
     instance: {
+        instanceId: 'authentication-service',
         app: 'authentication-service',
         hostName: process.env.EUREKA_CLIENT_HOST || 'localhost',
         ipAddr: '127.0.0.1',

@@ -1,7 +1,14 @@
+[![CircleCI](https://circleci.com/gh/jirawan-chuapradit/SOA2019_Group12.svg?style=svg)](https://circleci.com/gh/jirawan-chuapradit/SOA2019_Group12)
+
 <p align="center">
   <img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/logo.png" alt="Logo" width="578" height="135" />
 </p>
 <h1 align="center">SOA2019_Group12</h1>
+
+<p align="center">
+<a> <img alt="java" src="https://img.shields.io/static/v1.svg?label=made%20with&message=java&color=orange&logo=java&style=flat"></a>
+<a> <img alt="google" src="https://img.shields.io/static/v1.svg?label=deployed&message=cloud%20platform&color=4285f4&logo=google&style=flat&logoColor=white"></a>
+</p>
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
