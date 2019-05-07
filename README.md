@@ -90,6 +90,6 @@ http://35.247.168.170/api/{SERVICE_NAME}/{API_PATH}
   [Article Service](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/article-service/README.md)  
 
 ## Matching Service
-  [Matching Service](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/matching-service/README.md) 
+  [Matching Service](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/matching-service/README.MD) 
 
 
