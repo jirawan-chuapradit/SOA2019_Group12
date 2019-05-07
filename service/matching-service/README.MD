@@ -13,7 +13,10 @@ Running test with Chai and Mocha
 # Endpoints
 1. Get Articles that match with rank 
 ``Get /matching ``
+
+
 Return ``200 OK`` with information of article when given an exists matched rank
+
 
 Return  ``404 Sorry, Can't find the article suitable for you `` when given non article matched
 
@@ -56,5 +59,6 @@ Return ``201 CREATED`` with article has been created
 ```
 
 Return ``200 OK`` with information of edited post
+
 
 Return ``404 NOT FOUND`` if post ID is not exists
