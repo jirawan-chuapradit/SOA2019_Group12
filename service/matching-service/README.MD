@@ -4,7 +4,7 @@
 2. Install all dependencies
 
 
-``npm install``
+     ``npm install``
 
 
 
