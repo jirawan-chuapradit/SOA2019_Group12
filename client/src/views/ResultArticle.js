@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../assets/css/create.css';
 import '../assets/css/header.css';
-// import AllArticleOfSubject from '../views/AllArticleOfSubject';
 import ArticleList from '../components/ArticleList'
 import axios from 'axios';
 import Header from '../components/Header'
