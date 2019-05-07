@@ -7,5 +7,3 @@
 | POST /articles |:white_check_mark: |
 | GET /articles/{id} |:white_check_mark: |
 | POST /articles/{id} |:white_check_mark: |
-
-## Authentication service
