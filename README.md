@@ -73,9 +73,9 @@ https://beaming-gadget-234817.appspot.com/{Endpoint following next section}
 # ➤  Services <br/>
 ```
 
-• API Gateway Running via port 3000 <br/>
-• Article Service Running via port 8000 <br/>
-• Matching Service Running via port 5050 <br/>
+• API Gateway Running via port 3000 
+• Article Service Running via port 8000 
+• Matching Service Running via port 5050
 ```
 
 
