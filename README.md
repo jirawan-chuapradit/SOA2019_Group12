@@ -45,11 +45,6 @@ cd /SOA2019_Group12/
 ```
 npm start
 ```
-## Testing
-```
-- Running test with Chai and Mocha 
-  "npm test"
-```
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
