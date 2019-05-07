@@ -11,7 +11,7 @@
 3. Run the service with the development environment
 
 
-``npm install``
+    ``npm install``
 
 # Testing
 Running test with Chai and Mocha
