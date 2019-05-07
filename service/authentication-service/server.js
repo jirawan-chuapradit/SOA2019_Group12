@@ -1,3 +1,5 @@
+require('@google-cloud/trace-agent').start();
+
 var express = require("express")
 var cors = require("cors")
 var bodyPasser = require("body-parser")

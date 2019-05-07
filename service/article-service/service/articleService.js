@@ -103,14 +103,14 @@ exports.createArticle = (req, res) => {
                 mathingData
               )
               .then(response => {
-                console.log(response.data);
-                console.log(
-                  "GOTO http://matching:5050/addMatchingSubject"
-                );
-                console.log(response.status);
+                // console.log(response.data);
+                // console.log(
+                //   "GOTO http://matching:5050/addMatchingSubject"
+                // );
+                // console.log(response.status);
               })
               .catch(error => {
-                console.log(error);
+                // console.log(error);
               });
           } else {
             axios
@@ -119,14 +119,14 @@ exports.createArticle = (req, res) => {
                 mathingData
               )
               .then(response => {
-                console.log(response.data);
-                console.log(
-                  "GoTO http://matching:5050/editMatchingSubject "
-                );
-                console.log(response.status);
+                // console.log(response.data);
+                // console.log(
+                //   "GoTO http://matching:5050/editMatchingSubject "
+                // );
+                // console.log(response.status);
               })
               .catch(error => {
-                console.log(error);
+                // console.log(error);
               });
           }
         });
@@ -181,7 +181,7 @@ exports.getAllTitles = async (req, res) => {
 
   );
   if (!Array.isArray(titles) || !titles.length) {
-    return res.status(200).json("Sorry. Title Not found!!");
+    return res.status(404).json("Sorry. Title Not found!!");
   } else {
     return res.status(200).json(titles);
   }

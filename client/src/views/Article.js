@@ -12,6 +12,7 @@ import axios from 'axios';
 
 class Article extends Component {
 
+
     constructor(props){
         super(props)
         this.state = {
@@ -19,21 +20,32 @@ class Article extends Component {
            }
     }
     componentDidMount(){
+
         const url_string = window.location.href
         var url = new URL(url_string);
         var c = url.searchParams.get("id");
-        console.log(c);
+        console.log("id :" + c);
         this.fetchArticle(c)
+        // axios.get('http://localhost:8000/Article/findbyid/' + c).then(res => {
+        //     console.log("data :" + res.data);
+        //     { this.setState(res.data) }
+        // });
     }
+
+    // axios.get("http://localhost:8000/").then(res => {
+
 
     fetchArticle = async (c) => {
         const res = await axios.get('http://localhost:8000/Article/findbyid/'+c)
+
         console.log(res.data[0])
 
         this.setState( {article : res.data[0]})
         
 
+
     }
+
     render() {
         console.log(this.state.article)
 
@@ -51,7 +63,9 @@ class Article extends Component {
                     </ul>
                 </nav>
                 <section className="sec1" />
+
                 <Content article={this.state.article}/>
+
                 <Comment />
                 <CommentForm />
             </div>

@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/trace-agent": "^3.6.1",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cnfg": "^1.2.0",

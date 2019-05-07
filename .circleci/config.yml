@@ -32,22 +32,6 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker image build -t $DOCKER_USERNAME/api_gateway .
                     docker image push $DOCKER_USERNAME/api_gateway
-    #Eureka
-    eureka:
-        working_directory: ~/SOA2019_Group12/service/Eureka
-        docker:
-            - image: circleci/openjdk:latest
-        steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - checkout:
-                path: ~/SOA2019_Group12
-            - run:
-                name: Build Eureka's Image
-                command: |
-                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker image build -t $DOCKER_USERNAME/eureka_server .
-                    docker image push $DOCKER_USERNAME/eureka_server
     #Authentication Service
     authentication:
         working_directory: ~/SOA2019_Group12/service/authentication-service
@@ -80,6 +64,22 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker image build -t $DOCKER_USERNAME/matching_service .
                     docker image push $DOCKER_USERNAME/matching_service
+    # circuit-breaker:
+    #     working_directory: ~/SOA2019_Group12/service/circuitbreaker
+    #     docker:
+    #         - image: circleci/openjdk:latest
+    #     steps:
+    #         - setup_remote_docker:
+    #             docker_layer_caching: true
+    #         - checkout:
+    #             path: ~/SOA2019_Group12
+    #         - run:
+    #             name: Build Circuit Breaker's Image
+    #             command: |
+    #                 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    #                 docker image build -t $DOCKER_USERNAME/circuit_breaker .
+    #                 docker image push $DOCKER_USERNAME/circuit_breaker
+        
     deploy:
         machine:
             enabled: true
@@ -88,14 +88,14 @@ jobs:
                 fingerprints:
                     - '87:e4:38:68:08:c7:12:23:dc:00:82:f3:29:7b:3f:3e'
             - run:
-                name: Deploy over SSH
+                name: Deploy Over SSH
                 command: |
                     ssh -vv -o "StrictHostKeyChecking=no" ${SSH_USER}@${SSH_HOST} bash -ic '"cd /home/earth/SOA2019_Group12 && \
                         sudo git pull origin master && \
                         sudo docker-compose stop && \
-                        sudo docker-compose rm -f && \
                         sudo docker-compose pull && \
                         sudo docker-compose up -d"'
+# docker-compose rm -f && \
 
 workflows:
     version: 2
@@ -111,11 +111,11 @@ workflows:
                     branches:
                         only:
                             master
-            - eureka:
-                filters:
-                    branches:
-                        only:
-                            master
+            # - circuit-breaker:
+            #     filters:
+            #         branches:
+            #             only:
+            #                 master
             - authentication:
                 filters:
                     branches:
@@ -131,5 +131,5 @@ workflows:
                     - article
                     - authentication
                     - api-gateway
-                    - eureka
+                    # - circuit-breaker
                     - matching
