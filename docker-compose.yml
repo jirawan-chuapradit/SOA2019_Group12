@@ -98,4 +98,4 @@ services:
     container_name: circuit-breaker
     image: earthzphanu/circuit_breaker
     ports:
-      - '8080:8080'
+      - '8888:8888'
