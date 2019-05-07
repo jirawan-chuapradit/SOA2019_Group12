@@ -8,7 +8,7 @@ const Eureka = require('eureka-js-client').Eureka
 const cors = require('cors')
 
 // Constants
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 5000
 const HOST = '0.0.0.0'
 const app = express()
 

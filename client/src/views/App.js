@@ -17,7 +17,7 @@ class App extends Component {
 
 
   componentDidMount() {
-      axios.get("http://localhost:8000/").then(res => {
+      axios.get("http://35.247.168.170:3000/api/article/").then(res => {
       console.log(res.data);
       { this.setState({ article: res.data }) }
     });

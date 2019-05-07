@@ -32,7 +32,7 @@ class Article extends Component {
 
 
     fetchArticle = async (c) => {
-        const res = await axios.get('http://localhost:8000/Article/findbyid/'+c)
+        const res = await axios.get('http://35.247.168.170:3000/api/article/Article/findbyid/'+c)
 
         console.log(res.data[0])
 

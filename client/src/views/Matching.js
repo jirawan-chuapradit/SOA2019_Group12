@@ -37,7 +37,7 @@ class Matching extends Component{
   }
 
   componentDidMount() {
-      axios.get("http://localhost:5050/matching",
+      axios.get("http://35.247.168.170:3000/api/matching",
       {
         body :
         (

@@ -86,7 +86,7 @@ services:
       EUREKA_SERVER_HOST: 'eureka'
       EUREKA_SERVER_PORT: 8761
     ports:
-      - '3000:3000'
+      - '5000:5000'
 #Service Discovery
   eureka:
     container_name: eureka
