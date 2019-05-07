@@ -20,7 +20,7 @@ exports.addSubject = async (req, res) => {
   };
 
   await matchingSubjectDb.create(mathingData).then(subject => {
-    res.status(201).json({ status: req.body.subject + " registered!!!" });
+    return res.status(201).json({ status: req.body.subject + " Created" });
   });
 };
 
@@ -42,7 +42,7 @@ exports.editSubject = async (req, res) => {
     .then(s => {
       if (!s) {
         console.log("err: not found subject");
-        return res.status(400).json({ message: "Not found" });
+        return res.status(404).json({ message: "Not found" });
       } else {
         matchingSubjectDb.updateOne(
           { subject: mathingData.subject },
@@ -56,10 +56,10 @@ exports.editSubject = async (req, res) => {
             }
           },
           function(err, res) {
-            console.log("200 :found subject");
+            console.log("200 :OK");
           }
         );
-        return res.status(200).json({ message: "update success" });
+        return res.status(200).json({ message: "OK" });
       }
     });
 };
@@ -81,11 +81,11 @@ exports.finding = (req, res) => {
       if (!Array.isArray(subject) || !subject.length) {
         // array does not exist, is not an array, or is empty
         // ⇒ do not attempt to process array
-        res.status(200).json({
+        return res.status(404).json({
           status: "Sorry, Can't find the article suitable for you :("
         });
       } else {
-        return res.json(subject);
+        return res.status(200).json(subject);
       }
     });
 };
