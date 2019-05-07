@@ -41,7 +41,7 @@ cd /SOA2019_Group12/
 ```
 ## Compile & Run
 ```
-npm 
+npm install
 ```
 ## Testing
 ```
