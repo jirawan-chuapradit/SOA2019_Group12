@@ -32,7 +32,7 @@ cd /SOA2019_Group12/
 ```
 ## Install
 ```
-Install Node.js, Mongo before running or testing
+- Install Node.js, Mongo before running or testing
 - Install all dependencies
   "npm install"
 - Run the service with the development environment 
