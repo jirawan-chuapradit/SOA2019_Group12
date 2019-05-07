@@ -105,7 +105,7 @@ class FindArticle extends React.Component {
                     </div>
 <div className="col-75">  
 
-          <select value={this.state.value} onChange={this.handleChange} >
+          <select value={this.state.value} onChange={this.handleChange} name="subject">
             {view.subject.map(m => <option>{m}</option>)}
           </select> </div>
         
