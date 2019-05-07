@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './views/App'; //import component from App file (with App name)
 import {Router ,Route , browserHistory} from 'react-router'
 import FindArticle from './views/FindArticle';
-import FindArticleZoom from './views/FindArticleZoom';
 import Matching from './views/Matching';
 import CreateArticle from './views/CreateArticle';
 import Login from './views/Login';
@@ -26,7 +25,6 @@ ReactDOM.render(
     <Route path="/AllArticleOfSubject" component={AllArticleOfSubject}/>
     <Route path="/Article" component={Article}/>
 
-    <Route path="/FindArticleZoom" component={FindArticleZoom}/>
 
 
 
