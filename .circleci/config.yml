@@ -49,22 +49,6 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker image build -t $DOCKER_USERNAME/api_gateway .
                     docker image push $DOCKER_USERNAME/api_gateway
-    #Authentication Service
-    authentication:
-        working_directory: ~/SOA2019_Group12/service/authentication-service
-        docker:
-            - image: circleci/node:11.13.0
-        steps:
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - checkout:
-                path: ~/SOA2019_Group12
-            - run:
-                name: Build Authentication Service's Image
-                command: |
-                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker image build -t $DOCKER_USERNAME/authentication_service .
-                    docker image push $DOCKER_USERNAME/authentication_service
     #Matching Service
     matching:
         working_directory: ~/SOA2019_Group12/service/matching-service
@@ -118,11 +102,6 @@ workflows:
                     branches:
                         only:
                             master
-            - authentication:
-                filters:
-                    branches:
-                        only:
-                            master
             - matching:
                 filters:
                     branches:
@@ -131,6 +110,5 @@ workflows:
             - deploy:
                 requires:
                     - article
-                    - authentication
                     - api-gateway
                     - matching
