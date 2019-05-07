@@ -66,25 +66,30 @@ npm test
 
 # ➤ Deploy<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/icon-deploy.png" align="right" width="130"  />
 ```
-https://beaming-gadget-234817.appspot.com/{Endpoint following next section}
+http://35.247.168.170/api/{SERVICE_NAME}/{API_PATH}
 ```
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
 # ➤  Services <br/>
 
-• API Gateway Running via port 3000
+• [API Gateway](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/APIgateway)
+ Running via port 5000
   
-• Article Service Running via port 8000 [Article Service](https://github.com/com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/article-service)
-
-• Matching Service Running via port 5050
-
-
+• [Article Service](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/article-service)
+ Running via port 8000 
+ 
+• [Matching Service](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/matching-service)
+ Running via port 5050
+ 
+ • [Circuit Breaker](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/circiutbreaker)
+ Running via port 8888
 
 # ➤  API & Endpoint<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/603197.png" align="right" width="130"  />
 
 ## Article Service
+  [Article Service](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/article-service/README.md)  
 
 ## Matching Service
-
+  [Matching Service](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/matching-service/README.MD) 
 
 
