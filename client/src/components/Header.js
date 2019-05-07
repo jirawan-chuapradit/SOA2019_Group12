@@ -16,7 +16,6 @@ class Header extends Component{
 
             <li><a href="/FindArticle">ค้นหาบทความ</a></li>
 
-            <li><a href="/Login">เข้าสู่ระบบ</a></li>
 
 
 
