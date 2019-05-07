@@ -17,7 +17,7 @@
 Running test with Chai and Mocha
 
 
-``npm test``
+    ``npm test``
 
 
 
