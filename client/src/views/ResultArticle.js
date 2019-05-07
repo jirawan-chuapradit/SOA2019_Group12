@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import '../assets/css/create.css';
 import '../assets/css/header.css';
-import ArticleList from '../components/ArticleList'
-import axios from 'axios';
-import Header from '../components/Header'
+
 import ResultItem from './ResultItem';
 
 class ResultArticle extends Component {
