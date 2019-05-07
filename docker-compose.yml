@@ -31,27 +31,7 @@ services:
       EUREKA_SERVER_PORT: 8761
     ports:
       - '8000:8000'
-#Authentication Service
-  authentication:
-    container_name: authentication
-    image: earthzphanu/authentication_service:latest
-    restart: on-failure
-    links:
-      - mongo
-      - eureka
-    depends_on:
-      - mongo
-      - eureka
-    environment:
-      WAIT_HOSTS: eureka:8761, mongo:27017
-      WAIT_HOSTS_TIMEOUT: 120
-      MONGODB_URL: 'mongodb://mongo:27017/mydb2'
-      EUREKA_CLIENT_HOST: 'authentication'
-      EUREKA_CLIENT_URL: 'http://authentication:'
-      EUREKA_SERVER_HOST: 'eureka'
-      EUREKA_SERVER_PORT: 8761
-    ports:
-      - '5000:5000'
+
 #Matching Service
   matching:
     container_name: matching
