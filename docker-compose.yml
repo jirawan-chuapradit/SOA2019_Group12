@@ -7,10 +7,12 @@ services:
     # build: ./service/article-service
     # image: article_service
     image: earthzphanu/article_service:latest
+    restart: on-failure
     container_name: article
     links:
       - mongo
       - eureka
+      - circuit-breaker
     depends_on:
       - mongo
       - eureka
@@ -28,6 +30,7 @@ services:
   authentication:
     container_name: authentication
     image: earthzphanu/authentication_service:latest
+    restart: on-failure
     links:
       - mongo
       - eureka
@@ -48,9 +51,11 @@ services:
   matching:
     container_name: matching
     image: earthzphanu/matching_service:latest
+    restart: on-failure
     links:
       - mongo
       - eureka
+      - circuit-breaker
     depends_on:
       - mongo
       - eureka
@@ -81,6 +86,7 @@ services:
   api-gateway:
     container_name: api-gateway
     image: earthzphanu/api_gateway
+    restart: on-failure
     links:
       - eureka
     depends_on:
@@ -103,3 +109,9 @@ services:
     image: springcloud/eureka
     ports:
       - '8761:8761'
+# Circuit Breaker
+  circuit-breaker:
+    container_name: circuit-breaker
+    image: earthzphanu/circuit_breaker
+    ports:
+      - '8080:8080'
