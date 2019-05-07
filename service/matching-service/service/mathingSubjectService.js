@@ -1,8 +1,5 @@
 const matchingSubjectDb = require("../models/matchingSubjectSchema");
 
-
-
-
 exports.addSubject = async (req, res) => {
   console.log(req.body);
   const mathingData = {
