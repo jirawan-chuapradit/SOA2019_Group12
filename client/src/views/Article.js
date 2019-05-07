@@ -12,13 +12,12 @@ import axios from 'axios';
 
 class Article extends Component {
 
-    //   constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //       selectedView: 'Cheating'
-    //     }
-    //   }
-
+    constructor(props){
+        super(props)
+        this.state = {
+            article: {}   
+           }
+    }
     componentDidMount(){
         const url_string = window.location.href
         var url = new URL(url_string);
@@ -28,10 +27,16 @@ class Article extends Component {
     }
 
     fetchArticle = async (c) => {
-        const res = await axios.get('localhost:8000/Article/findbyid/'+c)
-        console.log(res.data)
+        const res = await axios.get('http://localhost:8000/Article/findbyid/'+c)
+        console.log(res.data[0])
+
+        this.setState( {article : res.data[0]})
+        
+
     }
     render() {
+        console.log(this.state.article)
+
         return (
 
             <div>
@@ -46,7 +51,7 @@ class Article extends Component {
                     </ul>
                 </nav>
                 <section className="sec1" />
-                <Content />
+                <Content article={this.state.article}/>
                 <Comment />
                 <CommentForm />
             </div>
