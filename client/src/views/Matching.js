@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from '../assets/image/logo.png'
 import '../assets/css/create.css';
 import '../assets/css/header.css';
-import Star from '../components/star'
 import MatchingList from '../components/MatchingList'
 
 import axios from 'axios';
