@@ -72,8 +72,10 @@ https://beaming-gadget-234817.appspot.com/{Endpoint following next section}
 
 # ➤  Services <br/>
 
-• API Gateway Running via port 3000  
+• API Gateway Running via port 3000
+  
 • Article Service Running via port 8000 [Article Service](https://github.com/com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/article-service)
+
 • Matching Service Running via port 5050
 
 
