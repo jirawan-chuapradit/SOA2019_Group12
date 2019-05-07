@@ -11,9 +11,9 @@ services:
       - matching
     ports:
       - '3000:3000'
-    environment:
-      WAIT_HOSTS: article:8000, api-gateway:5000
-      WAIT_HOSTS_TIMEOUT: 120
+    #environment:
+      #WAIT_HOSTS: article:8000, api-gateway:5000
+      #WAIT_HOSTS_TIMEOUT: 120
 #Article Service
   article:
     # build: ./service/article-service
