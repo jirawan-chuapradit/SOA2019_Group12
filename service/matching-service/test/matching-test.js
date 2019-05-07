@@ -25,19 +25,13 @@ describe("Matching", () => {
     it("Should get subject that match with rank",  done => {
        chai
         .request(server)
-        .get("/matching")
-        .send({
-          midterm: "1",
-          attendance: "1",
-          groupWorker: "1",
-          difficulty: "1"
-        })
+        .get("/matching/?midterm=1&attendance=1&groupWorker=2&difficulty=1")
         .end(function(err, res) {
           console.log(res.status);
           console.log(res.body);
 
           res.should.have.status(200);
-          res.body.should.be.a("object");
+          res.body.should.be.a("array");
           done();
         });
     }).timeout(15000);
@@ -46,45 +40,38 @@ describe("Matching", () => {
     it("Should GET a empty list with not match", done => {
       chai
         .request(server)
-        .get("/matching")
-        .send({
-          grade: "4",
-          midterm: "4",
-          attendance: "4",
-          groupWorker: "5",
-          difficulty: "5"
-        })
+        .get("/matching/?midterm=5&attendance=5&groupWorker=5&difficulty=5")
         .end((err, res) => {
           console.log(res.status);
           console.log(res.body);
-          res.should.have.status(200);
+          res.should.have.status(404);
           res.body.should.be.a("object");
           done();
         });
     });
 
     // Test POST with not exists subject calculate Avg Rank of Subject
-    // it("Should POST not exist", done => {
-    //   chai
-    //     .request(server)
-    //     .post("/matching/addMatchingSubject")
-    //     .send({
-    //       subject: "ITF32",
-    //       category: "Software Engineer",
-    //       grade: 3,
-    //       midterm: 3,
-    //       attendance: 3,
-    //       groupWorker: 2,
-    //       difficulty: 5
-    //     })
-    //     .end((err, res) => {
-    //       console.log(res.status);
-    //       console.log(res.body);
-    //       res.should.have.status(201);
-    //       res.body.should.be.a("object");
-    //       done();
-    //     });
-    // });
+    it("Should POST not exist", done => {
+      chai
+        .request(server)
+        .post("/matching/addMatchingSubject")
+        .send({
+          subject: "ITF97",
+          category: "Software Engineer",
+          grade: 3,
+          midterm: 3,
+          attendance: 3,
+          groupWorker: 2,
+          difficulty: 5
+        })
+        .end((err, res) => {
+          console.log(res.status);
+          console.log(res.body);
+          res.should.have.status(201);
+          res.body.should.be.a("object");
+          done();
+        });
+    });
   });
 
   describe("/ PUT", () => {
@@ -125,7 +112,7 @@ describe("Matching", () => {
         .end((err, res) => {
           console.log(res.status);
           console.log(res.body);
-          res.should.have.status(400);
+          res.should.have.status(404);
           // res.body.should.be.a("object");
           done();
         });

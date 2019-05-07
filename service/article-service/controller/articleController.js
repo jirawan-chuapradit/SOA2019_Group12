@@ -3,6 +3,7 @@ const router = express.Router();
 const articleService = require("../service/articleService")
 var bodyParser = require('body-parser');
 
+
 // parse application/json
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({
@@ -17,7 +18,8 @@ router.post("/", articleService.createArticle)
 
 router.get("/Home", articleService.getHomePage)
 router.get("/Article/:subject", articleService.getAllTitles)
-router.get("/Article/:subject/:title", articleService.getTitle)
+// router.get("/Article/:subject/:title", articleService.getTitle)
+router.get("/Article/findbyid/:id", articleService.getTitle)
 
 // router.get('/get/db', articleService.getArticleDB)
 

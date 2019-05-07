@@ -37,7 +37,7 @@ class Thumbnail extends Component {
 
       <div className="w3-row-padding" id="about">
         <div className="w3-center w3-padding-64">
-          <span className="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">บทความล่าสุด</span>
+          <span className="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">บทความแนะนำ</span>
         </div>
         <div>
           {list}

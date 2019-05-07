@@ -1,12 +1,5 @@
 const matchingSubjectDb = require("../models/matchingSubjectSchema");
 
-/**
- * Function:  Create Mockup Data
- * Description: create mock data
- * Method: run on postman
- * precondition: must have knowledge about MatchingSubjectSchema
- * postcondition: subject have been created
- */
 exports.addSubject = async (req, res) => {
   console.log(req.body);
   const mathingData = {
@@ -20,7 +13,7 @@ exports.addSubject = async (req, res) => {
   };
 
   await matchingSubjectDb.create(mathingData).then(subject => {
-    res.status(201).json({ status: req.body.subject + " registered!!!" });
+    return res.status(201).json({ status: req.body.subject + " Created" });
   });
 };
 
@@ -42,7 +35,7 @@ exports.editSubject = async (req, res) => {
     .then(s => {
       if (!s) {
         console.log("err: not found subject");
-        return res.status(400).json({ message: "Not found" });
+        return res.status(404).json({ message: "Not found" });
       } else {
         matchingSubjectDb.updateOne(
           { subject: mathingData.subject },
@@ -56,10 +49,10 @@ exports.editSubject = async (req, res) => {
             }
           },
           function(err, res) {
-            console.log("200 :found subject");
+            console.log("200 :OK");
           }
         );
-        return res.status(200).json({ message: "update success" });
+        return res.status(200).json({ message: "OK" });
       }
     });
 };
@@ -72,20 +65,20 @@ exports.finding = (req, res) => {
 
   matchingSubjectDb
     .find({
-      midterm: { $gt: req.body.midterm },
-      attendance: { $gt: req.body.attendance },
-      groupWorker: { $gt: req.body.groupWorker },
-      difficulty: { $gt: req.body.difficulty }
+      midterm: { $gt: req.query.midterm - 1 },
+      attendance: { $gt: req.query.attendance - 1 },
+      groupWorker: { $gt: req.query.groupWorker - 1 },
+      difficulty: { $gt: req.query.difficulty - 1 }
     }, { subject: 1, _id: 0 })
     .then(subject => {
       if (!Array.isArray(subject) || !subject.length) {
         // array does not exist, is not an array, or is empty
         // ⇒ do not attempt to process array
-        res.status(200).json({
+        return res.status(404).json({
           status: "Sorry, Can't find the article suitable for you :("
         });
       } else {
-        return res.json({ info: subject });
+        return res.status(200).json(subject);
       }
     });
 };

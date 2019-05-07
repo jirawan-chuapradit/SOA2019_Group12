@@ -1,21 +1,29 @@
 version: "3"
 services:
 #React app
-
+  frontend:
+    image: earthzphanu/frontend:latest
+    restart: on-failure
+    container_name: frontend
+    ports:
+      - '3000:3000'
 #Article Service
   article:
     # build: ./service/article-service
     # image: article_service
     image: earthzphanu/article_service:latest
+    restart: on-failure
     container_name: article
     links:
       - mongo
       - eureka
+      - circuit-breaker
     depends_on:
       - mongo
       - eureka
     environment:
-      WAIT_HOSTS: mongo:27017, eureka:8761
+      WAIT_HOSTS: mongo:27017, eureka:8761, matching:5050
+      WAIT_HOSTS_TIMEOUT: 120
       MONGODB_URL: 'mongodb://mongo:27017/Article-service'
       EUREKA_CLIENT_HOST: 'article'
       EUREKA_CLIENT_URL: 'http://article:'
@@ -23,37 +31,22 @@ services:
       EUREKA_SERVER_PORT: 8761
     ports:
       - '8000:8000'
-#Authentication Service
-  authentication:
-    container_name: authentication
-    image: earthzphanu/authentication_service:latest
-    links:
-      - mongo
-      - eureka
-    depends_on:
-      - mongo
-      - eureka
-    environment:
-      WAIT_HOSTS: eureka:8761, mongo:27017
-      MONGODB_URL: 'mongodb://mongo:27017/mydb2'
-      EUREKA_CLIENT_HOST: 'authentication'
-      EUREKA_CLIENT_URL: 'http://authentication:'
-      EUREKA_SERVER_HOST: 'eureka'
-      EUREKA_SERVER_PORT: 8761
-    ports:
-      - '5000:5000'
+
 #Matching Service
   matching:
     container_name: matching
     image: earthzphanu/matching_service:latest
+    restart: on-failure
     links:
       - mongo
       - eureka
+      - circuit-breaker
     depends_on:
       - mongo
       - eureka
     environment:
       WAIT_HOSTS: mongo:27017, eureka:8761
+      WAIT_HOSTS_TIMEOUT: 120
       MONGODB_URL: 'mongodb://mongo:27017/subject'
       EUREKA_CLIENT_HOST: 'matching'
       EUREKA_CLIENT_URL: 'http://matching:'
@@ -61,25 +54,7 @@ services:
       EUREKA_SERVER_PORT: 8761
     ports:
       - '5050:5050'
-#Notification Service
-  notification:
-    container_name: notification
-    image: earthzphanu/notification_service:latest
-    links:
-      - mongo
-      - eureka
-    depends_on:
-      - mongo
-      - eureka
-    environment:
-      WAIT_HOSTS: mongo:27017, eureka:8761
-      MONGODB_URL: 'mongodb://mongo:27017/Article'
-      EUREKA_CLIENT_HOST: 'notification'
-      EUREKA_CLIENT_URL: 'http://notification:'
-      EUREKA_SERVER_HOST: 'eureka'
-      EUREKA_SERVER_PORT: 8761
-    ports:
-      - '5051:5051'
+
 #Database
   mongo:
     image: mongo:latest
@@ -96,16 +71,16 @@ services:
   api-gateway:
     container_name: api-gateway
     image: earthzphanu/api_gateway
+    restart: on-failure
     links:
       - eureka
     depends_on:
       - eureka
       - article
-      - authentication
       - matching
-      - notification
     environment:
-      WAIT_HOSTS: eureka:8761, article:8000, authentication:5000, notification:5051, matching:5050
+      WAIT_HOSTS: eureka:8761, article:8000, matching:5050
+      WAIT_HOSTS_TIMEOUT: 120
       EUREKA_CLIENT_HOST: 'api-gateway'
       EUREKA_CLIENT_URL: 'http://api-gateway:'
       EUREKA_SERVER_HOST: 'eureka'
@@ -118,3 +93,9 @@ services:
     image: springcloud/eureka
     ports:
       - '8761:8761'
+# Circuit Breaker
+  circuit-breaker:
+    container_name: circuit-breaker
+    image: earthzphanu/circuit_breaker
+    ports:
+      - '8080:8080'

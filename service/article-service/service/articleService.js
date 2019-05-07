@@ -99,34 +99,34 @@ exports.createArticle = (req, res) => {
           if (size < 2) {
             axios
               .post(
-                "http://localhost:5050/matching/addMatchingSubject",
+                "http://matching:5050/addMatchingSubject",
                 mathingData
               )
               .then(response => {
-                console.log(response.data);
-                console.log(
-                  "GOTO http://localhost:5050/matching/addMatchingSubject"
-                );
-                console.log(response.status);
+                // console.log(response.data);
+                // console.log(
+                //   "GOTO http://matching:5050/addMatchingSubject"
+                // );
+                // console.log(response.status);
               })
               .catch(error => {
-                console.log(error);
+                // console.log(error);
               });
           } else {
             axios
               .put(
-                "http://localhost:5050/matching/editMatchingSubject",
+                "http://matching:5050/editMatchingSubject",
                 mathingData
               )
               .then(response => {
-                console.log(response.data);
-                console.log(
-                  "GoTO http://localhost:5050/matching/editMatchingSubject "
-                );
-                console.log(response.status);
+                // console.log(response.data);
+                // console.log(
+                //   "GoTO http://matching:5050/editMatchingSubject "
+                // );
+                // console.log(response.status);
               })
               .catch(error => {
-                console.log(error);
+                // console.log(error);
               });
           }
         });
@@ -177,11 +177,11 @@ exports.getAllTitles = async (req, res) => {
   console.log("get All Titles");
   console.log("subject: " + req.params.subject);
   const titles = await db.find(
-    { subject: req.params.subject },
-    { title: 1, _id: 0 }
+    { subject: req.params.subject }
+
   );
   if (!Array.isArray(titles) || !titles.length) {
-    return res.status(200).json("Sorry. Title Not found!!");
+    return res.status(404).json("Sorry. Title Not found!!");
   } else {
     return res.status(200).json(titles);
   }
@@ -191,8 +191,7 @@ exports.getTitle = async (req, res) => {
   console.log("get TItle");
 
   const title = await db.find(
-    { title: req.params.title, subject: req.params.subject },
-    { _id: 0 }
+    { _id: req.params.id}
   );
 
   return res.status(200).json(title);

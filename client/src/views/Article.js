@@ -5,19 +5,46 @@ import logo from '../assets/image/logo.png'
 import Content from '../components/Content';
 import CommentForm from '../components/CommentForm';
 import Comment from '../components/Comment';
+import axios from 'axios';
 
 
 
 
 class Article extends Component {
 
-    //   constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //       selectedView: 'Cheating'
-    //     }
-    //   }
+
+    constructor(props){
+        super(props)
+        this.state = {
+            article: {}   
+           }
+    }
+    componentDidMount(){
+
+        const url_string = window.location.href
+        var url = new URL(url_string);
+        var c = url.searchParams.get("id");
+        console.log("id :" + c);
+        this.fetchArticle(c)
+       
+    }
+
+
+
+    fetchArticle = async (c) => {
+        const res = await axios.get('http://localhost:8000/Article/findbyid/'+c)
+
+        console.log(res.data[0])
+
+        this.setState( {article : res.data[0]})
+        
+
+
+    }
+
     render() {
+        console.log(this.state.article)
+
         return (
 
             <div>
@@ -28,11 +55,13 @@ class Article extends Component {
                         <li><a href="/CreateArticle">สร้างบทความใหม่</a></li>
                         <li><a href="/Matching">หาวิชาที่เหมาะกับฉัน</a></li>
                         <li><a href="/FindArticle">ค้นหาบทความ</a></li>
-                        <li><a href="/Login">เข้าสู่ระบบ</a></li>
+                        
                     </ul>
                 </nav>
                 <section className="sec1" />
-                <Content />
+
+                <Content article={this.state.article}/>
+
                 <Comment />
                 <CommentForm />
             </div>

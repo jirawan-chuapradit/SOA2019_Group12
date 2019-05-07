@@ -4,18 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "build": "babel src -d dist --copy-files",
-    "test": "mocha",
-    "coverage": "nyc --reporter=text mocha --exit"
+    "test": "nyc --reporter=text mocha --exit"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/trace-agent": "^3.6.1",
     "axios": "^0.18.0",
     "babel-register": "^6.26.0",
     "body-parser": "1.18.3",
-    "eureka-client": "^1.1.0",
     "eureka-js-client": "^4.4.2",
     "express": "4.16.4",
     "mongodb": "3.2.3",

@@ -1,3 +1,4 @@
+require('@google-cloud/trace-agent').start();
 var express = require("express")
 var bodyParser = require("body-parser")
 var app = express()
@@ -57,7 +58,7 @@ const client = new Eureka({
 client.logger.level('debug');
 client.start((error) => {
     console.log(error || 'Eureka client started');
-    app.use("/matching", matchingSubjectController)
+    app.use("/", matchingSubjectController)
 });
 
 
