@@ -30,9 +30,7 @@ class App extends Component {
       <div>
         <Header />
         <Suggestion />
-        {/* <ThumbnailItem 
-          articleHome={data}       
-         /> */}
+        
 
         <Thumbnail article={this.state.article} />
       </div>
