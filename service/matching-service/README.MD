@@ -25,7 +25,7 @@ Running test with Chai and Mocha
 1. Get Articles that match with rank 
 
 
-``Get /matching ``
+     ``Get /matching ``
 
 
 Return ``200 OK`` with information of article when given an exists matched rank
