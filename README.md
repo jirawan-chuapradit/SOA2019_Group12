@@ -6,6 +6,7 @@
 <h1 align="center">SOA2019_Group12</h1>
 
 <p align="center">
+  <a><img src="https://circleci.com/gh/jirawan-chuapradit/SOA2019_Group12.svg?style=svg"></a>
 <a> <img alt="java" src="https://img.shields.io/static/v1.svg?label=made%20with&message=java&color=orange&logo=java&style=flat"></a>
 <a> <img alt="google" src="https://img.shields.io/static/v1.svg?label=deployed&message=cloud%20platform&color=4285f4&logo=google&style=flat&logoColor=white"></a>
 </p>
