@@ -28,7 +28,7 @@
 ## Clone Project 
 ```
 git clone https://github.com/jirawan-chuapradit/SOA2019_Group12.git
-cd /SOA2019_Group12
+cd /SOA2019_Group12/
 ```
 ## Install
 ```
