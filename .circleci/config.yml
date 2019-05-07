@@ -93,9 +93,9 @@ jobs:
                     ssh -vv -o "StrictHostKeyChecking=no" ${SSH_USER}@${SSH_HOST} bash -ic '"cd /home/earth/SOA2019_Group12 && \
                         sudo git pull origin master && \
                         sudo docker-compose stop && \
+                        sudo docker-compose rm -f article authentication matching && \
                         sudo docker-compose pull && \
                         sudo docker-compose up -d"'
-# docker-compose rm -f && \
 
 workflows:
     version: 2
