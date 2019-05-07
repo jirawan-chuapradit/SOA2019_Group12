@@ -26,13 +26,9 @@ class Article extends Component {
         var c = url.searchParams.get("id");
         console.log("id :" + c);
         this.fetchArticle(c)
-        // axios.get('http://localhost:8000/Article/findbyid/' + c).then(res => {
-        //     console.log("data :" + res.data);
-        //     { this.setState(res.data) }
-        // });
+       
     }
 
-    // axios.get("http://localhost:8000/").then(res => {
 
 
     fetchArticle = async (c) => {
