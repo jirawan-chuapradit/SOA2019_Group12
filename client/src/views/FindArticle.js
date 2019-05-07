@@ -54,7 +54,7 @@ class FindArticle extends React.Component {
   handleChange = async (event) => {
     console.log(event.target.value + "hello")
     this.setState({ value: event.target.value });
-    await axios.get("http://35.247.168.170:3000/api/article/Article/"+ event.target.value).then(res => {
+    await axios.get("http://35.247.168.170:5000/api/article/Article/"+ event.target.value).then(res => {
           console.log(res.data);
           { this.setState({ article: res.data }) }
   });

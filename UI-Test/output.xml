@@ -1,92 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.1 (Python 3.6.5 on win32)" generated="20190507 07:11:14.206" rpa="false">
-<suite id="s1" name="testReviewCourse" source="D:\IT\3.2\SOA\SOA2019_Group12\UI-Test\testReviewCourse.robot">
+<robot generator="Robot 3.1.1 (Python 3.7.2 on win32)" generated="20190507 10:52:40.092" rpa="false">
+<suite id="s1" name="testReviewCourse" source="C:\Users\EARTH\Desktop\SOA\SOA2019_Group12\UI-Test\testReviewCourse.robot">
 <test id="s1-t1" name="ดูบทความที่หน้า Home">
 <kw name="ไปยังหน้า Home">
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the given ``url``.</doc>
 <arguments>
-<arg>http://localhost:3001/</arg>
+<arg>http://35.247.168.170:3000/</arg>
 <arg>browser=chrome</arg>
 </arguments>
-<msg timestamp="20190507 07:11:14.376" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3001/'.</msg>
-<status status="PASS" starttime="20190507 07:11:14.376" endtime="20190507 07:11:19.436"></status>
-</kw>
-<status status="PASS" starttime="20190507 07:11:14.375" endtime="20190507 07:11:19.437"></status>
-</kw>
-<kw name="ต้องเจอบทความล่าสุด 3 บทความ">
-<kw name="Get Element Count" library="SeleniumLibrary">
-<doc>Returns number of elements matching ``locator``.</doc>
-<arguments>
-<arg>xpath://*[@id="about"]/div[2]/div</arg>
-</arguments>
-<assign>
-<var>${count}</var>
-</assign>
-<msg timestamp="20190507 07:11:19.457" level="INFO">${count} = 3</msg>
-<status status="PASS" starttime="20190507 07:11:19.438" endtime="20190507 07:11:19.457"></status>
-</kw>
-<kw name="Should Be True" library="BuiltIn">
-<doc>Fails if the given condition is not true.</doc>
-<arguments>
-<arg>${count} == 3</arg>
-</arguments>
-<status status="PASS" starttime="20190507 07:11:19.457" endtime="20190507 07:11:19.457"></status>
-</kw>
-<status status="PASS" starttime="20190507 07:11:19.437" endtime="20190507 07:11:19.458"></status>
-</kw>
-<status status="PASS" starttime="20190507 07:11:14.374" endtime="20190507 07:11:19.458" critical="yes"></status>
-</test>
-<test id="s1-t2" name="ค้นหาบทความจากชื่อวิชา">
-<kw name="ไปยังหน้า Home">
-<kw name="Open Browser" library="SeleniumLibrary">
-<doc>Opens a new browser instance to the given ``url``.</doc>
-<arguments>
-<arg>http://localhost:3001/</arg>
-<arg>browser=chrome</arg>
-</arguments>
-<msg timestamp="20190507 07:11:19.462" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3001/'.</msg>
-<status status="PASS" starttime="20190507 07:11:19.461" endtime="20190507 07:11:23.719"></status>
-</kw>
-<status status="PASS" starttime="20190507 07:11:19.461" endtime="20190507 07:11:23.719"></status>
-</kw>
-<kw name="เลือกวิชา">
-<kw name="Click Element" library="SeleniumLibrary">
-<doc>Click element identified by ``locator``.</doc>
-<arguments>
-<arg>xpath://*[@id="root"]/div/div[1]/nav/ul/li[4]</arg>
-</arguments>
-<msg timestamp="20190507 07:11:23.720" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div[1]/nav/ul/li[4]'.</msg>
-<status status="PASS" starttime="20190507 07:11:23.720" endtime="20190507 07:11:24.001"></status>
-</kw>
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<arguments>
-<arg>id="subject" "DEVELOPMENT OF READING AND WRITING SKILLS IN ENGLISH"</arg>
-</arguments>
+<msg timestamp="20190507 10:52:40.300" level="INFO">Opening browser 'chrome' to base url 'http://35.247.168.170:3000/'.</msg>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190507 07:11:24.684" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20190507 07:11:24.002" endtime="20190507 07:11:24.684"></status>
+<msg timestamp="20190507 10:52:43.811" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<status status="PASS" starttime="20190507 10:52:43.810" endtime="20190507 10:52:43.811"></status>
 </kw>
-<msg timestamp="20190507 07:11:24.686" level="FAIL">ValueError: No values given.</msg>
-<status status="FAIL" starttime="20190507 07:11:24.001" endtime="20190507 07:11:24.686"></status>
+<msg timestamp="20190507 10:52:43.816" level="FAIL">SessionNotCreatedException: Message: session not created: Chrome version must be between 70 and 73
+  (Driver info: chromedriver=73.0.3683.68 (47787ec04b6e38e22703e856e101e840b65afe72),platform=Windows NT 10.0.17134 x86_64)
+</msg>
+<status status="FAIL" starttime="20190507 10:52:40.299" endtime="20190507 10:52:43.817"></status>
 </kw>
-<status status="FAIL" starttime="20190507 07:11:23.720" endtime="20190507 07:11:24.686"></status>
+<status status="FAIL" starttime="20190507 10:52:40.299" endtime="20190507 10:52:43.817"></status>
 </kw>
-<status status="FAIL" starttime="20190507 07:11:19.459" endtime="20190507 07:11:24.686" critical="yes">ValueError: No values given.</status>
+<status status="FAIL" starttime="20190507 10:52:40.298" endtime="20190507 10:52:43.818" critical="yes">SessionNotCreatedException: Message: session not created: Chrome version must be between 70 and 73
+  (Driver info: chromedriver=73.0.3683.68 (47787ec04b6e38e22703e856e101e840b65afe72),platform=Windows NT 10.0.17134 x86_64)
+</status>
 </test>
-<status status="FAIL" starttime="20190507 07:11:14.207" endtime="20190507 07:11:24.687"></status>
+<status status="FAIL" starttime="20190507 10:52:40.094" endtime="20190507 10:52:43.821"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="1">Critical Tests</stat>
-<stat pass="1" fail="1">All Tests</stat>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="1" id="s1" name="testReviewCourse">testReviewCourse</stat>
+<stat pass="0" fail="1" id="s1" name="testReviewCourse">testReviewCourse</stat>
 </suite>
 </statistics>
 <errors>
