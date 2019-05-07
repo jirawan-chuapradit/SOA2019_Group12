@@ -8,9 +8,9 @@ jobs:
         steps:
             - setup_remote_docker:
                 docker_layer_caching: true
-            - restore_cache:
-                keys:
-                    - dependencies-{{ checksum "package.json" }}
+            # - restore_cache:
+            #     keys:
+            #         - dependencies-{{ checksum "package.json" }}
             - checkout:
                 path: ~/SOA2019_Group12
             - run:
@@ -95,24 +95,24 @@ workflows:
                     branches:
                         only:
                             master
-            # - article:
-            #     filters:
-            #         branches:
-            #             only:
-            #                 master
-            # - api-gateway:
-            #     filters:
-            #         branches:
-            #             only:
-            #                 master
-            # - matching:
-            #     filters:
-            #         branches:
-            #             only:
-            #                 master
-            # - deploy:
-            #     requires:
-            #         - article
-            #         - api-gateway
-            #         - matching
-            #         - frontend
+            - article:
+                filters:
+                    branches:
+                        only:
+                            master
+            - api-gateway:
+                filters:
+                    branches:
+                        only:
+                            master
+            - matching:
+                filters:
+                    branches:
+                        only:
+                            master
+            - deploy:
+                requires:
+                    - article
+                    - api-gateway
+                    - matching
+                    - frontend
