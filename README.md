@@ -41,7 +41,7 @@ cd /SOA2019_Group12/
 ```
 ## Compile & Run
 ```
-node index.js
+npm install
 ```
 ## Testing
 ```
@@ -64,6 +64,9 @@ https://beaming-gadget-234817.appspot.com/{Endpoint following next section}
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
 # ➤  API & Endpoint<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/603197.png" align="right" width="130"  />
+
+## Services
+• API Gateway Running via port 3000
 ## Article Service
 | Endpoint |
 |--|
