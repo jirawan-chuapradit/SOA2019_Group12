@@ -40,6 +40,7 @@ Return  ``404 Sorry, Can't find the article suitable for you `` when given non a
 
 ``POST /addMatchingSubject``
 
+
 ```
 /* Example of request body */
 {
