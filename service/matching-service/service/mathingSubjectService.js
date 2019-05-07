@@ -1,8 +1,6 @@
 const matchingSubjectDb = require("../models/matchingSubjectSchema");
 
-/**
- * Function:  Create Mockup Data
- * Description: create mock data
+
 
 
 exports.addSubject = async (req, res) => {
