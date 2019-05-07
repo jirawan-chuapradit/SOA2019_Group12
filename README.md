@@ -35,7 +35,8 @@ cd /review_course12
 Install Node.js, Mongo before running or testing
 - Install all dependencies
   "npm install"
-Run the service with the development environment "npm install"
+- Run the service with the development environment 
+  "npm install"
 
 ```
 ## Compile & Run
