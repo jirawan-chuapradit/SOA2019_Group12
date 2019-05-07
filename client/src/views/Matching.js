@@ -45,7 +45,7 @@ class Matching extends Component{
   }
 
   componentDidMount() {
-      axios.get("http://api-gateway:5000/api/matching",
+      axios.get("http://35.247.168.170:5000/api/matching",
       {
         body :
         (

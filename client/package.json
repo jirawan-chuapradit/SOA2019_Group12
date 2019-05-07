@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "npm-install-webpack-plugin": "^4.0.5",
     "redux-devtools": "^3.5.0"
   }
 }
