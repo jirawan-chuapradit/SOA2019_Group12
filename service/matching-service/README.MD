@@ -2,17 +2,30 @@
 
 1. Install Node.js, Mongo before running or testing
 2. Install all dependencies
-``npm install``
+
+
+     ``npm install``
+
+
+
 3. Run the service with the development environment
-``npm install``
+
+
+    ``npm install``
 
 # Testing
 Running test with Chai and Mocha
-``npm test``
+
+
+    ``npm test``
+
+
 
 # Endpoints
 1. Get Articles that match with rank 
-``Get /matching ``
+
+
+     ``Get /matching ``
 
 
 Return ``200 OK`` with information of article when given an exists matched rank
@@ -23,7 +36,10 @@ Return  ``404 Sorry, Can't find the article suitable for you `` when given non a
 -------------------
 
 2. Create a subject with infomation from request body
+
+
 ``POST /addMatchingSubject``
+
 
 ```
 /* Example of request body */
@@ -37,6 +53,8 @@ Return  ``404 Sorry, Can't find the article suitable for you `` when given non a
           difficulty: 5
 }
 ```
+
+
 
 Return ``201 CREATED`` with article has been created
 

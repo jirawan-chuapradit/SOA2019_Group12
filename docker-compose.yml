@@ -1,7 +1,12 @@
 version: "3"
 services:
 #React app
-
+  frontend:
+    image: earthzphanu/frontend:latest
+    restart: on-failure
+    container_name: frontend
+    ports:
+      - '3000:3000'
 #Article Service
   article:
     # build: ./service/article-service
