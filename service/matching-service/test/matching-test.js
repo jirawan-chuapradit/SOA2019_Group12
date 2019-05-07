@@ -44,7 +44,7 @@ describe("Matching", () => {
         .end((err, res) => {
           console.log(res.status);
           console.log(res.body);
-          res.should.have.status(200);
+          res.should.have.status(404);
           res.body.should.be.a("object");
           done();
         });
@@ -56,7 +56,7 @@ describe("Matching", () => {
         .request(server)
         .post("/matching/addMatchingSubject")
         .send({
-          subject: "ITF99",
+          subject: "ITF97",
           category: "Software Engineer",
           grade: 3,
           midterm: 3,
@@ -112,7 +112,7 @@ describe("Matching", () => {
         .end((err, res) => {
           console.log(res.status);
           console.log(res.body);
-          res.should.have.status(400);
+          res.should.have.status(404);
           // res.body.should.be.a("object");
           done();
         });
