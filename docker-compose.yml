@@ -77,10 +77,9 @@ services:
     depends_on:
       - eureka
       - article
-      - authentication
       - matching
     environment:
-      WAIT_HOSTS: eureka:8761, article:8000, authentication:5000, matching:5050
+      WAIT_HOSTS: eureka:8761, article:8000, matching:5050
       WAIT_HOSTS_TIMEOUT: 120
       EUREKA_CLIENT_HOST: 'api-gateway'
       EUREKA_CLIENT_URL: 'http://api-gateway:'
