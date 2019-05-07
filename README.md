@@ -38,7 +38,9 @@ cd /SOA2019_Group12/
   "npm install"
   ```
 - Run the service with the development environment 
+```
   "npm install"
+  ```
 
 
 ## Compile & Run
