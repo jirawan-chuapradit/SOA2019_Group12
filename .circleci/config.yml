@@ -64,21 +64,6 @@ jobs:
                     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                     docker image build -t $DOCKER_USERNAME/matching_service .
                     docker image push $DOCKER_USERNAME/matching_service
-    # circuit-breaker:
-    #     working_directory: ~/SOA2019_Group12/service/circuitbreaker
-    #     docker:
-    #         - image: circleci/openjdk:latest
-    #     steps:
-    #         - setup_remote_docker:
-    #             docker_layer_caching: true
-    #         - checkout:
-    #             path: ~/SOA2019_Group12
-    #         - run:
-    #             name: Build Circuit Breaker's Image
-    #             command: |
-    #                 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    #                 docker image build -t $DOCKER_USERNAME/circuit_breaker .
-    #                 docker image push $DOCKER_USERNAME/circuit_breaker
         
     deploy:
         machine:
@@ -111,11 +96,6 @@ workflows:
                     branches:
                         only:
                             master
-            # - circuit-breaker:
-            #     filters:
-            #         branches:
-            #             only:
-            #                 master
             - authentication:
                 filters:
                     branches:
@@ -131,5 +111,4 @@ workflows:
                     - article
                     - authentication
                     - api-gateway
-                    # - circuit-breaker
                     - matching
