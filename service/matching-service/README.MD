@@ -16,7 +16,6 @@ Running test with Chai and Mocha
 1. Get Articles that match with rank 
 ``Get /matching ``
 
-
 Return ``200 OK`` with information of article when given an exists matched rank
 
 
@@ -39,6 +38,8 @@ Return  ``404 Sorry, Can't find the article suitable for you `` when given non a
           difficulty: 5
 }
 ```
+
+
 
 Return ``201 CREATED`` with article has been created
 
