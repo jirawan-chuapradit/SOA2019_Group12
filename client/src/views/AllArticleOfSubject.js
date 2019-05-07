@@ -25,8 +25,6 @@ class AllArticleOfSubject extends Component {
       window.location.href = `/article?id=${article._id}`;
     }
 
-    // const article = this.state.article;
-
     return (
 
       <div>
