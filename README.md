@@ -24,7 +24,7 @@
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
-# ➤ วิธีการ Run Service<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/icons8-exercise.png" align="right" width="130"  />
+# ➤ วิธีการ Run Service<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/icons8-exercise.png" align="right" width="130"  />
 ## Clone Project 
 ```
 git clone https://github.com/jirawan-chuapradit/SOA2019_Group12.git
@@ -51,13 +51,13 @@ npm install
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
-# ➤ Test<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images.png" align="right" width="130"  />
+# ➤ Test<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/images.png" align="right" width="130"  />
 ```
 npm test
 ```
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
-# ➤ Deploy<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/icon-deploy.png" align="right" width="130"  />
+# ➤ Deploy<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/icon-deploy.png" align="right" width="130"  />
 ```
 https://beaming-gadget-234817.appspot.com/{Endpoint following next section}
 ```
@@ -71,7 +71,7 @@ https://beaming-gadget-234817.appspot.com/{Endpoint following next section}
 ```
 
 
-# ➤  API & Endpoint<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/603197.png" align="right" width="130"  />
+# ➤  API & Endpoint<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/603197.png" align="right" width="130"  />
 
 ## Article Service
 | Endpoint |
