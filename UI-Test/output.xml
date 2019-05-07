@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.1 (Python 3.6.5 on win32)" generated="20190507 07:11:14.206" rpa="false">
+<robot generator="Robot 3.1.1 (Python 3.6.5 on win32)" generated="20190507 09:52:01.460" rpa="false">
 <suite id="s1" name="testReviewCourse" source="D:\IT\3.2\SOA\SOA2019_Group12\UI-Test\testReviewCourse.robot">
 <test id="s1-t1" name="ดูบทความที่หน้า Home">
 <kw name="ไปยังหน้า Home">
@@ -9,10 +9,10 @@
 <arg>http://localhost:3001/</arg>
 <arg>browser=chrome</arg>
 </arguments>
-<msg timestamp="20190507 07:11:14.376" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3001/'.</msg>
-<status status="PASS" starttime="20190507 07:11:14.376" endtime="20190507 07:11:19.436"></status>
+<msg timestamp="20190507 09:52:01.875" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3001/'.</msg>
+<status status="PASS" starttime="20190507 09:52:01.875" endtime="20190507 09:52:10.296"></status>
 </kw>
-<status status="PASS" starttime="20190507 07:11:14.375" endtime="20190507 07:11:19.437"></status>
+<status status="PASS" starttime="20190507 09:52:01.874" endtime="20190507 09:52:10.296"></status>
 </kw>
 <kw name="ต้องเจอบทความล่าสุด 3 บทความ">
 <kw name="Get Element Count" library="SeleniumLibrary">
@@ -23,19 +23,20 @@
 <assign>
 <var>${count}</var>
 </assign>
-<msg timestamp="20190507 07:11:19.457" level="INFO">${count} = 3</msg>
-<status status="PASS" starttime="20190507 07:11:19.438" endtime="20190507 07:11:19.457"></status>
+<msg timestamp="20190507 09:52:10.341" level="INFO">${count} = 0</msg>
+<status status="PASS" starttime="20190507 09:52:10.298" endtime="20190507 09:52:10.342"></status>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <doc>Fails if the given condition is not true.</doc>
 <arguments>
 <arg>${count} == 3</arg>
 </arguments>
-<status status="PASS" starttime="20190507 07:11:19.457" endtime="20190507 07:11:19.457"></status>
+<msg timestamp="20190507 09:52:10.343" level="FAIL">'0 == 3' should be true.</msg>
+<status status="FAIL" starttime="20190507 09:52:10.342" endtime="20190507 09:52:10.343"></status>
 </kw>
-<status status="PASS" starttime="20190507 07:11:19.437" endtime="20190507 07:11:19.458"></status>
+<status status="FAIL" starttime="20190507 09:52:10.297" endtime="20190507 09:52:10.343"></status>
 </kw>
-<status status="PASS" starttime="20190507 07:11:14.374" endtime="20190507 07:11:19.458" critical="yes"></status>
+<status status="FAIL" starttime="20190507 09:52:01.873" endtime="20190507 09:52:10.344" critical="yes">'0 == 3' should be true.</status>
 </test>
 <test id="s1-t2" name="ค้นหาบทความจากชื่อวิชา">
 <kw name="ไปยังหน้า Home">
@@ -45,10 +46,10 @@
 <arg>http://localhost:3001/</arg>
 <arg>browser=chrome</arg>
 </arguments>
-<msg timestamp="20190507 07:11:19.462" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3001/'.</msg>
-<status status="PASS" starttime="20190507 07:11:19.461" endtime="20190507 07:11:23.719"></status>
+<msg timestamp="20190507 09:52:10.354" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3001/'.</msg>
+<status status="PASS" starttime="20190507 09:52:10.354" endtime="20190507 09:52:21.504"></status>
 </kw>
-<status status="PASS" starttime="20190507 07:11:19.461" endtime="20190507 07:11:23.719"></status>
+<status status="PASS" starttime="20190507 09:52:10.353" endtime="20190507 09:52:21.504"></status>
 </kw>
 <kw name="เลือกวิชา">
 <kw name="Click Element" library="SeleniumLibrary">
@@ -56,37 +57,39 @@
 <arguments>
 <arg>xpath://*[@id="root"]/div/div[1]/nav/ul/li[4]</arg>
 </arguments>
-<msg timestamp="20190507 07:11:23.720" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div[1]/nav/ul/li[4]'.</msg>
-<status status="PASS" starttime="20190507 07:11:23.720" endtime="20190507 07:11:24.001"></status>
+<msg timestamp="20190507 09:52:21.506" level="INFO">Clicking element 'xpath://*[@id="root"]/div/div[1]/nav/ul/li[4]'.</msg>
+<status status="PASS" starttime="20190507 09:52:21.505" endtime="20190507 09:52:22.440"></status>
 </kw>
-<kw name="Select From List By Value" library="SeleniumLibrary">
-<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<kw name="Select From List By Index" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
 <arguments>
-<arg>id="subject" "DEVELOPMENT OF READING AND WRITING SKILLS IN ENGLISH"</arg>
+<arg>name="subject"</arg>
+<arg>1</arg>
 </arguments>
+<msg timestamp="20190507 09:52:22.441" level="INFO">Selecting options from selection list 'name="subject"' by index 1.</msg>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<msg timestamp="20190507 07:11:24.684" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20190507 07:11:24.002" endtime="20190507 07:11:24.684"></status>
+<msg timestamp="20190507 09:52:24.224" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190507 09:52:22.478" endtime="20190507 09:52:24.224"></status>
 </kw>
-<msg timestamp="20190507 07:11:24.686" level="FAIL">ValueError: No values given.</msg>
-<status status="FAIL" starttime="20190507 07:11:24.001" endtime="20190507 07:11:24.686"></status>
+<msg timestamp="20190507 09:52:24.757" level="FAIL">List with locator 'name="subject"' not found.</msg>
+<status status="FAIL" starttime="20190507 09:52:22.440" endtime="20190507 09:52:24.757"></status>
 </kw>
-<status status="FAIL" starttime="20190507 07:11:23.720" endtime="20190507 07:11:24.686"></status>
+<status status="FAIL" starttime="20190507 09:52:21.505" endtime="20190507 09:52:24.757"></status>
 </kw>
-<status status="FAIL" starttime="20190507 07:11:19.459" endtime="20190507 07:11:24.686" critical="yes">ValueError: No values given.</status>
+<status status="FAIL" starttime="20190507 09:52:10.348" endtime="20190507 09:52:24.758" critical="yes">List with locator 'name="subject"' not found.</status>
 </test>
-<status status="FAIL" starttime="20190507 07:11:14.207" endtime="20190507 07:11:24.687"></status>
+<status status="FAIL" starttime="20190507 09:52:01.474" endtime="20190507 09:52:24.761"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="1">Critical Tests</stat>
-<stat pass="1" fail="1">All Tests</stat>
+<stat pass="0" fail="2">Critical Tests</stat>
+<stat pass="0" fail="2">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="1" id="s1" name="testReviewCourse">testReviewCourse</stat>
+<stat pass="0" fail="2" id="s1" name="testReviewCourse">testReviewCourse</stat>
 </suite>
 </statistics>
 <errors>

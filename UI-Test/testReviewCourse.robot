@@ -16,7 +16,7 @@ Library  SeleniumLibrary
 
 เลือกวิชา
     Click Element  xpath://*[@id="root"]/div/div[1]/nav/ul/li[4]
-    Select From List By Value  id="subject" "DEVELOPMENT OF READING AND WRITING SKILLS IN ENGLISH"
+    Select From List By Index  name="subject"  1
 
 ต้องเจอบทความล่าสุด 3 บทความ
     ${count}=  Get Element Count  xpath://*[@id="about"]/div[2]/div
