@@ -1,5 +1,22 @@
 version: 2
 jobs:
+    # Frontend
+    frontend:
+        working_directory: ~/SOA2019_Group12/client
+        docker:
+            - image: circleci/node:latest
+        steps:
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - checkout:
+                path: ~/SOA2019_Group12
+            - run:
+                name: Build Article service's Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker image build -t $DOCKER_USERNAME/frontend .
+                    docker image push $DOCKER_USERNAME/frontend
+                
     #Article Service
     article:
         working_directory: ~/SOA2019_Group12/service/article-service
@@ -86,6 +103,11 @@ workflows:
     version: 2
     compile:
         jobs:
+            - frontend:
+                filters:
+                    branches:
+                        only:
+                            master
             - article:
                 filters:
                     branches:
