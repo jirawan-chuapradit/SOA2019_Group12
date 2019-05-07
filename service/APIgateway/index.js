@@ -53,11 +53,6 @@ client.start(error => {
     const articleServiceProxy = httpProxy(articleServiceUrl)
     console.log(`Article-service: ${articleServiceUrl}`)
 
-    const authenticationServiceInstance = client.getInstancesByAppId('authentication-service')
-    const authenticationServiceUrl = `http://${authenticationServiceInstance[0].hostName}:${authenticationServiceInstance[0].port.$}`
-    const authenticationServiceProxy = httpProxy(authenticationServiceUrl)
-    console.log(`authentication-service: ${authenticationServiceUrl}`)
-
     const matchingServiceInstance = client.getInstancesByAppId('matching-service')
     const matchingServiceUrl = `http://${matchingServiceInstance[0].hostName}:${matchingServiceInstance[0].port.$}`
     const matchingServiceProxy = httpProxy(matchingServiceUrl)
@@ -69,9 +64,6 @@ client.start(error => {
     })
     app.use('/api/matching', (req, res, next) => {
         matchingServiceProxy(req, res, next)
-    })
-    app.use('/api/authentication', (req, res, next) => {
-        authenticationServiceProxy(req, res, next)
     })
 })
 
