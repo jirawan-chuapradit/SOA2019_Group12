@@ -72,7 +72,7 @@ http://35.247.168.170/api/{SERVICE_NAME}/{API_PATH}
 
 # ➤  Services <br/>
 
-• [API Gateway](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/api-gateway)
+• [API Gateway](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/APIgateway)
  Running via port 5000
   
 • [Article Service](https://github.com/jirawan-chuapradit/SOA2019_Group12/tree/master/service/article-service)
