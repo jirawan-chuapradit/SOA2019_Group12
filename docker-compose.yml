@@ -111,7 +111,7 @@ services:
       - '8761:8761'
 # Circuit Breaker
   circuit-breaker:
-    container_name: curcuit-breaker
+    container_name: circuit-breaker
     image: earthzphanu/circuit_breaker
     ports:
       - '8080:8080'
