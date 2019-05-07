@@ -32,7 +32,6 @@ class Article extends Component {
         // });
     }
 
-    // axios.get("http://localhost:8000/").then(res => {
 
 
     fetchArticle = async (c) => {
