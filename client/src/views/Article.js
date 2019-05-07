@@ -59,7 +59,7 @@ class Article extends Component {
                         <li><a href="/CreateArticle">สร้างบทความใหม่</a></li>
                         <li><a href="/Matching">หาวิชาที่เหมาะกับฉัน</a></li>
                         <li><a href="/FindArticle">ค้นหาบทความ</a></li>
-                        <li><a href="/Login">เข้าสู่ระบบ</a></li>
+                        
                     </ul>
                 </nav>
                 <section className="sec1" />
