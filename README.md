@@ -74,16 +74,8 @@ https://beaming-gadget-234817.appspot.com/{Endpoint following next section}
 # ➤  API & Endpoint<img src="https://github.com/jirawan-chuapradit/SOA2019_Group12/blob/master/images/603197.png" align="right" width="130"  />
 
 ## Article Service
-| Endpoint |
-|--|
-| GET /articles      |
-| GET /article/{id} |
-| GET /articles?category={value1}&subject={value2} |
-| POST /articles |
-| GET /comment |
-|GET /comment/{id}|
-| POST /comment |
 
+## Matching Service
 
 
 
