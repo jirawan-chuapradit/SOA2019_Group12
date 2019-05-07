@@ -11,11 +11,6 @@ class Content extends Component {
         }
     }
 
-    componentDidMount() {
-        // console.log(this.props.article)
-      
-    }
-
 
     render() {
         const article_b = this.props.article;

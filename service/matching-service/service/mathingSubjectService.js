@@ -1,11 +1,5 @@
 const matchingSubjectDb = require("../models/matchingSubjectSchema");
 
-/**
- * Function:  Create Mockup Data
- * Description: create mock data
- * Method: run on postman
- * precondition: must have knowledge about MatchingSubjectSchema
-
 exports.addSubject = async (req, res) => {
   console.log(req.body);
   const mathingData = {
