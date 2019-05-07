@@ -112,3 +112,4 @@ workflows:
                     - article
                     - api-gateway
                     - matching
+                    - frontend

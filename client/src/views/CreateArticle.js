@@ -32,7 +32,7 @@ class CreateArticle extends Component {
   }
 
   confirmCreateArticle = async () => {
-      await axios.post("http://35.247.168.170:3000/api/article/",
+      await axios.post("http://api-gateway:5000/api/article/",
       {
         "title": this.state.title,
         "category": this.state.category,

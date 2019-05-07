@@ -5,6 +5,10 @@ services:
     image: earthzphanu/frontend:latest
     restart: on-failure
     container_name: frontend
+    links:
+      - article
+      - api-gateway
+      - matching
     ports:
       - '3000:3000'
 #Article Service

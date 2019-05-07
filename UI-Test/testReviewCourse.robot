@@ -20,7 +20,7 @@ Library  SeleniumLibrary
 
 ต้องเจอบทความล่าสุด 3 บทความ
     ${count}=  Get Element Count  xpath://*[@id="about"]/div[2]/div
-    Should Be True  ${count} == 3
+    Should Be True  ${count} >= 1
 
 # ต้องเจอข้อมูลในหน้าแรกจำนวน 10 เรื่อง
 #     ${count}=  Get Element Count  xpath://div/div/article
