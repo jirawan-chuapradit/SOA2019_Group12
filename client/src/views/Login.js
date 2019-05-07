@@ -63,7 +63,7 @@ class Login extends React.Component {
         formIsValid = false;
         errors["password"] = "*Please enter your password.";
       }
-      // if ( fields["password"].length.value < 8) {
+      
 
       //   formIsValid = false;
       //      errors["password"] = "*Please enter secure and strong password.";
