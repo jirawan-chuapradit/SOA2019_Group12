@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from '../assets/image/logo.png'
 import '../assets/css/create.css';
 import '../assets/css/header.css';
-import Star from '../components/star'
 import MatchingList from '../components/MatchingList'
 
 import axios from 'axios';
@@ -89,8 +88,6 @@ class Matching extends Component{
             <li><a href="/Matching" className="active">หาวิชาที่เหมาะกับฉัน</a></li>
 
             <li><a href="/FindArticle">ค้นหาบทความ</a></li>
-
-            <li><a href="/Login">เข้าสู่ระบบ</a></li>
 
             
 
