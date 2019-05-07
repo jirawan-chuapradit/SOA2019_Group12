@@ -17,7 +17,7 @@ class App extends Component {
 
 
   componentDidMount() {
-      axios.get("http://35.247.168.170:5000/api/article/").then(res => {
+      axios.get("http://api-gateway:5000/api/article/").then(res => {
       console.log(res.data);
       { this.setState({ article: res.data }) }
     });

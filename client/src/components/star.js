@@ -29,7 +29,7 @@ class star extends React.Component {
           name="rate1" 
           size={40}
           starCount={5}
-          value={rating}
+          value={this.props.rating}
           onStarClick={this.onStarClick.bind(this)}
         /> 
 

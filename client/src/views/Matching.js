@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from '../assets/image/logo.png'
 import '../assets/css/create.css';
 import '../assets/css/header.css';
+import Star from '../components/star'
 import MatchingList from '../components/MatchingList'
 
 import axios from 'axios';
@@ -18,10 +19,17 @@ class Matching extends Component{
       attendance: 4,
       groupWorker : 4,
       difficulty : 4,
-      data: {}   
+      data: {} ,
+      show : false  
 
     };
   }
+
+  showResult = () => {
+    const { show } = this.state;
+    this.setState ( { show : !show })
+  }
+
 
  
   onAttendanceClick(nextValue, prevValue, name) {
@@ -37,7 +45,7 @@ class Matching extends Component{
   }
 
   componentDidMount() {
-      axios.get("http://35.247.168.170:3000/api/matching",
+      axios.get("http://api-gateway:5000/api/matching",
       {
         body :
         (
@@ -88,6 +96,8 @@ class Matching extends Component{
             <li><a href="/Matching" className="active">หาวิชาที่เหมาะกับฉัน</a></li>
 
             <li><a href="/FindArticle">ค้นหาบทความ</a></li>
+
+            <li><a href="/Login">เข้าสู่ระบบ</a></li>
 
             
 
@@ -178,12 +188,14 @@ class Matching extends Component{
               <br></br>
 
               <br></br>
-                <button className="primary-btn" >ค้นหา</button>
+                <button className="primary-btn" onClick={ this.showResult}>ค้นหา</button>
                 <br></br>
       <br></br>
       <MatchingList articles={this.state.article} />
 
                 {/* { this.state.show && <Result />}  */}
+
+                { this.state.show && <Result />} 
 
               </div>
             </div>
@@ -217,13 +229,7 @@ class Result extends Component {
           วิชา SE
 
  					</h4>
-           <div class="list-group-item">
-           อ่านบทความเกี่ยวกับวิชานี้
-
-           <p>
-				<a class="btn" href="/AllArticleOfSubject">View details »</a>
-			</p>
-				</div>
+          
         
 				</div>
 			</div>
