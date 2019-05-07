@@ -18,7 +18,7 @@
 | <p align="center">การทำงาน</p>  | <p align="center">SERVICE</p>  |
 | ------------- | ------------- |
 | <p align="center">:heavy_check_mark: </p>  |<p align="center"> Article Service </p>  |
-| <p align="center">:heavy_check_mark: </p>  |<p align="center"> APT Gateway </p>  |
+| <p align="center">:heavy_check_mark: </p>  |<p align="center"> API Gateway </p>  |
 | <p align="center">:x:</p>  | <p align="center">ชื่อ</p>  |
 
 หมายเหตุ: :heavy_check_mark: = เสร็จแล้ว ,:x: = อยู่ในระหว่างปฎิบัติงาน
